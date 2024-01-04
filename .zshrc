@@ -8,6 +8,10 @@ alias p=pulumi
 alias d=docker
 alias dicker=docker
 alias vim=nvim
+alias dotfiles="cd $HOME/.dotfiles/"
+alias projects="cd $HOME/Projects/"
+alias downloads="cd $HOME/Downloads/"
+
 
 #GPG for github and stuff
 export GPG_TTY=$(tty)
