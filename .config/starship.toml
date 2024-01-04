@@ -1,0 +1,30 @@
+[hostname]
+ssh_only = false
+format =  "on [$hostname](bold red) "
+
+[directory]
+truncation_length = 2
+
+[aws]
+disabled = false
+format = 'on [$symbol ($profile )(\($region\) )]($style)'
+symbol = '🅰 '
+
+
+[rust]
+format = "[:gear: $version](red bold)"
+
+[deno]
+format = "[:sauropod: $version](green bold) "
+
+[red]
+disabled = true
+
+[nodejs]
+detect_extensions = []
+
+[azure]
+disabled = true
+format = "on [$symbol($subscription)]($style) "
+symbol = "ﴃ "
+style = "blue bold"
