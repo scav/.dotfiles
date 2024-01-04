@@ -6,3 +6,5 @@
 	defaultBranch = main
 [commit]
 	gpgsign = true
+[core]
+    editor = nvim

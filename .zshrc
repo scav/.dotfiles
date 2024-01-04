@@ -12,6 +12,8 @@ alias dotfiles="cd $HOME/.dotfiles/"
 alias projects="cd $HOME/Projects/"
 alias downloads="cd $HOME/Downloads/"
 
+alias dotlink="zsh $HOME/.dotfiles/setup.sh --link"
+alias dotbrew="zsh $HOME/.dotfiles/setup.sh --brew"
 
 #GPG for github and stuff
 export GPG_TTY=$(tty)

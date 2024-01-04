@@ -9,4 +9,10 @@ Contains my dotfiles for the following
 - nvim
 
 ### Setup a new machine
-Simply run `sh setup.sh` to have symlinks created and Brewfile installed
+To setup a new machine run `zsh setup.sh --init` to get all the starting stuff going.
+
+### Daily usage
+Two commands are useful
+
+- link new .dotfiles `zsh setup.sh --link`
+- update packages `zsh setup.sh --brew`
