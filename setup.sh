@@ -5,9 +5,16 @@ zparseopts  -D -K -- \
     -link=ln \
     -brew=brew
 
-echo "****************************"
-echo "*         DOTSYSTEM        *"
-echo "****************************"
+echo "▓█████▄  ▒█████  ▄▄▄█████▓  ██████▓██   ██▓  ██████ ▄▄▄█████▓▓█████  ███▄ ▄███▓
+▒██▀ ██▌▒██▒  ██▒▓  ██▒ ▓▒▒██    ▒ ▒██  ██▒▒██    ▒ ▓  ██▒ ▓▒▓█   ▀ ▓██▒▀█▀ ██▒
+░██   █▌▒██░  ██▒▒ ▓██░ ▒░░ ▓██▄    ▒██ ██░░ ▓██▄   ▒ ▓██░ ▒░▒███   ▓██    ▓██░
+░▓█▄   ▌▒██   ██░░ ▓██▓ ░   ▒   ██▒ ░ ▐██▓░  ▒   ██▒░ ▓██▓ ░ ▒▓█  ▄ ▒██    ▒██ 
+░▒████▓ ░ ████▓▒░  ▒██▒ ░ ▒██████▒▒ ░ ██▒▓░▒██████▒▒  ▒██▒ ░ ░▒████▒▒██▒   ░██▒
+ ▒▒▓  ▒ ░ ▒░▒░▒░   ▒ ░░   ▒ ▒▓▒ ▒ ░  ██▒▒▒ ▒ ▒▓▒ ▒ ░  ▒ ░░   ░░ ▒░ ░░ ▒░   ░  ░
+ ░ ▒  ▒   ░ ▒ ▒░     ░    ░ ░▒  ░ ░▓██ ░▒░ ░ ░▒  ░ ░    ░     ░ ░  ░░  ░      ░
+ ░ ░  ░ ░ ░ ░ ▒    ░      ░  ░  ░  ▒ ▒ ░░  ░  ░  ░    ░         ░   ░      ░   
+   ░        ░ ░                 ░  ░ ░           ░              ░  ░       ░   
+ ░                                 ░ ░                                         "
 
 # Runs  on initial setup, but never again
 function setup_first {
@@ -42,7 +49,6 @@ function setup_env {
 
 # Runs when ever --brew is supplied and will do brew stuff
 function brew_sync {
-    echo "Brew syncing packages"
     brew bundle --file ~/.dotfiles/Brewfile
 }
 
@@ -53,8 +59,9 @@ if (( $#ln )); then
 fi
 
 if (( $#brew )); then
-    echo "Running brew"
+    echo "Brew running"
     brew_sync
+    echo "Brew finished"
 fi
 
 if (( $#init )); then
