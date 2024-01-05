@@ -68,6 +68,7 @@ function Plugin.config()
             'lua_ls',
             'rust_analyzer',
             'gopls',
+            'typos_lsp',
         },
         handlers = {
             -- See :help mason-lspconfig-dynamic-server-setup
@@ -77,14 +78,15 @@ function Plugin.config()
                     capabilities = lsp_capabilities,
                 })
             end,
-            ['tsserver'] = function()
-                lspconfig.tsserver.setup({
+            ['typos_lsp'] = function()
+                lspconfig.typos_lsp.setup({
+                    on_attach = on_attach,
                     capabilities = lsp_capabilities,
-                    settings = {
-                        completions = {
-                            completeFunctionCalls = true
-                        }
-                    }
+                    -- cmd = { "typos-lsp" },
+                    -- filetypes = { "* " },
+                    -- root_dir = {},
+                    -- settings = {},
+                    -- single_file_support = true,
                 })
             end,
             ['lua_ls'] = function()

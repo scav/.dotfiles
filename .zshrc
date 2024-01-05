@@ -19,6 +19,7 @@ alias gcb="git checkout -b"
 alias gc="git checkout"
 alias gpull="git pull --rebase origin"
 alias gpush="git push origin"
+alias gcommit="git commit --all -m"
 alias gl="git log --oneline --decorate --color"
 
 alias dotlink="zsh $HOME/.dotfiles/setup.sh --link"
