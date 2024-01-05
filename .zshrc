@@ -12,6 +12,15 @@ alias dotfiles="cd $HOME/.dotfiles/"
 alias projects="cd $HOME/Projects/"
 alias downloads="cd $HOME/Downloads/"
 
+# GIT
+alias gs="git status"
+alias gb="git branch"
+alias gcb="git checkout -b"
+alias gc="git checkout"
+alias gpull="git pull --rebase origin"
+alias gpush="git push origin"
+alias gl="git log --oneline --decorate --color"
+
 alias dotlink="zsh $HOME/.dotfiles/setup.sh --link"
 alias dotbrew="zsh $HOME/.dotfiles/setup.sh --brew"
 
