@@ -8,11 +8,23 @@ truncation_length = 2
 [aws]
 disabled = false
 format = 'on [$symbol ($profile )(\($region\) )]($style)'
-symbol = '🅰 '
+symbol = ' '
 
+[buf]
+symbol = " "
+
+[docker_context]
+symbol = " "
+
+[git_branch]
+symbol = " "
+
+[golang]
+symbol = " "
 
 [rust]
-format = "[:gear: $version](red bold)"
+symbol = " "
+format = "[$symbol $version](red bold)"
 
 [deno]
 format = "[:sauropod: $version](green bold) "
@@ -21,6 +33,7 @@ format = "[:sauropod: $version](green bold) "
 disabled = true
 
 [nodejs]
+symbol = " "
 detect_extensions = []
 
 [azure]
