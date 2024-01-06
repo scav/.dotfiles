@@ -68,6 +68,7 @@ function Plugin.config()
             'lua_ls',
             'rust_analyzer',
             'gopls',
+            'bufls',
             'typos_lsp',
         },
         handlers = {
@@ -78,15 +79,16 @@ function Plugin.config()
                     capabilities = lsp_capabilities,
                 })
             end,
+            ['bufls'] = function()
+                lspconfig.bufls.setup({
+                    capabilities = lsp_capabilities,
+                    on_attach = on_attach,
+                })
+            end,
             ['typos_lsp'] = function()
                 lspconfig.typos_lsp.setup({
-                    on_attach = on_attach,
                     capabilities = lsp_capabilities,
-                    -- cmd = { "typos-lsp" },
-                    -- filetypes = { "* " },
-                    -- root_dir = {},
-                    -- settings = {},
-                    -- single_file_support = true,
+                    on_attach = on_attach,
                 })
             end,
             ['lua_ls'] = function()
