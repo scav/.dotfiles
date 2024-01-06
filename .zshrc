@@ -22,8 +22,8 @@ alias gpush="git push origin"
 alias gcommit="git commit --all -m"
 alias gl="git log --oneline --decorate --color"
 
-alias dotlink="zsh $HOME/.dotfiles/setup.sh --link"
-alias dotbrew="zsh $HOME/.dotfiles/setup.sh --brew"
+alias dotlink="zsh $HOME/.dotfiles/dotsystem.sh --link"
+alias dotbrew="zsh $HOME/.dotfiles/dotsystem.sh --brew"
 
 #GPG for github and stuff
 export GPG_TTY=$(tty)

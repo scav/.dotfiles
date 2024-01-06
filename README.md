@@ -14,5 +14,5 @@ To setup a new machine run `zsh setup.sh --init` to get all the starting stuff g
 ### Daily usage
 Two commands are useful
 
-- link new .dotfiles `zsh setup.sh --link` or `dotlink`
-- update packages `zsh setup.sh --brew` or `dotbrew`
+- `dotlink`: link new (and old) .dotfiles 
+- `dotbrew`: update all brew packages 
