@@ -30,6 +30,6 @@ opt.isfname:append("@-@")
 opt.updatetime = 50
 opt.hidden = true
 opt.history = 200
-opt.lazyredraw = true
+--opt.lazyredraw = true
 --opt.colorcolumn = "80"
 

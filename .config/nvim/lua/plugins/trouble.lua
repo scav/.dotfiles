@@ -6,7 +6,7 @@ local Plugin = {
 function Plugin.ini()
 end
 
-function Plugin.setup()
+function Plugin.config()
     local trouble = require("trouble")
 
     vim.keymap.set("n", "<leader>xx", function() trouble.toggle() end)
