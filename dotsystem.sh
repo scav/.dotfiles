@@ -49,7 +49,10 @@ function setup_env {
 
 # Runs when ever --brew is supplied and will do brew stuff
 function brew_sync {
-    brew bundle --file ~/.dotfiles/Brewfile
+    echo "Checking for removed packages"
+    brew bundle cleanup --force --file ~/.dotfiles/Brewfile
+    echo "Installing new packages"
+    brew bundle -q --file ~/.dotfiles/Brewfile
 }
 
 if (( $#ln )); then
