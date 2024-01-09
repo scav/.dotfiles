@@ -11,6 +11,7 @@ alias vim=nvim
 alias dotfiles="cd $HOME/.dotfiles/"
 alias projects="cd $HOME/Projects/"
 alias downloads="cd $HOME/Downloads/"
+alias psport="sudo lsof -i -P | grep LISTEN | grep "
 
 # GIT
 alias gs="git status"
@@ -36,7 +37,6 @@ export GOPRIVATE=github.com/scav/pulumi-tf-flux
 # add Pulumi to the PATH
 export PATH=$PATH:$HOME/.pulumi/bin
 
-# Sets up fzf awesome-ness for back search
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
