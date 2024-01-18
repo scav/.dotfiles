@@ -52,7 +52,7 @@ function brew_sync {
     echo "Checking for removed packages"
     brew bundle cleanup --force --file ~/.dotfiles/Brewfile
     echo "Installing new packages"
-    brew bundle -q --file ~/.dotfiles/Brewfile
+    brew bundle --file ~/.dotfiles/Brewfile
 }
 
 if (( $#ln )); then

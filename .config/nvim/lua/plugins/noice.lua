@@ -1,4 +1,4 @@
-local Plugin = {
+Plugin = {
     "folke/noice.nvim",
     event = "VeryLazy",
     dependencies = {
@@ -8,6 +8,8 @@ local Plugin = {
 }
 
 function Plugin.config()
+    vim.keymap.set("n", "<leader>x", "<CMD>Noice dismiss<CR>")
+
     local noice = require("noice")
     noice.setup({
         lsp = {
@@ -27,6 +29,8 @@ function Plugin.config()
             lsp_doc_border = false,       -- add a border to hover docs and signature help
         },
     })
+
+    return noice
 end
 
 return Plugin
