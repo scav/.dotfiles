@@ -1,0 +1,7 @@
+*.git
+~/go
+.
+~/Library
+~/Downloads
+~/Applications
+~/.cargo
