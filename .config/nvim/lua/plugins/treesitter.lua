@@ -27,6 +27,7 @@ Plugin.opts = {
         "rust",
         "sql",
         "toml",
+        "typescript",
         "yaml"
     },
     ignore_install = { "all" },

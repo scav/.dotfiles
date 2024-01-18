@@ -70,6 +70,7 @@ function Plugin.config()
             'gopls',
             'bufls',
             'typos_lsp',
+            'tsserver',
         },
         handlers = {
             -- See :help mason-lspconfig-dynamic-server-setup
@@ -86,6 +87,12 @@ function Plugin.config()
                 })
             end,
             ['typos_lsp'] = function()
+                lspconfig.typos_lsp.setup({
+                    capabilities = lsp_capabilities,
+                    on_attach = on_attach,
+                })
+            end,
+            ['tsserver'] = function()
                 lspconfig.typos_lsp.setup({
                     capabilities = lsp_capabilities,
                     on_attach = on_attach,

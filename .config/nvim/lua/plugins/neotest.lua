@@ -28,6 +28,7 @@ function Plugin.config()
     })
 
     vim.keymap.set("n", "<leader>tr", neotest.run.run, { desc = "Test Run" })
+    vim.keymap.set("n", "<leader>ts", neotest.run.stop, { desc = "Stop running test" })
     vim.keymap.set("n", "<leader>tt", neotest.output_panel.toggle, { desc = "Test Output" })
     vim.keymap.set("n", "<leader>ttt", neotest.summary.toggle, { desc = "Test Summary" })
     vim.keymap.set('n', '<leader>ttr', function()
