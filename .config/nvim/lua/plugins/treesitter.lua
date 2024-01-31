@@ -20,6 +20,7 @@ Plugin.opts = {
         "graphql",
         "bash",
         "json",
+        "mermaid",
         "markdown",
         "markdown_inline",
         "proto",

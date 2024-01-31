@@ -3,9 +3,6 @@ local Plugin = {
     dependencies = { "nvim-tree/nvim-web-devicons" },
 }
 
-function Plugin.ini()
-end
-
 function Plugin.config()
     local trouble = require("trouble")
 

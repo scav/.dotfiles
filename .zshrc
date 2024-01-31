@@ -3,17 +3,22 @@ eval "$(starship init zsh)"
 # Whalebrew install directory
 WHALEBREW_INSTALL_PATH=$HOME/.whalebrew/bin
 
-# ALIASES
+# Workflow aliases
 alias p=pulumi
 alias d=docker
 alias dicker=docker
 alias vim=nvim
 alias dotfiles="cd $HOME/.dotfiles/"
-alias projects="cd $HOME/Projects/"
+alias projects="cd $HOME/projects/"
 alias downloads="cd $HOME/Downloads/"
+alias nvimcfg="nvim $HOME/.dotfiles/.config/nvim ."
 alias psport="sudo lsof -i -P | grep LISTEN | grep "
 
+alias ts='fd --type d --max-depth 3 --absolute-path --base-directory /Users/dag/projects | fzf | dmux'
+
+
 # GIT
+alias lg="lazygit"
 alias gs="git status"
 alias gb="git branch"
 alias gcb="git checkout -b"
@@ -25,6 +30,7 @@ alias gl="git log --oneline --decorate --color"
 
 alias dotlink="zsh $HOME/.dotfiles/dotsystem.sh --link"
 alias dotbrew="zsh $HOME/.dotfiles/dotsystem.sh --brew"
+alias dotsync="zsh $HOME/.dotfiles/dotsystem.sh --sync"
 
 #GPG for github and stuff
 export GPG_TTY=$(tty)

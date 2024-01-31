@@ -16,3 +16,7 @@ Two commands are useful
 
 - `dotlink`: link new (and old) .dotfiles 
 - `dotbrew`: update all brew packages 
+
+## TODO
+- Automate installations of Whalebrew
+- Automate installation on Linux

@@ -10,9 +10,6 @@ function Plugin.init()
     vim.g.db_ui_use_nerd_fonts = 1
 end
 
-function Plugin.setup()
-end
-
 function Plugin.cmd()
     return {
         'DBUI',

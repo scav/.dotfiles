@@ -69,6 +69,7 @@ function Plugin.config()
             'rust_analyzer',
             'gopls',
             'bufls',
+            'spectral',
             'typos_lsp',
             'tsserver',
         },
@@ -86,6 +87,17 @@ function Plugin.config()
                     on_attach = on_attach,
                 })
             end,
+            ['spectral'] = function()
+                lspconfig.spectral.setup({
+                    capabilities = lsp_capabilities,
+                    on_attach = on_attach,
+                    settings = {
+                        enable = true,
+                        run = "onType",
+                        validateLanguages = { "yaml", "json", "yml" },
+                    },
+                })
+            end,
             ['typos_lsp'] = function()
                 lspconfig.typos_lsp.setup({
                     capabilities = lsp_capabilities,
@@ -93,7 +105,7 @@ function Plugin.config()
                 })
             end,
             ['tsserver'] = function()
-                lspconfig.typos_lsp.setup({
+                lspconfig.tsserver.setup({
                     capabilities = lsp_capabilities,
                     on_attach = on_attach,
                 })

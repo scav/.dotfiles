@@ -3,7 +3,8 @@
 zparseopts  -D -K -- \
     -init=init \
     -link=ln \
-    -brew=brew
+    -brew=brew \
+    -sync=sync
 
 echo "▓█████▄  ▒█████  ▄▄▄█████▓  ██████▓██   ██▓  ██████ ▄▄▄█████▓▓█████  ███▄ ▄███▓
 ▒██▀ ██▌▒██▒  ██▒▓  ██▒ ▓▒▒██    ▒ ▒██  ██▒▒██    ▒ ▓  ██▒ ▓▒▓█   ▀ ▓██▒▀█▀ ██▒
@@ -54,6 +55,17 @@ function brew_sync {
     echo "Installing new packages"
     brew bundle --file ~/.dotfiles/Brewfile
 }
+
+# Installs other packages and tools that are required
+function packages_sync {
+    cargo install dmux
+}
+
+if (( $#sync )); then
+    echo "Packages running"
+    packages_sync
+    echo "Packages finished"
+fi
 
 if (( $#ln )); then
     echo "Dotlinker running"
