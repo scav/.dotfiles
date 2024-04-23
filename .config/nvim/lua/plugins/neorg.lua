@@ -1,14 +1,7 @@
 local Plugin = {
     "nvim-neorg/neorg",
-    build = ":Neorg sync-parsers",
-    lazy = false,
-}
-
-Plugin.dependencies = {
-    {
+    dependencies = {
         'luarocks.nvim',
-        priority = 1000,
-        config = true,
     }
 }
 
