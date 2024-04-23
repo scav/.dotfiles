@@ -1,10 +1,9 @@
-local Plugin = {'nvim-lualine/lualine.nvim'}
+local Plugin = { 'nvim-lualine/lualine.nvim' }
 
 Plugin.name = 'lualine'
 
 Plugin.event = 'VeryLazy'
 
--- help lualine.txt
 Plugin.opts = {
     options = {
         icons_enabled = true,
@@ -47,8 +46,7 @@ Plugin.opts = {
 }
 
 function Plugin.init()
-  vim.opt.showmode = false
+    vim.opt.showmode = false
 end
 
 return Plugin
-

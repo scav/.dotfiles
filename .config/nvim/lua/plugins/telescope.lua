@@ -44,7 +44,6 @@ function Plugin.config()
     local telescope = require('telescope')
     telescope.load_extension('fzf')
     telescope.load_extension('ui-select')
-    telescope.load_extension('noice')
 
     local telescopeConfig = require("telescope.config")
     local vimgrep_arguments = { unpack(telescopeConfig.values.vimgrep_arguments) }

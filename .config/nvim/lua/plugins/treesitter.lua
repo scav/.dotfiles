@@ -23,6 +23,7 @@ Plugin.opts = {
         "mermaid",
         "markdown",
         "markdown_inline",
+        "norg",
         "proto",
         "regex",
         "rust",

@@ -2,6 +2,7 @@ local Plugin = { 'nvim-neotest/neotest' }
 
 Plugin.dependencies = {
     { 'nvim-lua/plenary.nvim' },
+    { 'nvim-neotest/nvim-nio' },
     { 'antoinemadec/FixCursorHold.nvim' },
     { 'nvim-neotest/neotest-go' },
     { 'rouge8/neotest-rust' }
@@ -11,7 +12,6 @@ function Plugin.config()
     local neotest = require('neotest')
 
     neotest.setup({
-        -- your neotest config here
         neotest = {
             options = {
                 go = {

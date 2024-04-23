@@ -24,4 +24,4 @@ vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set('n', '<leader><Tab>', ':bnext<CR>', { noremap = true })
 
 -- :wq has to be sync
-vim.cmd [[cabbrev wq execute "Format sync" <bar> wq]]
+-- vim.cmd [[cabbrev wq execute "Format sync" <bar> wq]]

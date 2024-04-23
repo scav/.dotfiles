@@ -39,6 +39,7 @@ function Plugin.config()
             { name = 'luasnip',              keyword_length = 2 },
             { name = 'crates' },
             { name = 'vim-dadbod-completion' },
+            { name = "neorg" },
         },
         window = {
             completion = cmp.config.window.bordered(),

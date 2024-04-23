@@ -6,7 +6,7 @@ format =  "on [$hostname](bold red) "
 truncation_length = 2
 
 [aws]
-disabled = false
+disabled = true
 format = 'on [$symbol ($profile )(\($region\) )]($style)'
 symbol = ' '
 
@@ -37,7 +37,7 @@ symbol = " "
 detect_extensions = []
 
 [azure]
-disabled = true
+disabled = false
 format = "on [$symbol($subscription)]($style) "
 symbol = "ﴃ "
 style = "blue bold"

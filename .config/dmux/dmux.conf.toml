@@ -4,6 +4,11 @@ session_name = "development"
 number_of_panes = 3
 commands = ["cd docker", "", ""]
 
+[notes]
+session_name = "notes"
+number_of_panes = 1
+commands = ["nvim"]
+
 [default]
 number_of_panes = 2
 session_name = "dotfiles"
