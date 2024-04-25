@@ -9,6 +9,7 @@ tap "iann0036/iamlive"
 tap "messense/macos-cross-toolchains"
 tap "pulumi/tap"
 brew "azure-cli"
+brew "direnv"
 brew "docker"
 brew "docker-completion"
 brew "docker-slim"
@@ -40,6 +41,7 @@ brew "gopls"
 brew "goreleaser"
 brew "grpcurl"
 brew "jq"
+brew "kind"
 brew "krb5"
 brew "kubectl"
 brew "Azure/kubelogin/kubelogin"
@@ -83,4 +85,4 @@ brew "entr"
 brew "ollama" 
 
 # neovim head
-brew "neovim", args: ["HEAD"]
+#brew "neovim", args: ["HEAD"]

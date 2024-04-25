@@ -59,6 +59,14 @@ function brew_sync {
 # Installs other packages and tools that are required
 function packages_sync {
     cargo install dmux
+
+    echo "Installing neovim nightly"
+    mkdir ~/.nvim
+    curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim-macos-arm64.tar.gz
+    xattr -c nvim-macos-arm64.tar.gz
+    tar xzvf nvim-macos-arm64.tar.gz -C ~/.nvim
+    # Cleanup
+    rm nvim-macos-arm64.tar.gz
 }
 
 if (( $#sync )); then

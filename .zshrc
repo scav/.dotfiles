@@ -14,8 +14,11 @@ alias downloads="cd $HOME/Downloads/"
 alias nvimcfg="nvim $HOME/.dotfiles/.config/nvim ."
 alias psport="sudo lsof -i -P | grep LISTEN | grep "
 
+# Open dmux 
 alias ts='fd --type d --max-depth 3 --absolute-path --base-directory /Users/dag/projects | fzf | dmux'
 
+# Open a file wherever
+alias vimo='vim $(fzf)'
 
 # GIT
 alias lg="lazygit"
@@ -36,12 +39,14 @@ alias dotsync="zsh $HOME/.dotfiles/dotsystem.sh --sync"
 export GPG_TTY=$(tty)
 
 # Go shit
-export GOPATH="/Users/dag/go"
+export GOPATH="$HOME/go"
 export PATH=$PATH:$GOPATH/bin
-export GOPRIVATE=github.com/scav/pulumi-tf-flux
 
 # add Pulumi to the PATH
 export PATH=$PATH:$HOME/.pulumi/bin
+
+# add Neovim Nightly to PATH
+export PATH=$PATH:$HOME/.nvim/nvim-macos-arm64/bin
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -53,3 +58,5 @@ export PATH="/opt/homebrew/opt/node@14/bin:$PATH"
 export PATH="/opt/homebrew/opt/node@16/bin:$PATH"
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 
+# Add direnv
+eval "$(direnv hook zsh)"
