@@ -65,13 +65,16 @@ function Plugin.config()
     -- See :help mason-lspconfig-settings
     require('mason-lspconfig').setup({
         ensure_installed = {
+            'dockerls',
+            'bashls',
             'lua_ls',
             'rust_analyzer',
             'gopls',
             'bufls',
-            'spectral',
             'typos_lsp',
             'tsserver',
+            'jsonls',
+            'yamlls',
         },
         handlers = {
             -- See :help mason-lspconfig-dynamic-server-setup
@@ -81,20 +84,66 @@ function Plugin.config()
                     capabilities = lsp_capabilities,
                 })
             end,
+            ['bashls'] = function()
+                lspconfig.bashls.setup({
+                    capabilities = lsp_capabilities,
+                    on_attach = on_attach,
+                    filetypes = { 'bash', 'sh', 'zsh' },
+                })
+            end,
+            ['dockerls'] = function()
+                lspconfig.dockerls.setup({
+                    capabilities = lsp_capabilities,
+                    on_attach = on_attach,
+                })
+            end,
             ['bufls'] = function()
                 lspconfig.bufls.setup({
                     capabilities = lsp_capabilities,
                     on_attach = on_attach,
                 })
             end,
-            ['spectral'] = function()
-                lspconfig.spectral.setup({
-                    capabilities = lsp_capabilities,
-                    on_attach = on_attach,
+            ['jsonls'] = function()
+                lspconfig.jsonls.setup({
                     settings = {
-                        enable = true,
-                        run = "onType",
-                        validateLanguages = { "yaml", "json", "yml" },
+                        json = {
+                            schemas = require('schemastore').json.schemas {
+                                extra = {
+                                    {
+                                        description = 'dokkenizer schema',
+                                        fileMatch = 'manifest.yaml',
+                                        name = 'manifest.yaml',
+                                        url = '/Users/dag/projects/lab/dokkenizerv2/schema/schema.json',
+                                    },
+                                },
+                            },
+                            validate = { enable = true },
+                        },
+                    },
+                })
+            end,
+            ['yamlls'] = function()
+                lspconfig.yamlls.setup({
+                    settings = {
+                        yaml = {
+                            schemaStore = {
+                                -- You must disable built-in schemaStore support if you want to use
+                                -- this plugin and its advanced options like `ignore`.
+                                enable = false,
+                                -- Avoid TypeError: Cannot read properties of undefined (reading 'length')
+                                url = "",
+                            },
+                            schemas = require('schemastore').yaml.schemas {
+                                extra = {
+                                    {
+                                        description = 'dokkenizer schema',
+                                        fileMatch = 'manifest.yaml',
+                                        name = 'manifest.yaml',
+                                        url = '/Users/dag/projects/lab/dokkenizerv2/schema/schema.json',
+                                    },
+                                },
+                            },
+                        },
                     },
                 })
             end,
@@ -120,7 +169,7 @@ function Plugin.config()
                     settings = {
                         gopls = {
                             analyses = {
-                                unusedparams = false,
+                                unusedparams = true,
                             },
                             staticcheck = true,
                             gofumpt = true,

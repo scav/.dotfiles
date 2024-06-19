@@ -1,0 +1,5 @@
+k9s:
+  readOnly: true
+  ui:
+    reactive: true
+    skin: rose-pine

@@ -2,7 +2,7 @@
 layout = "e158,376x77,0,0{167x77,0,0[167x18,0,0,2,167x58,0,19,9],208x77,168,0,7}"
 session_name = "development"
 number_of_panes = 3
-commands = ["cd docker", "", ""]
+commands = ["", "", "nvim"]
 
 [notes]
 session_name = "notes"

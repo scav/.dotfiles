@@ -4,11 +4,10 @@ local load = function(mod)
 end
 
 load('user.settings')
---load('user.commands')
 load('user.keymaps')
 require('user.plugins')
 
-pcall(vim.cmd.colorscheme, 'tokyonight')
+pcall(vim.cmd.colorscheme, 'tokyonight-storm')
 
 -- Add more colours to the line numbers
 vim.api.nvim_set_hl(0, 'LineNrAbove', { fg = '#51B3EC', bold = true })

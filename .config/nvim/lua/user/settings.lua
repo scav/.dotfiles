@@ -30,6 +30,6 @@ opt.isfname:append("@-@")
 opt.updatetime = 50
 opt.hidden = true
 opt.history = 200
---opt.lazyredraw = true
---opt.colorcolumn = "80"
 
+-- Adds the "limit" bar on width
+-- opt.colorcolumn = "80"

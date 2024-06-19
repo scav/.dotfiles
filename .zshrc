@@ -3,6 +3,9 @@ eval "$(starship init zsh)"
 # Whalebrew install directory
 WHALEBREW_INSTALL_PATH=$HOME/.whalebrew/bin
 
+# k9s
+export K9S_CONFIG_DIR="$HOME/.config/k9s"
+
 # Workflow aliases
 alias p=pulumi
 alias d=docker
@@ -14,7 +17,7 @@ alias downloads="cd $HOME/Downloads/"
 alias nvimcfg="nvim $HOME/.dotfiles/.config/nvim ."
 alias psport="sudo lsof -i -P | grep LISTEN | grep "
 
-# Open dmux 
+# Open dmux
 alias ts='fd --type d --max-depth 3 --absolute-path --base-directory /Users/dag/projects | fzf | dmux'
 
 # Open a file wherever
@@ -46,7 +49,7 @@ export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$HOME/.pulumi/bin
 
 # add Neovim Nightly to PATH
-export PATH=$PATH:$HOME/.nvim/nvim-macos-arm64/bin
+# export PATH=$PATH:$HOME/.nvim/nvim-macos-arm64/bin
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 

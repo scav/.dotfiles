@@ -1,43 +1,64 @@
-[hostname]
-ssh_only = false
-format =  "on [$hostname](bold red) "
+# Move the directory to the second line
+format = '$all$directory$character'
+
+[aws]
+disabled = false
+format = ' [$symbol ($profile )(\($region\) )]($style)'
+symbol = '󰸏 '
+
+[azure]
+disabled = false
+format = " [$symbol($subscription)]($style) "
+symbol = " "
+style = "blue bold"
+
+[buf]
+disabled = false
+symbol = " "
+
+[deno]
+disabled = true
+format = " [:sauropod: $version](green bold) "
 
 [directory]
 truncation_length = 2
 
-[aws]
-disabled = true
-format = 'on [$symbol ($profile )(\($region\) )]($style)'
-symbol = ' '
-
-[buf]
-symbol = " "
+[direnv]
+disabled = false
 
 [docker_context]
+disabled = true
 symbol = " "
 
 [git_branch]
 symbol = " "
 
 [golang]
+format = " [$symbol$version](cyan bold)"
 symbol = " "
 
-[rust]
-symbol = " "
-format = "[$symbol $version](red bold)"
+[hostname]
+ssh_only = false
+format =  "on [$hostname](bold red) "
 
-[deno]
-format = "[:sauropod: $version](green bold) "
+[kubernetes]
+format = ' [󱃾 $context](dimmed green) '
+disabled = false
+contexts = [
+  { context_pattern = "dev.local.cluster.k8s", style = "green", symbol = "💔 " },
+]
+
+[nodejs]
+disabled = false
+symbol = " "
+detect_extensions = []
 
 [red]
 disabled = true
 
-[nodejs]
-symbol = " "
-detect_extensions = []
-
-[azure]
+[rust]
 disabled = false
-format = "on [$symbol($subscription)]($style) "
-symbol = "ﴃ "
-style = "blue bold"
+format = "[$symbol$version](red bold)"
+symbol = " "
+
+
