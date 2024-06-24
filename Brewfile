@@ -76,6 +76,11 @@ brew "k9s"
 brew "kustomize"
 brew "cilium-cli"
 
+# neovim plugin deps
+# kustomize.nvim
+brew "kubent"
+brew "kubeconform"
+
 # terminal
 cask "wezterm"
 brew "ripgrep"
