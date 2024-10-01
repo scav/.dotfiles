@@ -4,8 +4,7 @@ Contains my dotfiles for the following
 - Brewfile (all brew packages to install)
 - zsh
 - git
-- alacritty
-- tmux
+- wezterm
 - nvim
 
 ### Setup a new machine
