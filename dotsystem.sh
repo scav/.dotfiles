@@ -1,10 +1,10 @@
 #!/bin/zsh
 
-zparseopts  -D -K -- \
+zparseopts -D -K -- \
     -init=init \
     -link=ln \
     -brew=brew \
-    -sync=sync
+    -nvim=nvim
 
 echo "▓█████▄  ▒█████  ▄▄▄█████▓  ██████▓██   ██▓  ██████ ▄▄▄█████▓▓█████  ███▄ ▄███▓
 ▒██▀ ██▌▒██▒  ██▒▓  ██▒ ▓▒▒██    ▒ ▒██  ██▒▒██    ▒ ▓  ██▒ ▓▒▓█   ▀ ▓██▒▀█▀ ██▒
@@ -24,25 +24,21 @@ function setup_first {
 
     echo "Installing brew"
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
- 
-    echo "Setting up tmux"
-    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 }
 
 # Runs when ever --ln is used and will relink all dotfiles
 function setup_env {
-    # Set up all symlinks before doing anything else 
+    # Set up all symlinks before doing anything else
     echo "Creating ~/ symlinks"
     ln -sf ~/.dotfiles/.zshrc ~/.zshrc
-    ln -sf ~/.dotfiles/.tmux.conf ~/.tmux.conf
     ln -sf ~/.dotfiles/.fzf.zsh ~/.fzf.zsh
     ln -sf ~/.dotfiles/.gitconfig ~/.gitconfig
-    
-    # All files and folders under ./config will be symlinked into 
+    ln -sf ~/.dotfiles/.gitignore ~/.gitignore
+
+    # All files and folders under ./config will be symlinked into
     # the current $HOME/.config/ directory
     echo "Creating ~/.config symlinks"
-    for i in ~/.dotfiles/.config/* 
-    do
+    for i in ~/.dotfiles/.config/*; do
         RESOURCE="$(basename "$i")"
         ln -sf ~/.dotfiles/.config/${RESOURCE} ~/.config
     done
@@ -56,11 +52,8 @@ function brew_sync {
     brew bundle --file ~/.dotfiles/Brewfile
 }
 
-# Installs other packages and tools that are required
-function packages_sync {
-    cargo install dmux
-
-    # echo "Installing neovim nightly"
+# Installs nvim nightly if feeling... adventurous
+function nvim_nightly {
     # mkdir ~/.nvim
     # curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim-macos-arm64.tar.gz
     # xattr -c nvim-macos-arm64.tar.gz
@@ -69,29 +62,28 @@ function packages_sync {
     # rm nvim-macos-arm64.tar.gz
 }
 
-if (( $#sync )); then
-    echo "Packages running"
-    packages_sync
-    echo "Packages finished"
+if (($#nvim)); then
+    echo "Installing nvim nightly"
+    nvim_nightly
+    echo "Installing nvim nightly finished"
 fi
 
-if (( $#ln )); then
+if (($#ln)); then
     echo "Dotlinker running"
     setup_env
     echo "Dotlinker finished"
 fi
 
-if (( $#brew )); then
+if (($#brew)); then
     echo "Brew running"
     brew_sync
     echo "Brew finished"
 fi
 
-if (( $#init )); then
+if (($#init)); then
     echo "Running firstime setup"
     setup_first
     setup_env
     brew
     echo "Complete first time setup"
 fi
-

@@ -3,6 +3,7 @@ tap "azure/kubelogin"
 tap "homebrew/bundle"
 tap "iann0036/iamlive"
 tap "pulumi/tap"
+tap "FelixKratz/formulae"
 
 brew "neovim"
 brew "azure-cli"
@@ -40,9 +41,13 @@ brew "tree-sitter"
 brew "whalebrew"
 brew "iann0036/iamlive/iamlive"
 brew "pulumi/tap/pulumictl"
+brew "luarocks"
 cask "rar"
 cask "transmission"
 cask "vlc"
+
+# OS
+brew "sketchybar"
 
 # garbage
 brew "python@3.11"
@@ -63,10 +68,13 @@ brew "golangci-lint"
 brew "gopls"
 brew "goreleaser"
 brew "go-task"
+brew "gotestsum"
 brew "node"
 brew "lua-language-server"
+brew "lua"
 brew "make"
 brew "protobuf"
+brew "tailwindcss"
 
 # kubernetes
 brew "Azure/kubelogin/kubelogin"
@@ -75,6 +83,9 @@ brew "kind"
 brew "k9s"
 brew "kustomize"
 brew "cilium-cli"
+brew "sops"
+brew "helm"
+cask "google-cloud-sdk"
 
 # neovim plugin deps
 # kustomize.nvim
@@ -82,9 +93,8 @@ brew "kubent"
 brew "kubeconform"
 
 # terminal
-cask "wezterm"
+cask "wezterm@nightly"
 brew "ripgrep"
-brew "tmux"
 brew "tree"
 brew "watch"
 brew "wget"
@@ -95,9 +105,8 @@ brew "fzf"
 brew "gh"
 brew "git"
 brew "lazygit"
-
-# utils
 brew "entr"
 
 # LLM
 brew "ollama" 
+cask "mochi-diffusion"
