@@ -1,5 +1,8 @@
 eval "$(starship init zsh)"
 
+# calibre/books
+alias books="cd $HOME/Library/Mobile\ Documents/com~apple~CloudDocs/calibre"
+
 # Whalebrew install directory
 WHALEBREW_INSTALL_PATH=$HOME/.whalebrew/bin
 
