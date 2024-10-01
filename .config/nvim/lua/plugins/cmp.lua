@@ -7,7 +7,16 @@ Plugin.dependencies = {
     { 'saadparwaiz1/cmp_luasnip' },
     { 'hrsh7th/cmp-nvim-lsp' },
     { 'kristijanhusak/vim-dadbod-completion' },
-
+    { 'f3fora/cmp-spell' },
+    {
+        "roobert/tailwindcss-colorizer-cmp.nvim",
+        -- optionally, override the default options:
+        config = function()
+            require("tailwindcss-colorizer-cmp").setup({
+                color_square_width = 2,
+            })
+        end
+    },
     -- Snippets
     {
         'L3MON4D3/LuaSnip',
@@ -43,7 +52,16 @@ function Plugin.config()
             { name = 'luasnip',              keyword_length = 2 },
             { name = 'crates' },
             { name = 'vim-dadbod-completion' },
-            { name = "neorg" },
+            {
+                name = "spell",
+                option = {
+                    keep_all_entries = false,
+                    enable_in_context = function()
+                        return true
+                    end,
+                    preselect_correct_word = true,
+                },
+            },
         },
         window = {
             completion = cmp.config.window.bordered(),
@@ -60,6 +78,7 @@ function Plugin.config()
                 }
 
                 item.menu = menu_icon[entry.source.name]
+                item = require("tailwindcss-colorizer-cmp").formatter(entry, item)
                 return item
             end,
         },

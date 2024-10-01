@@ -71,10 +71,12 @@ function Plugin.config()
             'rust_analyzer',
             'gopls',
             'bufls',
-            'typos_lsp',
-            'tsserver',
+            'ts_ls',
             'jsonls',
             'yamlls',
+            'html',
+            'htmx',
+            'tailwindcss',
         },
         handlers = {
             -- See :help mason-lspconfig-dynamic-server-setup
@@ -139,7 +141,7 @@ function Plugin.config()
                                         description = 'dokkenizer schema',
                                         fileMatch = 'manifest.yaml',
                                         name = 'manifest.yaml',
-                                        url = '/Users/dag/projects/lab/dokkenizerv2/schema/schema.json',
+                                        url = '/Users/dag/projects/tv2/dokkenizerv2/schema.json',
                                     },
                                 },
                             },
@@ -147,14 +149,8 @@ function Plugin.config()
                     },
                 })
             end,
-            ['typos_lsp'] = function()
-                lspconfig.typos_lsp.setup({
-                    capabilities = lsp_capabilities,
-                    on_attach = on_attach,
-                })
-            end,
-            ['tsserver'] = function()
-                lspconfig.tsserver.setup({
+            ['ts_ls'] = function()
+                lspconfig.ts_ls.setup({
                     capabilities = lsp_capabilities,
                     on_attach = on_attach,
                 })
@@ -199,6 +195,29 @@ function Plugin.config()
                             },
                         },
                     },
+                })
+            end,
+            ['html'] = function()
+                local capabilities = vim.lsp.protocol.make_client_capabilities()
+                capabilities.textDocument.completion.completionItem.snippetSupport = true
+                lspconfig.html.setup({
+                    capabilities = lsp_capabilities,
+                    on_attach = on_attach,
+                    settings = {
+                        providedFormatter = true,
+                    }
+                })
+            end,
+            ['htmx'] = function()
+                lspconfig.htmx.setup({
+                    capabilities = lsp_capabilities,
+                    on_attach = on_attach,
+                })
+            end,
+            ['tailwindcss'] = function()
+                lspconfig.tailwindcss.setup({
+                    capabilities = lsp_capabilities,
+                    on_attach = on_attach,
                 })
             end,
         }

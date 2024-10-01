@@ -1,7 +1,6 @@
 -- Basic remaps Other plugins have their remaps in their perspective folders
 
 vim.g.mapleader = " "
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
 -- Lazy show menu
 vim.keymap.set("n", "<leader>l", ":Lazy<CR>")
@@ -25,3 +24,6 @@ vim.keymap.set('n', '<leader><Tab>', ':bnext<CR>', { noremap = true })
 
 -- :wq has to be sync
 -- vim.cmd [[cabbrev wq execute "Format sync" <bar> wq]]
+
+-- Save shortcut
+vim.keymap.set({ 'n', 'i' }, '<C-S>', ':w<CR>')

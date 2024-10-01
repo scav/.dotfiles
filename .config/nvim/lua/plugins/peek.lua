@@ -1,6 +1,5 @@
 local Plugin = {
-    "scav/peek.nvim",
-    --    dir = "Users/dag/projects/github/nvim-plugins/peek.nvim",
+    "toppair/peek.nvim",
     event = { "VeryLazy" },
     build = "deno task --quiet build:fast",
 }
