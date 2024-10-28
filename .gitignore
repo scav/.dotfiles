@@ -1,3 +1,4 @@
 Brewfile.lock.json
 *.tar.gz
 .config/k9s/clusters
+TODO.md

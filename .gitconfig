@@ -8,3 +8,4 @@
 	gpgsign = true
 [core]
     editor = nvim
+    excludesfile = ~/.gitignore

@@ -48,6 +48,7 @@ cask "vlc"
 
 # OS
 brew "sketchybar"
+cask "firefox@developer-edition"
 
 # garbage
 brew "python@3.11"
@@ -75,6 +76,7 @@ brew "lua"
 brew "make"
 brew "protobuf"
 brew "tailwindcss"
+brew "k6"
 
 # kubernetes
 brew "Azure/kubelogin/kubelogin"

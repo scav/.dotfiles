@@ -7,7 +7,7 @@ format = ' [$symbol ($profile )(\($region\) )]($style)'
 symbol = '󰸏 '
 
 [azure]
-disabled = false
+disabled = true
 format = " [$symbol($subscription)]($style) "
 symbol = " "
 style = "blue bold"
