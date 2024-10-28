@@ -8,6 +8,7 @@ function Plugin.config()
     require("peek").setup({
         syntax = true,
         filetype = { "markdown", "mermaid", "mmd" },
+        app = '/Applications/Firefox Developer Edition.app/Contents/MacOS/firefox'
     })
     -- refer to `configuration to change defaults`
     vim.api.nvim_create_user_command("PeekOpen", require("peek").open, {})

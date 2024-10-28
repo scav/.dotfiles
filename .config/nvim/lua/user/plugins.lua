@@ -28,6 +28,9 @@ function lazy.setup(plugins)
     vim.g.plugins_ready = true
 end
 
+-- Lazy show menu
+vim.keymap.set("n", "<leader>l", ":Lazy<CR>")
+
 lazy.path = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 lazy.opts = {}
 

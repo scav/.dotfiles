@@ -117,6 +117,13 @@ function Plugin.config()
                                         name = 'manifest.yaml',
                                         url = '/Users/dag/projects/lab/dokkenizerv2/schema/schema.json',
                                     },
+                                    {
+                                        description = 'goreleaser schema',
+                                        fileMatch = '.goreleaser.yaml',
+                                        name = '.goreleaser.yaml',
+                                        url = 'https://goreleaser.com/static/schema.json',
+                                    },
+
                                 },
                             },
                             validate = { enable = true },

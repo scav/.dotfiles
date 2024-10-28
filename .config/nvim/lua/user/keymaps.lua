@@ -2,8 +2,6 @@
 
 vim.g.mapleader = " "
 
--- Lazy show menu
-vim.keymap.set("n", "<leader>l", ":Lazy<CR>")
 
 -- Move lines or blocks of lines up and down
 -- Stand on first line, press "V" then "j" or "k" for up or down
