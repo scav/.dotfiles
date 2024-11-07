@@ -1,7 +1,7 @@
 # Setup fzf
 # ---------
 if [[ ! "$PATH" == */opt/homebrew/opt/fzf/bin* ]]; then
-  PATH="${PATH:+${PATH}:}/opt/homebrew/opt/fzf/bin"
+    PATH="${PATH:+${PATH}:}/opt/homebrew/opt/fzf/bin"
 fi
 
 source "/opt/homebrew/opt/fzf/shell/completion.zsh"
@@ -18,9 +18,15 @@ export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
 --color=marker:#9ece6a,spinner:#9ece6a,header:#9ece6a"
 
 _fzf_compgen_dir() {
-  fd --type d --hidden --follow --exclude ".git" . "$1"
+    fd --type d --hidden --follow --exclude ".git" . "$1"
 }
 
 _fzf_compgen_path() {
-  fd --hidden --follow --exclude ".git" . "$1"
+    fd --hidden --follow --exclude ".git" . "$1"
+}
+
+# kubectl
+function kn {
+    local context=$(kubectl config get-contexts --output='name' | fzf)
+    kubectl config use-context $context
 }
