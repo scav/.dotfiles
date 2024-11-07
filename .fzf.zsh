@@ -26,7 +26,7 @@ _fzf_compgen_path() {
 }
 
 # kubectl
-function kn {
+function kc {
     local context=$(kubectl config get-contexts --output='name' | fzf)
     kubectl config use-context $context
 }
