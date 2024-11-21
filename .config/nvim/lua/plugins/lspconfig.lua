@@ -53,6 +53,7 @@ function Plugin.config()
     local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
     local on_attach = function(client, bufn)
         require('lsp-format').on_attach(client, bufnr)
+        vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
     end
     local group = vim.api.nvim_create_augroup('lsp_cmds', { clear = true })
 
@@ -182,7 +183,6 @@ function Plugin.config()
             end,
             ['rust_analyzer'] = function()
                 lspconfig.rust_analyzer.setup({
-                    capabilities = lsp_capabilities,
                     on_attach = on_attach,
                     settings = {
                         ["rust-analyzer"] = {

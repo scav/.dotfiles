@@ -77,6 +77,7 @@ brew "make"
 brew "protobuf"
 brew "tailwindcss"
 brew "k6"
+brew "kiota"
 
 # kubernetes
 brew "Azure/kubelogin/kubelogin"
@@ -88,6 +89,7 @@ brew "cilium-cli"
 brew "sops"
 brew "helm"
 cask "google-cloud-sdk"
+brew "cyphernetes"
 
 # neovim plugin deps
 # kustomize.nvim
@@ -95,6 +97,7 @@ brew "kubent"
 brew "kubeconform"
 
 # terminal
+brew "nushell"
 cask "wezterm@nightly"
 brew "ripgrep"
 brew "tree"

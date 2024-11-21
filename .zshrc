@@ -46,6 +46,9 @@ alias dotsync="zsh $HOME/.dotfiles/dotsystem.sh --sync"
 #GPG for github and stuff
 export GPG_TTY=$(tty)
 
+# Whalebrew
+export PATH=$PATH:/opt/whalebrew/bin
+
 # Go shit
 export GOPATH="$HOME/go"
 export PATH=$PATH:$GOPATH/bin
@@ -56,7 +59,9 @@ export PATH=$PATH:$HOME/.pulumi/bin
 # add Neovim Nightly to PATH
 # export PATH=$PATH:$HOME/.nvim/nvim-macos-arm64/bin
 
+# Import tooling config
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.config/cyphernetes.zsh ] && source ~/.config/cyphernetes.zsh
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"

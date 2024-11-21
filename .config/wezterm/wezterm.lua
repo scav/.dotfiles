@@ -2,6 +2,11 @@ local wezterm = require 'wezterm'
 local act = wezterm.action
 local config = {}
 
+--
+config.max_fps = 120
+config.animation_fps = 60
+config.front_end = "WebGpu"
+
 -- Set up fonts
 config.font = wezterm.font('JetBrains Mono', { weight = 'ExtraBold' })
 config.font_size = 14
