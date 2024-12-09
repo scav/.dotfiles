@@ -4,6 +4,7 @@ zparseopts -D -K -- \
     -init=init \
     -link=ln \
     -brew=brew \
+    -update=update \
     -nvim=nvim
 
 echo "▓█████▄  ▒█████  ▄▄▄█████▓  ██████▓██   ██▓  ██████ ▄▄▄█████▓▓█████  ███▄ ▄███▓
@@ -52,6 +53,19 @@ function brew_sync {
     brew bundle --file ~/.dotfiles/Brewfile
 }
 
+# Update brew and all other dependencies
+function update {
+    brew_sync
+    echo "Updating gh-notify"
+    gh ext upgrade meiji163/gh-notify
+}
+
+# Install misc items last
+function setup_last {
+    # Install gh plugins at first install
+    gh ext install meiji163/gh-notify
+}
+
 # Installs nvim nightly if feeling... adventurous
 function nvim_nightly {
     # mkdir ~/.nvim
@@ -80,10 +94,18 @@ if (($#brew)); then
     echo "Brew finished"
 fi
 
+if (($#update)); then
+    echo "Update running"
+    brew_sync
+    update
+    echo "Update finished"
+fi
+
 if (($#init)); then
     echo "Running firstime setup"
     setup_first
     setup_env
     brew
+    setup_last
     echo "Complete first time setup"
 fi

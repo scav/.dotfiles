@@ -41,6 +41,7 @@ alias gl="git log --oneline --decorate --color"
 
 alias dotlink="zsh $HOME/.dotfiles/dotsystem.sh --link"
 alias dotbrew="zsh $HOME/.dotfiles/dotsystem.sh --brew"
+alias dotupdate="zsh $HOME/.dotfiles/dotsystem.sh --update"
 alias dotsync="zsh $HOME/.dotfiles/dotsystem.sh --sync"
 
 #GPG for github and stuff
