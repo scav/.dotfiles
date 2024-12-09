@@ -111,6 +111,7 @@ brew "gh"
 brew "git"
 brew "lazygit"
 brew "entr"
+brew "jj"
 
 # LLM
 brew "ollama" 
