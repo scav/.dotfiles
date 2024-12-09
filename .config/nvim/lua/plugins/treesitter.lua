@@ -20,6 +20,7 @@ Plugin.opts = {
         "go",
         "graphql",
         "bash",
+        "http",
         "json",
         "mermaid",
         "markdown",
