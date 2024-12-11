@@ -32,6 +32,23 @@ end
 vim.keymap.set("n", "<leader>l", ":Lazy<CR>")
 
 lazy.path = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
-lazy.opts = {}
+lazy.opts = {
+    performance = {
+        rtp = {
+            disabled_plugins = {
+                "netrwPlugin",
+                "tutor",
+            },
+        },
+    },
+    ui = {
+        -- a number <1 is a percentage., >1 is a fixed size
+        size = {
+            width = 0.6,
+            height = 0.8,
+        },
+        border = 'none',
+    },
+}
 
 lazy.setup({ { import = 'plugins' } })
