@@ -11,6 +11,7 @@ Plugin.dependencies = {
 function Plugin.config()
     local dap = require('dap')
     local dapui = require('dapui')
+    local dapgo = require('dap-go')
 
     require('mason-nvim-dap').setup {
         -- Makes a best effort to setup the various debuggers with
@@ -29,8 +30,9 @@ function Plugin.config()
             'delve',
         },
     }
-    -- Basic debugging keymaps, feel free to change to your liking!
+    -- Basic debugging keymaps, feel free to change to your liking
     vim.keymap.set('n', '<leader>bb', dap.continue, { desc = 'Debug: Start/Continue' })
+    vim.keymap.set('n', '<leader>bc', dapgo.debug_test, { desc = 'Debug: Closest Test' })
     vim.keymap.set('n', '<leader>1', dap.step_into, { desc = 'Debug: Step Into' })
     vim.keymap.set('n', '<leader>2', dap.step_over, { desc = 'Debug: Step Over' })
     vim.keymap.set('n', '<leader>3', dap.step_out, { desc = 'Debug: Step Out' })

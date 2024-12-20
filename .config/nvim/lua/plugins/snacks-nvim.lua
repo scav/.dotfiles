@@ -4,9 +4,17 @@ local Plugin = {
     lazy = false,
     opts = {
         quickfile = { enabled = true },
-        statuscolumn = { enabled = true },
+        statuscolumn = { enabled = false },
         words = { enabled = true },
         bigfile = { enabled = true },
+        input = { enabled = false },
+        animate =
+        ---@class snacks.scroll.Config
+        ---@field animate snacks.animate.Config
+        {
+            duration = { step = 15, total = 250 },
+            easing = "linear",
+        },
         notifier =
         ---@class snacks.notifier.Config
         ---@field keep? fun(notif: snacks.notifier.Notif): boolean # global keep function
@@ -55,7 +63,7 @@ local Plugin = {
                     { icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
                     { icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
                     { icon = "󰒲 ", key = "L", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
-                    { icon = " ", key = "c", desc = "Mason", action = ":Mason" },
+                    { icon = " ", key = "M", desc = "Mason", action = ":Mason" },
                     { icon = " ", key = "q", desc = "Quit", action = ":qa" },
                 },
             },
