@@ -38,5 +38,5 @@ opt.history = 200
 opt.conceallevel = 2
 
 -- Spell
--- vim.opt.spell = true
--- vim.opt.spelllang = { "en_gb" }
+vim.opt.spell = true
+vim.opt.spelllang = { "en_gb" }
