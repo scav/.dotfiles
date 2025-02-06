@@ -47,6 +47,11 @@ config.keys = {
         mods = 'LEADER',
         action = act.SpawnTab 'CurrentPaneDomain',
     },
+    {
+        key = 'x',
+        mods = 'LEADER',
+        action = wezterm.action.CloseCurrentPane { confirm = true },
+    },
     -- splitting
     {
         mods   = "LEADER",
