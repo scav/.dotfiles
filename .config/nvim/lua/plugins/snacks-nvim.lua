@@ -1,3 +1,22 @@
+-- Check if its a Git repository
+local function in_git(Snacks)
+    return Snacks.git.get_root() ~= nil
+end
+
+-- Check if Git repository has a GitHub remote
+local function is_gh(Snacks)
+    local in_git = in_git(Snacks)
+    local is_gh = false
+    if in_git then
+        local handle = io.popen("git remote")
+        local result = handle:read("*a")
+        handle:close()
+        is_gh = result:match("%S") ~= nil
+    end
+
+    return is_gh
+end
+
 local Plugin = {
     "folke/snacks.nvim",
     priority = 1000,
@@ -75,68 +94,86 @@ local Plugin = {
                     padding = 1,
                 },
                 {
-                    pane = 2,
-                    desc = "GitHub",
-                    height = 1,
-                    padding = 1,
+                    function()
+                        if is_gh(Snacks) then
+                            return {
+                                pane = 2,
+                                desc = "GitHub",
+                                height = 1,
+                                padding = 1,
+                            }
+                        end
+                    end
                 },
                 { section = "keys",    gap = 1,     padding = 1 },
-                {
-                    pane = 2,
-                    icon = " ",
-                    desc = "Browse Repo",
-                    padding = 1,
-                    key = "b",
-                    action = function()
-                        Snacks.gitbrowse()
-                    end,
+                { function()
+                    if is_gh(Snacks) then
+                        return {
+                            pane = 2,
+                            icon = " ",
+                            desc = "Browse Repo",
+                            padding = 1,
+                            key = "b",
+                            action = function()
+                                Snacks.gitbrowse()
+                            end,
+                        }
+                    end
+                end
                 },
                 function()
-                    local in_git = Snacks.git.get_root() ~= nil
-                    local cmds = {
-                        {
-                            title = "Notifications",
-                            cmd = "gh notify -s -a -n5",
-                            action = function()
-                                vim.ui.open("https://github.com/notifications")
-                            end,
-                            key = "n",
-                            icon = " ",
-                            height = 5,
-                            enabled = true,
-                        },
-                        {
-                            title = "Open Issues",
-                            cmd = "gh issue list -L 3",
-                            key = "i",
-                            action = function()
-                                vim.fn.jobstart("gh issue list --web", { detach = true })
-                            end,
-                            icon = " ",
-                            height = 7,
-                        },
-                        {
-                            icon = " ",
-                            title = "Open PRs",
-                            cmd = "gh pr list -L 3",
-                            key = "p",
-                            action = function()
-                                vim.fn.jobstart("gh pr list --web", { detach = true })
-                            end,
-                            height = 7,
-                        },
-                        -- {
-                        --     icon = " ",
-                        --     title = "Git Status",
-                        --     cmd = "hub --no-pager diff --stat -B -M -C",
-                        --     height = 10,
-                        -- },
-                    }
+                    local cmds = {}
+                    if in_git(Snacks) then
+                        cmds = {
+                            {
+                                icon = " ",
+                                title = "Git Status",
+                                cmd = "git --no-pager diff --stat -B -M -C",
+                                height = 10,
+                            },
+                        }
+                    end
+                    if is_gh(Snacks) then
+                        local gh_cmds = {
+                            {
+                                title = "Notifications",
+                                cmd = "gh notify -s -a -n5",
+                                action = function()
+                                    vim.ui.open("https://github.com/notifications")
+                                end,
+                                key = "n",
+                                icon = " ",
+                                height = 5,
+                                enabled = true,
+                            },
+                            {
+                                title = "Open Issues",
+                                cmd = "gh issue list -L 3",
+                                key = "i",
+                                action = function()
+                                    vim.fn.jobstart("gh issue list --web", { detach = true })
+                                end,
+                                icon = " ",
+                                height = 7,
+                            },
+                            {
+                                icon = " ",
+                                title = "Open PRs",
+                                cmd = "gh pr list -L 3",
+                                key = "p",
+                                action = function()
+                                    vim.fn.jobstart("gh pr list --web", { detach = true })
+                                end,
+                                height = 7,
+                            },
+                        }
+                        vim.tbl_extend("force", gh_cmds, cmds)
+                    end
                     return vim.tbl_map(function(cmd)
                         return vim.tbl_extend("force", {
                             pane = 2,
                             section = "terminal",
-                            enabled = in_git,
+                            enabled = is_gh(Snacks),
                             padding = 1,
                             ttl = 5 * 60,
                             indent = 3,
