@@ -1,10 +1,10 @@
 local lspconfig = require('lspconfig')
 local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-require("lsp-format").setup {}
-local on_attach = function(client, bufnr)
-    require("lsp-format").on_attach(client, bufnr)
-end
+-- require("lsp-format").setup {}
+-- local on_attach = function(client, bufnr)
+--     require("lsp-format").on_attach(client, bufnr)
+-- end
 
 local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, 'lua/?.lua')

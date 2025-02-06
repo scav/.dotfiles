@@ -4,7 +4,6 @@ local user = {}
 Plugin.dependencies = {
     { 'hrsh7th/cmp-nvim-lsp' },
     { 'williamboman/mason-lspconfig.nvim' },
-    { 'lukas-reineke/lsp-format.nvim' }
 }
 
 Plugin.cmd = { 'LspInfo', 'LspInstall', 'LspUnInstall' }
@@ -12,7 +11,6 @@ Plugin.cmd = { 'LspInfo', 'LspInstall', 'LspUnInstall' }
 Plugin.event = { 'BufReadPre', 'BufNewFile' }
 
 function Plugin.init()
-    require('lsp-format').setup {}
     local sign = function(opts)
         -- See :help sign_define()
         vim.fn.sign_define(opts.name, {
@@ -51,8 +49,7 @@ end
 function Plugin.config()
     local lspconfig = require('lspconfig')
     local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
-    local on_attach = function(client, bufn)
-        require('lsp-format').on_attach(client, bufnr)
+    local on_attach = function(_, bufnr)
         vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
     end
     local group = vim.api.nvim_create_augroup('lsp_cmds', { clear = true })
@@ -63,6 +60,36 @@ function Plugin.config()
         callback = user.on_attach
     })
 
+    vim.api.nvim_create_autocmd("LspAttach", {
+        group = vim.api.nvim_create_augroup("lsp", { clear = true }),
+        callback = function(args)
+            vim.api.nvim_create_autocmd("BufWritePre", {
+                buffer = args.buf,
+                callback = function()
+                    vim.lsp.buf.format { async = true }
+                end,
+            })
+        end
+    })
+
+    local configs = require('lspconfig.configs')
+    configs.jinja_lsp = {
+        default_config = {
+            name = "jinja-lsp",
+            cmd = { 'jinja-lsp' },
+            filetypes = { 'jinja', 'rust', 'html', 'htmldjango' },
+            root_dir = function(fname)
+                return "."
+                --return nvim_lsp.util.find_git_ancestor(fname)
+            end,
+            init_options = {
+                templates = './templates',
+                backend = { './src' },
+                lang = "rust"
+            },
+        },
+    }
+
     -- See :help mason-lspconfig-settings
     require('mason-lspconfig').setup({
         ensure_installed = {
@@ -71,13 +98,15 @@ function Plugin.config()
             'lua_ls',
             'rust_analyzer',
             'gopls',
-            'bufls',
+            'buf_ls',
             'ts_ls',
             'jsonls',
             'yamlls',
             'html',
             'htmx',
             'tailwindcss',
+            'jinja_lsp',
+            'templ'
         },
         handlers = {
             -- See :help mason-lspconfig-dynamic-server-setup
@@ -100,8 +129,8 @@ function Plugin.config()
                     on_attach = on_attach,
                 })
             end,
-            ['bufls'] = function()
-                lspconfig.bufls.setup({
+            ['buf_ls'] = function()
+                lspconfig.buf_ls.setup({
                     capabilities = lsp_capabilities,
                     on_attach = on_attach,
                 })
@@ -173,10 +202,19 @@ function Plugin.config()
                     settings = {
                         gopls = {
                             analyses = {
-                                unusedparams = true,
+                                shadow = true,
                             },
                             staticcheck = true,
                             gofumpt = true,
+                            hints = {
+                                rangeVariableTypes = true,
+                                parameterNames = true,
+                                constantValues = true,
+                                assignVariableTypes = false,
+                                compositeLiteralFields = false,
+                                compositeLiteralTypes = true,
+                                functionTypeParameters = false,
+                            },
                         },
                     },
                 })
@@ -184,8 +222,12 @@ function Plugin.config()
             ['rust_analyzer'] = function()
                 lspconfig.rust_analyzer.setup({
                     on_attach = on_attach,
+                    capabilities = lsp_capabilities,
                     settings = {
                         ["rust-analyzer"] = {
+                            check = {
+                                command = "check",
+                            },
                             imports = {
                                 granularity = {
                                     group = "module",
@@ -227,6 +269,18 @@ function Plugin.config()
                     on_attach = on_attach,
                 })
             end,
+            ['jinja_lsp'] = function()
+                lspconfig.jinja_lsp.setup({
+                    capabilities = lsp_capabilities,
+                    on_attach = on_attach,
+                })
+            end,
+            ['templ'] = function()
+                lspconfig.templ.setup({
+                    capabilities = lsp_capabilities,
+                    on_attach = on_attach,
+                })
+            end,
         }
     })
 end
@@ -253,6 +307,9 @@ function user.on_attach()
     vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
     vim.keymap.set('n', '<leader>f', function()
         vim.lsp.buf.format { async = true }
+    end, opts)
+    vim.keymap.set('n', '<Leader>vh', function()
+        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
     end, opts)
 end
 
