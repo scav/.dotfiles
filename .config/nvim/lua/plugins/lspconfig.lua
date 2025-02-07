@@ -49,7 +49,7 @@ end
 function Plugin.config()
     local lspconfig = require('lspconfig')
     local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
-    local on_attach = function(_, bufnr)
+    local on_attach = function(client, bufnr)
         vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
     end
     local group = vim.api.nvim_create_augroup('lsp_cmds', { clear = true })
@@ -58,18 +58,6 @@ function Plugin.config()
         group = group,
         desc = 'LSP actions',
         callback = user.on_attach
-    })
-
-    vim.api.nvim_create_autocmd("LspAttach", {
-        group = vim.api.nvim_create_augroup("lsp", { clear = true }),
-        callback = function(args)
-            vim.api.nvim_create_autocmd("BufWritePre", {
-                buffer = args.buf,
-                callback = function()
-                    vim.lsp.buf.format { async = true }
-                end,
-            })
-        end
     })
 
     local configs = require('lspconfig.configs')
@@ -311,6 +299,13 @@ function user.on_attach()
     vim.keymap.set('n', '<Leader>vh', function()
         vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
     end, opts)
+
+    -- Auto format on save
+    vim.api.nvim_create_autocmd("BufWritePre", {
+	callback = function()
+        vim.lsp.buf.format { async = false }
+	end,
+})
 end
 
 return Plugin
