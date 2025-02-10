@@ -81,6 +81,12 @@ function Plugin.config()
             },
         },
     }
+
+    -- Rust specific
+    dap.adapters.codelldb = {
+        type = 'executable',
+        command = '/Users/dag/.local/share/nvim/mason/bin/codelldb',
+    }
 end
 
 return Plugin
