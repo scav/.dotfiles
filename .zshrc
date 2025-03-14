@@ -23,7 +23,7 @@ alias dotfiles="cd $HOME/.dotfiles/"
 alias projects="cd $HOME/projects/"
 alias downloads="cd $HOME/Downloads/"
 alias nvimcfg="nvim $HOME/.dotfiles/.config/nvim ."
-alias psport="sudo lsof -i -P | grep LISTEN | grep "
+alias psport="sudo lsof -i tcp: "
 
 # Open dmux
 alias ts='fd --type d --max-depth 3 --absolute-path --base-directory /Users/dag/projects | fzf | dmux'
