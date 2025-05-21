@@ -40,3 +40,6 @@ opt.conceallevel = 2
 -- Spell
 vim.opt.spell = true
 vim.opt.spelllang = { "en_gb" }
+
+-- UI
+vim.o.winborder = 'rounded'

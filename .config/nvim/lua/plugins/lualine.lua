@@ -26,7 +26,9 @@ Plugin.opts = {
     sections = {
         lualine_a = { 'mode' },
         lualine_b = { 'branch', 'diff', 'diagnostics' },
-        lualine_c = { 'filename' },
+        lualine_c = {
+            { 'filename', path = 1 }
+        },
         lualine_x = { 'rest', 'encoding', 'fileformat', 'filetype' },
         lualine_y = { 'progress' },
         lualine_z = { 'location' }
@@ -38,6 +40,11 @@ Plugin.opts = {
         lualine_x = { 'location' },
         lualine_y = {},
         lualine_z = {}
+    },
+    refresh = {
+        statusline = 10,
+
+
     },
     tabline = {},
     winbar = {},

@@ -4,7 +4,14 @@ Plugin.lazy = false
 
 -- See :help mason-settings
 Plugin.opts = {
-    ui = { border = 'rounded' }
+    ui = {
+        icons = {
+            package_installed = "✓",
+            package_pending = "➜",
+            package_uninstalled = "✗"
+        },
+        border = 'rounded',
+    }
 }
 
 -- Lazy show menu

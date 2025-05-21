@@ -44,7 +44,7 @@ function Plugin.config()
     local telescope = require('telescope')
     telescope.load_extension('fzf')
     telescope.load_extension('ui-select')
-    telescope.load_extension("rest")
+    -- telescope.load_extension("rest")
 
     local telescopeConfig = require("telescope.config")
     local vimgrep_arguments = { unpack(telescopeConfig.values.vimgrep_arguments) }
@@ -56,6 +56,7 @@ function Plugin.config()
 
     telescope.setup({
         defaults = {
+            border = false, -- temp workaround for nvim-v.11.0 => vim.o.winborder = 'rounded'
             vimgrep_arguments = vimgrep_arguments,
             buffer_previewer_maker = new_maker,
             preview = {

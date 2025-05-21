@@ -11,39 +11,32 @@ Plugin.cmd = { 'LspInfo', 'LspInstall', 'LspUnInstall' }
 Plugin.event = { 'BufReadPre', 'BufNewFile' }
 
 function Plugin.init()
-    local sign = function(opts)
-        -- See :help sign_define()
-        vim.fn.sign_define(opts.name, {
-            texthl = opts.name,
-            text = opts.text,
-            numhl = ''
-        })
-    end
+    -- local sign = function(opts)
+    --     -- :help sign_define()
+    --     vim.fn.sign_define(opts.name, {
+    --         texthl = opts.name,
+    --         text = opts.text,
+    --         numhl = ''
+    --     })
+    --
+    --     vim.diagnostic.config(opts,)
+    -- end
+    -- sign({ name = 'DiagnosticSignError', text = '✘' })
+    -- sign({ name = 'DiagnosticSignWarn', text = '▲' })
+    -- sign({ name = 'DiagnosticSignHint', text = '⚑' })
+    -- sign({ name = 'DiagnosticSignInfo', text = '»' })
 
-    sign({ name = 'DiagnosticSignError', text = '✘' })
-    sign({ name = 'DiagnosticSignWarn', text = '▲' })
-    sign({ name = 'DiagnosticSignHint', text = '⚑' })
-    sign({ name = 'DiagnosticSignInfo', text = '»' })
-
-    -- See :help vim.diagnostic.config()
+    -- :help vim.diagnostic.config()
     vim.diagnostic.config({
-        virtual_text = false,
+        virtual_text = {
+            current_line = true,
+        },
         severity_sort = true,
         float = {
             border = 'rounded',
-            source = 'always',
+            source = 'if_many',
         },
     })
-
-    vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
-        vim.lsp.handlers.hover,
-        { border = 'rounded' }
-    )
-
-    vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
-        vim.lsp.handlers.signature_help,
-        { border = 'rounded' }
-    )
 end
 
 function Plugin.config()
@@ -54,31 +47,15 @@ function Plugin.config()
     end
     local group = vim.api.nvim_create_augroup('lsp_cmds', { clear = true })
 
+    vim.filetype.add({ extension = { templ = "templ" } })
+
     vim.api.nvim_create_autocmd('LspAttach', {
         group = group,
         desc = 'LSP actions',
         callback = user.on_attach
     })
 
-    local configs = require('lspconfig.configs')
-    configs.jinja_lsp = {
-        default_config = {
-            name = "jinja-lsp",
-            cmd = { 'jinja-lsp' },
-            filetypes = { 'jinja', 'rust', 'html', 'htmldjango' },
-            root_dir = function(fname)
-                return "."
-                --return nvim_lsp.util.find_git_ancestor(fname)
-            end,
-            init_options = {
-                templates = './templates',
-                backend = { './src' },
-                lang = "rust"
-            },
-        },
-    }
-
-    -- See :help mason-lspconfig-settings
+    -- :help mason-lspconfig-settings
     require('mason-lspconfig').setup({
         ensure_installed = {
             'dockerls',
@@ -93,13 +70,13 @@ function Plugin.config()
             'html',
             'htmx',
             'tailwindcss',
-            'jinja_lsp',
-            'templ'
+            'templ',
+            'zls'
         },
         handlers = {
-            -- See :help mason-lspconfig-dynamic-server-setup
+            -- :help mason-lspconfig-dynamic-server-setup
             function(server)
-                -- See :help lspconfig-setup
+                -- :help lspconfig-setup
                 lspconfig[server].setup({
                     capabilities = lsp_capabilities,
                 })
@@ -133,7 +110,7 @@ function Plugin.config()
                                         description = 'dokkenizer schema',
                                         fileMatch = 'manifest.yaml',
                                         name = 'manifest.yaml',
-                                        url = '/Users/dag/projects/lab/dokkenizerv2/schema/schema.json',
+                                        url = '/Users/dag/projects/tv2/dokkenizerv2/schema.json',
                                     },
                                     {
                                         description = 'goreleaser schema',
@@ -234,14 +211,21 @@ function Plugin.config()
                     },
                 })
             end,
+            ['zls'] = function()
+                lspconfig.gopls.setup({
+                    on_attach = on_attach,
+                    capabilities = lsp_capabilities,
+                })
+            end,
             ['html'] = function()
                 local capabilities = vim.lsp.protocol.make_client_capabilities()
                 capabilities.textDocument.completion.completionItem.snippetSupport = true
                 lspconfig.html.setup({
                     capabilities = lsp_capabilities,
                     on_attach = on_attach,
-                    settings = {
-                        providedFormatter = true,
+                    filetypes = { "html" },
+                    init_options = {
+                        providedFormatter = false,
                     }
                 })
             end,
@@ -249,24 +233,23 @@ function Plugin.config()
                 lspconfig.htmx.setup({
                     capabilities = lsp_capabilities,
                     on_attach = on_attach,
+                    filetypes = { "html", "templ" },
                 })
             end,
             ['tailwindcss'] = function()
                 lspconfig.tailwindcss.setup({
                     capabilities = lsp_capabilities,
                     on_attach = on_attach,
-                })
-            end,
-            ['jinja_lsp'] = function()
-                lspconfig.jinja_lsp.setup({
-                    capabilities = lsp_capabilities,
-                    on_attach = on_attach,
+                    filetypes = { "html", "templ" },
+                    init_options = { userLanguages = { templ = "html" } },
                 })
             end,
             ['templ'] = function()
                 lspconfig.templ.setup({
                     capabilities = lsp_capabilities,
                     on_attach = on_attach,
+                    cmd = { "templ", "lsp" },
+                    filetypes = { "templ" },
                 })
             end,
         }
@@ -276,8 +259,6 @@ end
 function user.on_attach()
     local opts = { buffer = true }
 
-    -- You can search each function in the help page.
-    -- For example :help vim.lsp.buf.hover()
     vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
     vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
     vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
@@ -290,22 +271,21 @@ function user.on_attach()
     vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 
     vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
-    --vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
     vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<cr>', opts)
     vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
     vim.keymap.set('n', '<leader>f', function()
-        vim.lsp.buf.format { async = true }
+        vim.lsp.buf.format { async = false }
     end, opts)
     vim.keymap.set('n', '<Leader>vh', function()
-        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled(), { desc = "Toggle Inlay Hints" })
     end, opts)
 
     -- Auto format on save
     vim.api.nvim_create_autocmd("BufWritePre", {
-	callback = function()
-        vim.lsp.buf.format { async = false }
-	end,
-})
+        callback = function()
+            vim.lsp.buf.format({ async = false })
+        end,
+    })
 end
 
 return Plugin

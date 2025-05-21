@@ -25,10 +25,12 @@ Plugin.opts = {
         "mermaid",
         "markdown",
         "markdown_inline",
+        "nix",
         "proto",
         "regex",
         "rust",
         "sql",
+        "templ",
         "toml",
         "typescript",
         "yaml"
