@@ -105,8 +105,19 @@ config.keys = {
 }
 
 -- Config elements I dont fully understand yet
-wezterm.on('update-right-status', function(window, pane)
-    window:set_right_status(window:active_workspace())
+-- 
+wezterm.on('update-right-status', function(window)
+    local hostname = " " .. wezterm.hostname() .. " ";
+    local cwd = window:active_workspace()
+
+    window:set_right_status(
+        wezterm.format({
+            { Text = "  " },
+            { Text = cwd },
+            { Text = "  " },
+            { Text = hostname },
+        })
+    )
 end)
 
 return config
