@@ -4,6 +4,7 @@ compinit
 export XDG_CONFIG_HOME=$HOME/.config
 
 eval "$(starship init zsh)"
+eval "$(direnv hook zsh)"
 
 # calibre/books
 alias books="cd $HOME/Library/Mobile\ Documents/com~apple~CloudDocs/calibre"
@@ -23,16 +24,14 @@ alias dotfiles="cd $HOME/.dotfiles/"
 alias projects="cd $HOME/projects/"
 alias downloads="cd $HOME/Downloads/"
 alias nvimcfg="nvim $HOME/.dotfiles/.config/nvim ."
-alias psport="sudo lsof -i tcp: "
-
-# Open dmux
-alias ts='fd --type d --max-depth 3 --absolute-path --base-directory /Users/dag/projects | fzf | dmux'
 
 # Open a file wherever
 alias vimo='vim $(fzf)'
 
 # GIT
 alias lg="lazygit"
+alias gsc="git switch -c"
+alias gss="git switch"
 alias gs="git status"
 alias gb="git branch"
 alias gcb="git checkout -b"
@@ -60,10 +59,8 @@ export PATH=$PATH:$GOPATH/bin
 # add Pulumi to the PATH
 export PATH=$PATH:$HOME/.pulumi/bin
 
-# add Neovim Nightly to PATH
-# export PATH=$PATH:$HOME/.nvim/nvim-macos-arm64/bin
-
-# Import tooling config
+# Import other functions
+[ -f ~/.config/zsh/functions.zsh ] && source ~/.config/zsh/functions.zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f ~/.config/cyphernetes.zsh ] && source ~/.config/cyphernetes.zsh
 
@@ -75,5 +72,3 @@ export PATH="/opt/homebrew/opt/node@14/bin:$PATH"
 export PATH="/opt/homebrew/opt/node@16/bin:$PATH"
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 
-# Add direnv
-eval "$(direnv hook zsh)"

@@ -25,8 +25,3 @@ _fzf_compgen_path() {
     fd --hidden --follow --exclude ".git" . "$1"
 }
 
-# kubectl
-function kc {
-    local context=$(kubectl config get-contexts --output='name' | fzf)
-    kubectl config use-context $context
-}
