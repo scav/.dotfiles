@@ -4,6 +4,7 @@ tap "iann0036/iamlive"
 tap "pulumi/tap"
 tap "FelixKratz/formulae"
 
+
 # brew "neovim"
 brew "azure-cli"
 brew "direnv"
@@ -39,6 +40,9 @@ brew "luarocks"
 cask "rar"
 cask "transmission"
 cask "vlc"
+brew "zoxide"
+brew "yq"
+brew "gnu-sed"
 
 # OS
 brew "sketchybar"
@@ -46,6 +50,7 @@ cask "firefox@developer-edition"
 cask "utm"
 tap "nikitabobko/tap"
 cask "aerospace"
+cask "balenaetcher"
 
 # garbage
 brew "python@3.11"
@@ -99,11 +104,13 @@ cask "google-cloud-sdk"
 brew "cyphernetes"
 brew "crossplane"
 brew "kubebuilder"
-brew "nerdctl"
+tap "siderolabs/tap"
+brew "talosctl"
 
 # terminal
 brew "nushell"
 cask "wezterm@nightly"
+cask "ghostty"
 brew "ripgrep"
 brew "tree"
 brew "watch"
@@ -122,3 +129,6 @@ brew "jj"
 brew "ollama" 
 cask "mochi-diffusion"
 
+# Infra
+cask "raspberry-pi-imager"
+brew "mkcert"
