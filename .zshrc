@@ -46,6 +46,9 @@ alias dotbrew="zsh $HOME/.dotfiles/dotsystem.sh --brew"
 alias dotupdate="zsh $HOME/.dotfiles/dotsystem.sh --update"
 alias dotsync="zsh $HOME/.dotfiles/dotsystem.sh --sync"
 
+# psql 
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+
 #GPG for github and stuff
 export GPG_TTY=$(tty)
 
@@ -61,12 +64,10 @@ export PATH=$PATH:$HOME/.pulumi/bin
 
 # Import other functions
 [ -f ~/.config/zsh/functions.zsh ] && source ~/.config/zsh/functions.zsh
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.config/zsh/zoxide.zsh ] && source ~/.config/zsh/zoxide.zsh
+[ -f ~/.config/zsh/fzf.zsh ] && source ~/.config/zsh/fzf.zsh
 [ -f ~/.config/cyphernetes.zsh ] && source ~/.config/cyphernetes.zsh
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
 export PATH="/opt/homebrew/opt/node@14/bin:$PATH"
 export PATH="/opt/homebrew/opt/node@16/bin:$PATH"

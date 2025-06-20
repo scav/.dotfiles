@@ -1,4 +1,5 @@
 # Setup fzf
+source <(fzf --zsh)
 # ---------
 if [[ ! "$PATH" == */opt/homebrew/opt/fzf/bin* ]]; then
     PATH="${PATH:+${PATH}:}/opt/homebrew/opt/fzf/bin"
@@ -24,4 +25,6 @@ _fzf_compgen_dir() {
 _fzf_compgen_path() {
     fd --hidden --follow --exclude ".git" . "$1"
 }
+
+alias sd="cd ~ && cd \$(find * -type d | fzf)"
 
