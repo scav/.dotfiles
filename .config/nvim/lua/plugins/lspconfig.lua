@@ -63,6 +63,7 @@ function Plugin.config()
             'lua_ls',
             'rust_analyzer',
             'gopls',
+            'gh_actions_ls',
             'buf_ls',
             'ts_ls',
             'jsonls',
@@ -182,6 +183,12 @@ function Plugin.config()
                             },
                         },
                     },
+                })
+            end,
+            ['gh_actions_ls'] = function()
+                lspconfig.gopls.setup({
+                    on_attach = on_attach,
+                    capabilities = lsp_capabilities,
                 })
             end,
             ['rust_analyzer'] = function()
