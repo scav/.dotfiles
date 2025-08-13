@@ -27,6 +27,7 @@
         lima
         colima
         packer
+        sniffnet
       ];
 
       # Let determinate handle nix while nix-darwin handles MacOS
@@ -45,6 +46,7 @@
       # Used for backwards compatibility, please read the changelog before changing.
       # $ darwin-rebuild changelog
       system.stateVersion = 6;
+      system.primaryUser = "dag";
 
       # The platform the configuration will be used on.
       nixpkgs = {
@@ -53,7 +55,6 @@
       };
 
       system.defaults = {
-          alf.stealthenabled = 1;
           finder.FXPreferredViewStyle = "clmv";
           dock.autohide = true;
           dock.mru-spaces = false;
