@@ -4,7 +4,7 @@ Plugin.dependencies = {
     { 'nvim-lua/plenary.nvim' },
     { 'nvim-neotest/nvim-nio' },
     { 'antoinemadec/FixCursorHold.nvim' },
-    { 'nvim-neotest/neotest-go' },
+    { 'fredrikaverpil/neotest-golang' },
     { 'rouge8/neotest-rust' }
 }
 
@@ -20,11 +20,13 @@ function Plugin.config()
             },
         },
         adapters = {
-            require("neotest-go")({
-                experimental = {
-                    test_table = true,
-                },
-                args = { "-count=1", "-timeout=60s" }
+            require("neotest-golang")({
+                runner = "gotestsum",
+                gotestsum_args = { "--format=standard-verbose" },
+                go_test_args = { "-count=1", "-timeout=60s" },
+                dap_mode = "dap-go",
+                testify_enabled = true,
+                sanitize_output = false,
             }),
             require("neotest-rust") {
                 args = { "--no-capture" },
