@@ -9,27 +9,103 @@
 
 
 
-
   outputs = inputs@{ self, nix-darwin, nixpkgs }:
   let
     configuration = { pkgs, ... }: {
+
+      imports = [
+       ./nix/homebrew.nix
+      ];
+
       environment.variables = {
         EDITOR = "nvim";
         XDG_CONFIG_HOME= "$HOME/.config";
       };
 
       environment.systemPackages = with pkgs; [ 
-        devenv
-        openssh
-        yubikey-manager
-        neovim
-        dyff
-        lima
-        colima
-        packer
-        sniffnet
-        wezterm
-        desktoppr
+          act
+          awscli2
+          azure-cli
+          bat
+          buf
+          cargo
+          cilium-cli
+          colima
+          coreutils
+          crossplane
+          deno
+          desktoppr
+          devenv
+          direnv
+          docker
+          docker-slim
+          dyff
+          entr
+          eza
+          fd
+          firefox
+          flyctl
+          fzf
+          gh
+          git
+          gnumake
+          gnupg
+          gnutls
+          go
+          go-tools
+          golangci-lint
+          gopls
+          goreleaser
+          gotestsum
+          grpcurl
+          jj
+          jq
+          k6
+          ko
+          k9s
+          kind
+          kubebuilder
+          kubectl
+          # kubelogin not building - RATELIMIT?
+          kustomize
+          kyverno
+          lazygit
+          libpq
+          lima
+          lua
+          lua-language-server
+          luarocks
+          mkcert
+          neovim
+          nmap
+          nodejs
+          nushell
+          openssh
+          packer
+          pinentry_mac
+          protobuf
+          qemu
+          ripgrep
+          ripsecrets
+          sniffnet
+          sops
+          starship
+          step-cli
+          tailwindcss
+          talosctl
+          templ
+          tree
+          tree-sitter
+          unbound
+          utm
+          watch
+          wezterm
+          wget
+          yq
+          yubikey-manager
+          zoxide
+          zsh
+          zstd
       ];
 
       # Let determinate handle nix while nix-darwin handles MacOS
