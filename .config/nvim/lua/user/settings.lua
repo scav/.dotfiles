@@ -42,4 +42,4 @@ vim.opt.spell = true
 vim.opt.spelllang = { "en_gb" }
 
 -- UI
-vim.o.winborder = 'rounded'
+vim.o.winborder = "rounded"

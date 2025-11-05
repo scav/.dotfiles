@@ -4,7 +4,9 @@ local Plugin = { 'stevearc/conform.nvim' }
 Plugin.setup = {
     formatters_by_ft = {
         templ = { "templ" },
-        lua = { "stylua" }
+        lua = { "stylua" },
+        nix = { "nixfmt" },
+        -- go = { "gofumpt", lsp_format = "fallback" },
     },
     format_on_save = function()
         vim.api.nvim_create_autocmd("BufWritePre", {

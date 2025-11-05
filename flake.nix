@@ -28,6 +28,8 @@
         colima
         packer
         sniffnet
+        wezterm
+        desktoppr
       ];
 
       # Let determinate handle nix while nix-darwin handles MacOS

@@ -9,8 +9,6 @@ return {
     },
     dependencies = {
         "nvim-lua/plenary.nvim",
-
-        -- see below for full list of optional dependencies 👇
     },
     opts = {
         workspaces = {
@@ -23,7 +21,5 @@ return {
                 path = "~/vaults/work",
             },
         },
-
-        -- see below for full list of options 👇
     },
 }

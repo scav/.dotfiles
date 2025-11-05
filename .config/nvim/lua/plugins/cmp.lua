@@ -7,6 +7,10 @@ Plugin.dependencies = {
     { 'saadparwaiz1/cmp_luasnip' },
     { 'hrsh7th/cmp-nvim-lsp' },
     { 'kristijanhusak/vim-dadbod-completion' },
+    -- {
+    --     'MattiasMTS/cmp-dbee',
+    --     ft = 'sql',
+    -- },
     { 'f3fora/cmp-spell' },
     {
         "roobert/tailwindcss-colorizer-cmp.nvim",
@@ -52,6 +56,7 @@ function Plugin.config()
             { name = 'luasnip',              keyword_length = 2 },
             { name = 'crates' },
             { name = 'vim-dadbod-completion' },
+            -- { name = 'cmp-dbee' },
             {
                 name = "spell",
                 option = {
