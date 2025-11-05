@@ -1,7 +1,7 @@
 [user]
 	name = Dag Østgulen Heradstveit
 	email = 190020+scav@users.noreply.github.com
- 	signingkey = 5EBF729B861D8690
+    signingkey = 129C9B68C68200BE
 [init]
 	defaultBranch = main
 [commit]
