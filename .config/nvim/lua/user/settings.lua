@@ -42,4 +42,5 @@ vim.opt.spell = true
 vim.opt.spelllang = { "en_gb" }
 
 -- UI
-vim.o.winborder = "rounded"
+opt.winborder = "rounded"
+opt.updatetime = 750
