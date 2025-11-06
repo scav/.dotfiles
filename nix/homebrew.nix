@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{  ... }:
 
 {
 
@@ -20,11 +20,12 @@
       #     start_service = true;
       # }
       "aws-sam-cli"
-      "make"
+      "Azure/kubelogin/kubelogin"
+      "helm"
       "kiota"
+      "make"
       "mockery"
       "whalebrew"
-      "Azure/kubelogin/kubelogin"
     ];
 
     casks = [

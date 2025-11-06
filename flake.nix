@@ -22,6 +22,10 @@
         XDG_CONFIG_HOME= "$HOME/.config";
       };
 
+      environment.shellAliases = {
+          nrs = "nix flake update;sudo darwin-rebuild switch --flake ~/.dotfiles";
+      };
+
       environment.systemPackages = with pkgs; [ 
           act
           awscli2
