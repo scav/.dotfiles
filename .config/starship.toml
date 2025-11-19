@@ -12,6 +12,9 @@ format = " [$symbol($subscription)]($style) "
 symbol = " "
 style = "blue bold"
 
+[gcloud]
+disabled = true
+
 [buf]
 disabled = false
 symbol = " "
