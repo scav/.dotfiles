@@ -1,4 +1,3 @@
-# Move the directory to the second line
 format = '$all$directory$character'
 
 [aws]
@@ -28,7 +27,9 @@ truncation_length = 2
 
 [direnv]
 disabled = false
-
+style = "green"
+format = "[$symbol$loaded/$allowed]($style)"
+ 
 [docker_context]
 disabled = true
 symbol = " "
@@ -37,22 +38,19 @@ symbol = " "
 symbol = " "
 
 [golang]
-format = " [$symbol$version](cyan bold)"
+format = "[$symbol$version](cyan bold) "
 symbol = " "
 
 [hostname]
 ssh_only = false
-format =  "on [$hostname](bold red) "
+format =  "[$hostname](bold red) "
 
 [kubernetes]
-format = ' [󱃾 $context](dimmed green) '
+format = ' [󱃾 $context](dimmed blue) '
 disabled = false
-contexts = [
-  { context_pattern = "dev.local.cluster.k8s", style = "green", symbol = "💔 " },
-]
 
 [nodejs]
-disabled = false
+disabled = true
 symbol = " "
 detect_extensions = []
 
@@ -61,7 +59,8 @@ disabled = true
 
 [rust]
 disabled = false
-format = "[$symbol$version](red bold)"
+format = "[$symbol$version](red bold) "
 symbol = " "
 
-
+[fossil_branch]
+disabled = true
