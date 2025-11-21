@@ -2,7 +2,7 @@ local Plugin = { "neovim/nvim-lspconfig" }
 local user = {}
 
 Plugin.dependencies = {
-	{ "hrsh7th/cmp-nvim-lsp" },
+	{ "saghen/blink.cmp" },
 	{ "williamboman/mason-lspconfig.nvim" },
 	{ "b0o/schemastore.nvim" },
 }
@@ -27,7 +27,7 @@ end
 
 function Plugin.config()
 	local lspconfig = require("lspconfig")
-	local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
+	local lsp_capabilities = require("blink.cmp").get_lsp_capabilities()
 	local on_attach = function(client, bufnr)
 		vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
 	end
@@ -113,28 +113,6 @@ function Plugin.config()
 					},
 				})
 			end,
-			-- ['yamlls'] = function()
-			--     lspconfig.yamlls.setup({
-			-- settings = {
-			--     yaml = {
-			--         schemaStore = {
-			--             enable = false,
-			--             url = "",
-			--         },
-			--         schemas = require('schemastore').yaml.schemas {
-			--             extra = {
-			--                 {
-			--                     description = 'dokkenizer schema',
-			--                     fileMatch = '**/manifest.yaml',
-			--                     name = 'manifest.yaml',
-			--                     url = '/Users/dag/projects/tv2/dokkenizerv2/schema.json',
-			--                 },
-			--             },
-			--         },
-			--     },
-			-- },
-			-- })
-			-- end,
 			["ts_ls"] = function()
 				lspconfig.ts_ls.setup({
 					capabilities = lsp_capabilities,
@@ -144,61 +122,10 @@ function Plugin.config()
 			["lua_ls"] = function()
 				require("plugins.lsp.lua_ls")
 			end,
-			-- ['gopls'] = function()
-			--     lspconfig.gopls.setup({
-			--         on_attach = on_attach,
-			--         capabilities = lsp_capabilities,
-			--         settings = {
-			--             gopls = {
-			--                 analyses = {
-			--                     shadow = true,
-			--                 },
-			--                 staticcheck = true,
-			--                 gofumpt = true,
-			--                 hints = {
-			--                     rangeVariableTypes = true,
-			--                     parameterNames = true,
-			--                     constantValues = true,
-			--                     assignVariableTypes = false,
-			--                     compositeLiteralFields = false,
-			--                     compositeLiteralTypes = true,
-			--                     functionTypeParameters = false,
-			--                 },
-			--             },
-			--         },
-			--     })
-			-- end,
 			["gh_actions_ls"] = function()
 				lspconfig.gopls.setup({
 					on_attach = on_attach,
 					capabilities = lsp_capabilities,
-				})
-			end,
-			["rust_analyzer"] = function()
-				lspconfig.rust_analyzer.setup({
-					on_attach = on_attach,
-					capabilities = lsp_capabilities,
-					settings = {
-						["rust-analyzer"] = {
-							check = {
-								command = "check",
-							},
-							imports = {
-								granularity = {
-									group = "module",
-								},
-								prefix = "self",
-							},
-							cargo = {
-								buildScripts = {
-									enable = true,
-								},
-							},
-							procMacro = {
-								enable = true,
-							},
-						},
-					},
 				})
 			end,
 			["html"] = function()
@@ -256,6 +183,28 @@ function Plugin.config()
 					compositeLiteralTypes = true,
 					functionTypeParameters = false,
 				},
+			},
+		},
+	})
+
+	vim.lsp.config("rust_analyzer", {
+		settings = {
+			check = {
+				command = "check",
+			},
+			imports = {
+				granularity = {
+					group = "module",
+				},
+				prefix = "self",
+			},
+			cargo = {
+				buildScripts = {
+					enable = true,
+				},
+			},
+			procMacro = {
+				enable = true,
 			},
 		},
 	})
