@@ -33,7 +33,7 @@
           };
 
           fonts.packages = with pkgs; [
-            nerd-fonts.fira-code
+            nerd-fonts.jetbrains-mono
           ];
 
           # Let determinate handle nix while nix-darwin handles MacOS
