@@ -4,8 +4,17 @@ function kc {
     kubectl config use-context $context
 }
 
-# Print process on port
+# switch aws profile
+function ap {
+    local profile
+    profile=$(aws configure list-profiles | fzf)
+    if [[ -n "$profile" ]]; then
+        export AWS_PROFILE="$profile"
+        export AWS_DEFAULT_PROFILE="$profile"
+    fi
+}
 
+# Print process on port
 fn psport() {
   if [ -z "$1" ]; then
         echo "Error: No port supplied"
@@ -14,7 +23,7 @@ fn psport() {
 
     lsof -nP -iTCP:$1 -sTCP:LISTEN
 }
-#
+
 # Kill process on port
 fn killport() {
     if [ -z "$1" ]; then
