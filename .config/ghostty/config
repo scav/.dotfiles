@@ -1,0 +1,21 @@
+# Terminal
+title = ""
+window-decoration = false
+background-opacity = 1.0
+
+theme = "Tokyonight Storm"
+font-family = "FiraCode Nerd Font Mono"
+font-style-bold = true
+font-size = 16
+shell-integration = zsh
+shell-integration-features = cursor,sudo
+
+# cursor
+cursor-style = bar
+cursor-style-blink = true
+
+mouse-hide-while-typing = true
+
+# macOS specific
+macos-option-as-alt = true
+macos-titlebar-style = hidden

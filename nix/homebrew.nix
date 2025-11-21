@@ -1,4 +1,4 @@
-{  ... }:
+{ ... }:
 
 {
 
@@ -6,6 +6,7 @@
     enable = true;
     onActivation = {
       cleanup = "zap"; # remove unlisted brews/casks
+      # cleanup = "uninstall"; # remove unlisted brews/casks
       autoUpdate = true;
       upgrade = true;
     };
@@ -29,10 +30,12 @@
     ];
 
     casks = [
-      "utm"
       "balenaetcher"
       "gimp"
+      "ghostty"
       "raspberry-pi-imager"
+      "utm"
+      "wootility"
     ];
   };
 
