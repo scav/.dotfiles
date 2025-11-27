@@ -3,7 +3,7 @@
 {
 
   environment.systemPackages = with pkgs; [
-    act
+    # act
     awscli2
     azure-cli
     bat
@@ -48,6 +48,7 @@
     kubebuilder
     kubectl
     # kubelogin not building - RATELIMIT?
+    kubelogin
     kustomize
     kyverno
     lazygit
@@ -63,7 +64,7 @@
     nodejs
     nushell
     openssh
-    packer
+    # packer
     pinentry_mac
     protobuf
     qemu

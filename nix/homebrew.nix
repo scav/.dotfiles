@@ -21,7 +21,6 @@
       #     start_service = true;
       # }
       "aws-sam-cli"
-      "Azure/kubelogin/kubelogin"
       "helm"
       "kiota"
       "make"
@@ -34,7 +33,6 @@
       "gimp"
       "ghostty"
       "raspberry-pi-imager"
-      "utm"
       "wootility"
     ];
   };
