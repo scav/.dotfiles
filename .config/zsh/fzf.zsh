@@ -1,14 +1,5 @@
 # Setup fzf
 source <(fzf --zsh)
-# ---------
-if [[ ! "$PATH" == */opt/homebrew/opt/fzf/bin* ]]; then
-    PATH="${PATH:+${PATH}:}/opt/homebrew/opt/fzf/bin"
-fi
-
-source "/opt/homebrew/opt/fzf/shell/completion.zsh"
-source "/opt/homebrew/opt/fzf/shell/key-bindings.zsh"
-
-# Overrides (if required)
 
 export FZF_COMPLETION_OPTS='--border --info=inline'
 
