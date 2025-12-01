@@ -1,16 +1,19 @@
 # kubectl change context
 function kc {
-    local context=$(kubectl config get-contexts --output='name' | fzf --tmux --border --padding 1,2 --border-label 'Kubernetes context')
-    kubectl config use-context $context
+    local context
+    if context=$(kubectl config get-contexts --output='name' | fzf --tmux --border --padding 1,2 --border-label 'Kubernetes context'); then
+        kubectl config use-context $context
+    fi
 }
 
 # switch aws profile
 function ap {
     local profile
-    profile=$(aws configure list-profiles | fzf --tmux --border --padding 1,2 --border-label 'AWS Profile')
-    if [[ -n "$profile" ]]; then
-        export AWS_PROFILE="$profile"
-        export AWS_DEFAULT_PROFILE="$profile"
+   if profile=$(aws configure list-profiles | fzf --tmux --border --padding 1,2 --border-label 'AWS Profile'); then
+        if [[ -n "$profile" ]]; then
+            export AWS_PROFILE="$profile"
+            export AWS_DEFAULT_PROFILE="$profile"
+        fi
     fi
 }
 
@@ -46,7 +49,9 @@ fn killport() {
 
 # Switch git branch 
 function gs {
-    local branch=$(git branch | sed 's/.* //' | fzf --tmux --border --padding 1,2 --border-label 'Git branch')
-    git switch $branch
+    local branch
+    if branch=$(git branch | sed 's/.* //' | fzf --tmux --border --padding 1,2 --border-label 'Git branch'); then
+        git switch "$branch"
+    fi
 }
 
