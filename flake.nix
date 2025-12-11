@@ -3,16 +3,23 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    nix-darwin.url = "github:LnL7/nix-darwin/master";
-    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+    nix-darwin = {
+      url = "github:LnL7/nix-darwin/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
-    inputs@{
+    {
       self,
       nix-darwin,
       nixpkgs,
-    }:
+      home-manager,
+    }@inputs:
     let
       configuration =
         { pkgs, ... }:
@@ -64,6 +71,11 @@
             config.allowUnfree = true;
           };
 
+          users.users.dag = {
+            name = "dag";
+            home = "/Users/dag/";
+          };
+
           system.defaults = {
             finder.FXPreferredViewStyle = "clmv";
             dock.autohide = true;
@@ -80,7 +92,19 @@
       # Build darwin flake using:
       # $ darwin-rebuild build --flake .#wrk
       darwinConfigurations."wrk" = nix-darwin.lib.darwinSystem {
-        modules = [ configuration ];
+        modules = [
+          configuration
+          home-manager.darwinModules.home-manager
+          {
+            home-manager = {
+              backupFileExtension = "backup";
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.dag = import ./home.nix;
+              extraSpecialArgs = { inherit inputs; };
+            };
+          }
+        ];
       };
 
       darwinPackages = self.darwinConfigurations."wrk".pkgs;
