@@ -8,7 +8,7 @@ font-family = "JetBrainsMono NFM ExtraBold"
 font-size = 14
 
 shell-integration = zsh
-shell-integration-features = cursor,sudo
+shell-integration-features = cursor,sudo,ssh-terminfo
 
 mouse-hide-while-typing = true
 
