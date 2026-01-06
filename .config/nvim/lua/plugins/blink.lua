@@ -17,15 +17,8 @@ return {
 			["<Tab>"] = { "show_and_insert_or_accept_single", "select_next" },
 			["<S-Tab>"] = { "show_and_insert_or_accept_single", "select_prev" },
 
-			-- ["<Up>"] = { "select_prev", "fallback" },
-			-- ["<Down>"] = { "select_next", "fallback" },
 			["<C-n>"] = { "select_next", "fallback" },
 			["<C-p>"] = { "select_prev", "fallback" },
-			["<C-n>"] = {
-				function(cmp)
-					cmp.show({ providers = { "snippets" } })
-				end,
-			},
 			["<C-y>"] = { "select_and_accept", "fallback" },
 			["<CR>"] = { "select_and_accept", "fallback" },
 			["<C-e>"] = { "cancel", "fallback" },
@@ -39,19 +32,20 @@ return {
 		completion = { documentation = { auto_show = false } },
 
 		sources = {
-			default = { "lsp", "path", "snippets", "buffer", "nerdfont" },
+			default = { "lsp", "path", "snippets", "buffer" },
+			-- default = { "lsp", "path", "snippets", "buffer", "nerdfont" },
 			per_filtype = {
 				sql = { "snippets", "dadbod", "buffer" },
 			},
 		},
 		providers = {
 			dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
-			nerdfont = {
-				module = "blink-nerdfont",
-				name = "Nerd Fonts",
-				score_offset = 15, -- Tune by preference
-				opts = { insert = true }, -- Insert nerdfont icon (default) or complete its name
-			},
+			-- nerdfont = {
+			-- 	module = "blink-nerdfont",
+			-- 	name = "Nerd Fonts",
+			-- 	score_offset = 15, -- Tune by preference
+			-- 	opts = { insert = true }, -- Insert nerdfont icon (default) or complete its name
+			-- },
 		},
 		fuzzy = { implementation = "prefer_rust_with_warning" },
 	},
