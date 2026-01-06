@@ -1,6 +1,14 @@
 { config, pkgs, ... }:
 
 {
+
+  home.packages = with pkgs; [
+    tmux
+    fzf
+    sesh
+    fd
+  ];
+
   programs.tmux = {
     enable = true;
 
@@ -8,21 +16,14 @@
     mouse = true;
     keyMode = "vi";
     baseIndex = 1;
-    paneBaseIndex = 1;
+    # paneBaseIndex = 1;
     clock24 = true;
-
-    home.packages = with pkgs; [
-      tmux
-      fzf
-      sesh
-      fd
-    ];
 
     plugins = with pkgs.tmuxPlugins; [
       tmux-fzf
       # add themes/plugins here if you want later
-      # tokyo-night-tmux
-      tmux2k
+      tokyo-night-tmux
+      # tmux2k
     ];
 
     extraConfig = ''
