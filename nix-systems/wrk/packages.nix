@@ -8,8 +8,6 @@
     azure-cli
     bat
     buf
-    cargo
-    cargo-nextest
     cilium-cli
     colima
     coreutils
@@ -32,6 +30,7 @@
     gnupg
     gnutls
     go
+    go-mockery
     go-task
     go-tools
     golangci-lint
@@ -39,6 +38,7 @@
     goreleaser
     gotestsum
     grpcurl
+    kubernetes-helm
     jj
     jq
     k6
@@ -47,7 +47,7 @@
     kind
     kubebuilder
     kubectl
-    # kubelogin not building - RATELIMIT?
+    kubelogin
     kubelogin
     kustomize
     kyverno

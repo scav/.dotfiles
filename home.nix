@@ -1,10 +1,13 @@
 {
   pkgs,
+  inputs,
   ...
 }:
 {
   imports = [
     ./nix-systems/common/tmux.nix
+    ./nix-systems/common/nvim/nvim.nix
+    inputs.mnw.homeManagerModules.mnw
   ];
 
   home.sessionVariables = {

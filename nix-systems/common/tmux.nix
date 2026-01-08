@@ -1,5 +1,4 @@
-{ config, pkgs, ... }:
-
+{ pkgs, ... }:
 {
 
   home.packages = with pkgs; [
@@ -13,17 +12,19 @@
     enable = true;
 
     terminal = "screen-256color";
-    mouse = true;
+    mouse = false;
     keyMode = "vi";
     baseIndex = 1;
-    # paneBaseIndex = 1;
     clock24 = true;
+    escapeTime = 10;
+    prefix = "C-b";
+    shell = "${pkgs.zsh}/bin/zsh";
+    sensibleOnTop = true;
 
     plugins = with pkgs.tmuxPlugins; [
       tmux-fzf
-      # add themes/plugins here if you want later
       tokyo-night-tmux
-      # tmux2k
+      # onedark-theme
     ];
 
     extraConfig = ''
@@ -31,19 +32,12 @@
       unbind r
       bind r source-file ~/.config/tmux/tmux.conf
 
-      set -g display-time 4000
-      set -g status-interval 1
       set -g focus-events on
       set -g status-position top
 
       # status bar
       set -g status on
       setw -g monitor-activity on
-
-      # leader
-      set -g prefix C-b
-      unbind C-b
-      bind C-b send-prefix
 
       bind t new-window
 
@@ -88,6 +82,18 @@
           --preview-window 'right:55%' \
           --preview 'sesh preview {}'
       )\""
+
+      # tokyo-night-tmux setings
+      set -g @tokyo-night-tmux_theme storm 
+      set -g @tokyo-night-tmux_show_netspeed 1
+      set -g @tokyo-night-tmux_netspeed_showip 1 
+      set -g @tokyo-night-tmux_netspeed_show 0
+      set -g @tokyo-night-tmux_show_git 0
+      set -g @tokyo-night-tmux_date_format "DMY"
+      set -g @tokyo-night-tmux_time_format "24H"
+      set -g @tokyo-night-tmux_show_datetime 1
+
+
     '';
   };
 

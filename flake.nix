@@ -11,6 +11,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    mnw.url = "github:Gerg-L/mnw";
   };
 
   outputs =
@@ -19,6 +20,7 @@
       nix-darwin,
       nixpkgs,
       home-manager,
+      ...
     }@inputs:
     let
       configuration =
