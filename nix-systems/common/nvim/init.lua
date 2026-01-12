@@ -7,7 +7,7 @@ require("config.lazy")
 require("config.undo")
 require("user.terminal")
 
-vim.cmd [[colorscheme tokyonight]]
+vim.cmd [[colorscheme tokyonight-storm]]
 
 -- temperarily override for line numbers
 vim.api.nvim_set_hl(0, "LineNrAbove", { fg = "#51B3EC", bold = true })
@@ -19,4 +19,5 @@ vim.lsp.enable({
     'lua_ls',
     'nil_ls',
     'rust_analyzer',
+    'gopls',
 })

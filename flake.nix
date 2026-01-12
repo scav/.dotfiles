@@ -12,8 +12,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     mnw.url = "github:Gerg-L/mnw";
+    nvf.url = "github:notashelf/nvf";
   };
-
   outputs =
     {
       self,
@@ -34,9 +34,6 @@
           fonts.packages = with pkgs; [
             nerd-fonts.jetbrains-mono
           ];
-
-          programs.zsh.enable = true;
-          programs.direnv.enable = true;
         };
     in
     {

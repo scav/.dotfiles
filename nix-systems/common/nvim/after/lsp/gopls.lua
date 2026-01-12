@@ -1,4 +1,3 @@
 ---@type vim.lsp.config
---- nix ls
 return {
 }

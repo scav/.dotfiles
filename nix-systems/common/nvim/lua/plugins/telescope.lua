@@ -7,8 +7,6 @@ return {
         "nvim-lua/plenary.nvim",
     },
     cmd = "Telescope",
-    event = "VeryLazy",
-    opts = {},
     keys = {
         {
             "<leader>ff",
@@ -23,17 +21,18 @@ return {
             end,
         },
         {
-            "<leader>u", "<cmd>Telescope undo<cr>"
+            "<leader>u",
+            "<cmd>Telescope undo<cr>",
         },
     },
     config = function()
         local telescope = require("telescope")
+        local telescopeConfig = require("telescope.config")
         telescope.load_extension("fzf")
         telescope.load_extension("ui-select")
         telescope.load_extension("undo")
         -- telescope.load_extension("rest")
 
-        local telescopeConfig = require("telescope.config")
         local vimgrep_arguments = { unpack(telescopeConfig.values.vimgrep_arguments) }
 
         -- Avoid these files and folders
@@ -43,32 +42,15 @@ return {
 
         telescope.setup({
             defaults = {
-                -- border = true, -- temp workaround for nvim-v.11.0 => vim.o.winborder = 'rounded'
-                -- vimgrep_arguments = vimgrep_arguments,
-                -- buffer_previewer_maker = new_maker,
+                vimgrep_arguments = vimgrep_arguments,
                 preview = {
                     treesitter = false,
                 },
             },
             pickers = {
                 find_files = {
-                    -- `hidden = true` will still show the inside of `.git/` as it's not `.gitignore`d.
-                    find_command = {
-                        'rg',
-                        '-l',
-                        '.*',
-                        '--follow',
-                        '--hidden',
-                        '--no-ignore-vcs',
-                        '--glob',
-                        '!node_modules/*',
-                        '--glob',
-                        '!target/*',
-                        '--glob',
-                        '!dist/*',
-                        '--glob',
-                        '!.*/',
-                    },
+                    hidden = true,
+                    find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
                     -- theme = "ivy",
                 },
             },

@@ -14,8 +14,6 @@
     crossplane
     deno
     desktoppr
-    devenv
-    direnv
     docker
     docker-slim
     dyff
@@ -34,7 +32,7 @@
     go-task
     go-tools
     golangci-lint
-    gopls
+    # gopls
     goreleaser
     gotestsum
     grpcurl
