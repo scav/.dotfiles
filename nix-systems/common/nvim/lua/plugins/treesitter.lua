@@ -1,42 +1,61 @@
 return {
-    'nvim-treesitter/nvim-treesitter',
+    'nvim-treesitter',
     dependencies = {
         {
-            'nvim-treesitter/nvim-treesitter-textobjects',
+            'nvim-treesitter-textobjects',
             branch = "main",
-            init = function()
-                -- Disable entire built-in ftplugin mappings to avoid conflicts.
-                -- See https://github.com/neovim/neovim/tree/master/runtime/ftplugin for built-in ftplugins.
-                vim.g.no_plugin_maps = true
-
-                -- Or, disable per filetype (add as you like)
-                -- vim.g.no_python_maps = true
-                -- vim.g.no_ruby_maps = true
-                -- vim.g.no_rust_maps = true
-                -- vim.g.no_go_maps = true
-            end,
-            config = function()
-            end,
+            -- init = function()
+            --     -- Disable entire built-in ftplugin mappings to avoid conflicts.
+            --     -- See https://github.com/neovim/neovim/tree/master/runtime/ftplugin for built-in ftplugins.
+            --     vim.g.no_plugin_maps = true
+            --
+            --     -- Or, disable per filetype (add as you like)
+            --     -- vim.g.no_python_maps = true
+            --     -- vim.g.no_ruby_maps = true
+            --     -- vim.g.no_rust_maps = true
+            --     -- vim.g.no_go_maps = true
+            -- end,
+            -- config = function()
+            -- end,
         },
-        'nvim-treesitter/nvim-treesitter-context',
+        'nvim-treesitter-context',
     },
+    event = 'VeryLazy',
+    branch = "main",
+    -- version = false,
     lazy = false,
-    auto_install = false,
-    ignore_install = { 'all' },
-    highlight = {
-        enable = true,
-        disable = {},
-        textobjects = { enable = true },
-        additional_vim_regex_highlighting = false,
-    },
-    ident = { enable = true },
-    rainbow = {
-        enable = true,
-        extended_mode = true,
-        max_file_lines = nil,
+    opts = {
+        auto_install = false,
+        highlight = {
+            enable = true,
+            disable = {},
+            textobjects = { enable = true },
+            additional_vim_regex_highlighting = false,
+        },
+        ident = { enable = true },
+        rainbow = {
+            enable = true,
+            extended_mode = true,
+            max_file_lines = nil,
+        }
     },
     config = function()
-        -- require('nvim-treesitter.configs').setup(opts)
+        -- require('nvim-treesitter.configs').setup({
+        -- auto_install = false,
+        -- ignore_install = {},
+        -- highlight = {
+        --     enable = true,
+        --     disable = {},
+        --     textobjects = { enable = true },
+        --     additional_vim_regex_highlighting = false,
+        -- },
+        -- ident = { enable = true },
+        -- rainbow = {
+        --     enable = true,
+        --     extended_mode = true,
+        --     max_file_lines = nil,
+        -- }
+        -- })
         -- require 'nvim-treesitter'.install { 'rust', 'go' }
         require('treesitter-context').setup {
             enable = true,            -- Enable this plugin (Can be enabled/disabled later via commands)

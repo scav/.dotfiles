@@ -11,6 +11,7 @@ let
   dotfiles = "${config.home.homeDirectory}/.dotfiles/.config";
   create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
   configs = {
+    nvim = "nvim";
     zsh = "zsh";
     k9s = "k9s";
     fd = "fd";
@@ -22,8 +23,6 @@ in
     ./nix-systems/common/tmux.nix
     ./nix-systems/common/nvim/nvim.nix
     inputs.mnw.homeManagerModules.mnw
-    # inputs.nvf.homeManagerModules.nvf
-    # ./nix-systems/common/nvf.nix
   ];
 
   home.sessionVariables = {
@@ -78,6 +77,7 @@ in
     gnumake
     act
     fzf
+    nil
     (pkgs.nix-search-tv.overrideAttrs (old: {
       env = (old.env or { }) // {
         GOEXPERIMENT = "jsonv2";

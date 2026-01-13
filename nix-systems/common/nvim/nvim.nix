@@ -1,17 +1,6 @@
 { pkgs, ... }:
 let
-  pkgs_nvim = pkgs // {
-    # vimPlugins = pkgs.vimPlugins // {
-    #   nvim-treesitter-textobjects = pkgs.vimPlugins.nvim-treesitter-textobjects.overrideAttrs (_: rec {
-    #     src = pkgs.fetchFromGitHub {
-    #       owner = "nvim-treesitter";
-    #       repo = "nvim-treesitter-textobjects";
-    #       rev = "28a3494c075ef0f353314f627546537e43c09592";
-    #       sha256 = "sha256-5VeIAW09my+4fqXbzVG7RnLXrjpXAk/g2vd7RbhNws8=";
-    #     };
-    #   });
-    # };
-  };
+
 in
 {
   # All other LPS are added with nix on a project to project basis
@@ -26,7 +15,7 @@ in
     luaFiles = [
       ./init.lua
     ];
-    plugins = with pkgs_nvim; {
+    plugins = with pkgs; {
       dev.config = {
         pure = ./.;
         impure = "/Users/dag/.dotfiles/nix-systems/common/nvim";
@@ -49,9 +38,13 @@ in
         vimPlugins.nvim-treesitter
         vimPlugins.nvim-treesitter-textobjects
         vimPlugins.nvim-treesitter-context
-        vimPlugins.nvim-treesitter-parsers.nix
-        vimPlugins.nvim-treesitter-parsers.rust
-        vimPlugins.nvim-treesitter-parsers.go
+        (vimPlugins.nvim-treesitter.withPlugins (p: [
+          p.nix
+          p.rust
+          p.go
+          p.yaml
+          p.toml
+        ]))
       ];
       # Lazy plugins
       opt = [

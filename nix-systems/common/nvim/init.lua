@@ -21,3 +21,10 @@ vim.lsp.enable({
     'rust_analyzer',
     'gopls',
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "c", "lua", "vim", "go", "rust", "nix", "markdown", "yaml" },
+    callback = function()
+        vim.treesitter.start()
+    end,
+})

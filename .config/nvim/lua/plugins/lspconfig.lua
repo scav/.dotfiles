@@ -57,7 +57,6 @@ function Plugin.config()
             "html",
             "htmx",
             "nixfmt",
-            "nil_ls",
             "tailwindcss",
             "templ",
         },
@@ -111,6 +110,12 @@ function Plugin.config()
                             validate = { enable = true },
                         },
                     },
+                })
+            end,
+            ["nil_ls"] = function()
+                lspconfig.ts_ls.setup({
+                    capabilities = lsp_capabilities,
+                    on_attach = on_attach,
                 })
             end,
             ["ts_ls"] = function()
@@ -233,9 +238,7 @@ function Plugin.config()
         },
     })
 
-    vim.lsp.config("nik_ls", {
-        settings = {},
-    })
+    vim.lsp.enable("nil_ls")
 end
 
 function user.on_attach()

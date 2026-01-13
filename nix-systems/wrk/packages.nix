@@ -56,10 +56,8 @@
     lua-language-server
     luarocks
     mkcert
-    neovim
     nixfmt
     nmap
-    nodejs
     nushell
     openssh
     # packer
@@ -71,7 +69,6 @@
     sesh
     sniffnet
     sops
-    starship
     step-cli
     tailwindcss
     talosctl
@@ -82,7 +79,6 @@
     unbound
     utm
     watch
-    wezterm
     wget
     yq
     yubikey-manager
