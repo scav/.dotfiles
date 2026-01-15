@@ -12,7 +12,6 @@ let
   create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
   configs = {
     zsh = "zsh";
-    fd = "fd";
   };
 in
 {
@@ -63,6 +62,19 @@ in
     package = if isDarwin then null else pkgs.ghostty; # for nix-darwin we fetch it using homebrew
     enableZshIntegration = true;
     settings = builtins.fromTOML (builtins.readFile ./.config/ghostty/config);
+  };
+
+  programs.fd = {
+    enable = true;
+    ignores = [
+      "*.bak"
+      "*.git"
+      "~/go"
+      "~/Library"
+      "~/Downloads"
+      "~/Applications"
+      "~/.cargo"
+    ];
   };
 
   programs.home-manager.enable = true;

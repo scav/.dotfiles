@@ -19,7 +19,6 @@
     dyff
     entr
     eza
-    fd
     firefox
     fzf
     gh
