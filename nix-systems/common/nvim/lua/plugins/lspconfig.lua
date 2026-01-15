@@ -44,5 +44,14 @@ return {
                 vim.lsp.buf.format({ async = false })
             end,
         })
+        vim.keymap.set("n", "<leader>vca", function()
+            vim.lsp.buf.code_action()
+        end)
+        vim.keymap.set("n", "<leader>vrr", function()
+            vim.lsp.buf.references()
+        end)
+        vim.keymap.set("n", "<leader>vrn", function()
+            vim.lsp.buf.rename()
+        end)
     end,
 }

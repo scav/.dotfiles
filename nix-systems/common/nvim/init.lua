@@ -20,6 +20,7 @@ vim.lsp.enable({
     'nil_ls',
     'rust_analyzer',
     'gopls',
+    'docker_language_server',
 })
 
 vim.api.nvim_create_autocmd("FileType", {

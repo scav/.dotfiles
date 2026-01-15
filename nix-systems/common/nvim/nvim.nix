@@ -9,6 +9,12 @@ in
     nil
   ];
 
+  programs.zsh = {
+    shellAliases = {
+      nvimDev = "(cd ~/.dotfiles; nix run .#darwinConfigurations.wrk.config.home-manager.users.dag.programs.mnw.finalPackage.devMode)";
+    };
+  };
+
   programs.mnw = {
     enable = true;
     aliases = [ "vim" ];
@@ -34,6 +40,7 @@ in
         vimPlugins.blink-nerdfont-nvim
         vimPlugins.friendly-snippets
         vimPlugins.vim-fugitive
+        vimPlugins.gitsigns-nvim
 
         vimPlugins.nvim-treesitter
         vimPlugins.nvim-treesitter-textobjects
@@ -44,6 +51,8 @@ in
           p.go
           p.yaml
           p.toml
+          p.dockerfile
+          p.json
         ]))
       ];
       # Lazy plugins
@@ -55,6 +64,7 @@ in
         vimPlugins.indent-blankline-nvim
         vimPlugins.nvim-autopairs
         vimPlugins.crates-nvim
+        vimPlugins.trouble-nvim
       ];
     };
   };
