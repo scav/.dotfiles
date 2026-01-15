@@ -72,7 +72,6 @@
     tailwindcss
     talosctl
     templ
-    tmux
     tree
     tree-sitter
     unbound
@@ -82,7 +81,6 @@
     yq
     yubikey-manager
     zoxide
-    zsh
     zstd
   ];
 }
