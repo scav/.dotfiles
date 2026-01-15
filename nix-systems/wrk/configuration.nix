@@ -6,8 +6,8 @@
   ];
 
   environment.shellAliases = {
-    nru = "sudo darwin-rebuild switch --flake ~/.dotfiles";
-    nrs = "nix flake update;sudo darwin-rebuild switch --flake ~/.dotfiles";
+    nru = "sudo darwin-rebuild switch --flake ~/.dotfiles#wrk";
+    nrs = "nix flake update;sudo darwin-rebuild switch --flake ~/.dotfiles#wrk";
   };
 
   # Let determinate handle nix while nix-darwin handles MacOS

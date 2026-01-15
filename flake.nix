@@ -47,7 +47,6 @@
           }
         ];
       };
-
-      darwinPackages = self.darwinConfigurations."wrk".pkgs;
+      # TODO: add onyx here
     };
 }
