@@ -13,22 +13,18 @@ let
   configs = {
     nvim = "nvim";
     zsh = "zsh";
-    k9s = "k9s";
     fd = "fd";
   };
-
 in
 {
   imports = [
     ./nix-systems/common/tmux.nix
     ./nix-systems/common/nvim/nvim.nix
     inputs.mnw.homeManagerModules.mnw
+    ./nix-systems/common/k9s.nix
   ];
 
-  home.sessionVariables = {
-    MANPAGER = "nvim +Man!";
-    MANWIDTH = "999";
-  };
+  xdg.enable = true;
 
   programs.zsh = {
     enable = true;

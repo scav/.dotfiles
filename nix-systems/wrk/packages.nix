@@ -41,7 +41,6 @@
     jq
     k6
     ko
-    k9s
     kind
     kubebuilder
     kubectl
