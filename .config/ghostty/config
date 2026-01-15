@@ -1,0 +1,16 @@
+title = ""
+window-decoration = false
+background-opacity = 1.0
+
+theme = "Tokyonight Storm"
+font-family = "JetBrainsMono NFM ExtraBold"
+font-size = 14
+
+shell-integration = "zsh"
+shell-integration-features = ["sudo","ssh-terminfo"]
+
+mouse-hide-while-typing = true
+
+# macOS specific
+macos-option-as-alt = true
+macos-titlebar-style = "hidden"
