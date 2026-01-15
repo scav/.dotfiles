@@ -12,7 +12,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     mnw.url = "github:Gerg-L/mnw";
-    nvf.url = "github:notashelf/nvf";
   };
   outputs =
     {
@@ -26,11 +25,6 @@
       configuration =
         { pkgs, ... }:
         {
-          environment.variables = {
-            EDITOR = "nvim";
-            XDG_CONFIG_HOME = "$HOME/.config";
-          };
-
           fonts.packages = with pkgs; [
             nerd-fonts.jetbrains-mono
           ];
