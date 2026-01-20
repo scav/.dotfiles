@@ -41,6 +41,8 @@ in
         vimPlugins.friendly-snippets
         vimPlugins.vim-fugitive
         vimPlugins.gitsigns-nvim
+        vimPlugins.conform-nvim
+        vimPlugins.kulala-nvim
 
         vimPlugins.nvim-treesitter
         vimPlugins.nvim-treesitter-textobjects

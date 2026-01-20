@@ -10,8 +10,7 @@
     nrs = "nix flake update;sudo darwin-rebuild switch --flake ~/.dotfiles#wrk";
   };
 
-  # Let determinate handle nix while nix-darwin handles MacOS
-  nix.enable = false;
+  nix.enable = true;
 
   # Necessary for using flakes on this system.
   nix.settings.experimental-features = "nix-command flakes";
@@ -19,8 +18,28 @@
     "root"
     "dag"
   ];
-  nix.settings.substituters = "https://devenv.cachix.org";
-  nix.settings.trusted-public-keys = "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw=";
+
+  # Linux builder setup
+  nix.settings.extra-trusted-users = [
+    "dag"
+  ];
+  nix.linux-builder = {
+    enable = true;
+    ephemeral = true;
+    maxJobs = 4;
+    config = {
+      virtualisation = {
+        darwin-builder = {
+          diskSize = 40 * 1024;
+          memorySize = 16 * 1024;
+        };
+        cores = 6;
+      };
+    };
+  };
+
+  #  nix.settings.substituters = "https://devenv.cachix.org";
+  #  nix.settings.trusted-public-keys = "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw=";
 
   system.configurationRevision = config.rev or config.dirtyRev or null;
 

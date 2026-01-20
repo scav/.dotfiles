@@ -7,12 +7,6 @@
 
 let
   isDarwin = pkgs.stdenv.isDarwin;
-
-  dotfiles = "${config.home.homeDirectory}/.dotfiles/.config";
-  create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
-  configs = {
-    zsh = "zsh";
-  };
 in
 {
   imports = [
@@ -31,11 +25,14 @@ in
       MANPAGER = "nvim +Man!";
       MANWIDTH = "999";
     };
-    initContent = ''
-      source "$XDG_CONFIG_HOME/zsh/functions.zsh"
-      source "$XDG_CONFIG_HOME/zsh/zoxide.zsh"
-      source "$XDG_CONFIG_HOME/zsh/fzf.zsh"
-    '';
+    initContent = builtins.concatStringsSep "\n" (
+      map builtins.readFile [
+        ./.config/zsh/functions.zsh
+        ./.config/zsh/fzf.zsh
+        ./.config/zsh/zoxide.zsh
+        ./.config/zsh/zoxide.generated.zsh
+      ]
+    );
     shellAliases = {
       dotfiles = "cd $HOME/.dotfiles/";
       books = "cd $HOME/Library/Mobile\ Documents/com~apple~CloudDocs/calibre";
@@ -96,8 +93,4 @@ in
     }))
   ];
 
-  xdg.configFile = builtins.mapAttrs (name: subpath: {
-    source = create_symlink "${dotfiles}/${subpath}";
-    recursive = true;
-  }) configs;
 }

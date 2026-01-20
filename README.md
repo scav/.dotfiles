@@ -1,7 +1,11 @@
 # dotfiles
 
-Moving to a shared Nix based setup for my MacBooks and NixOS machines
+Nix based setup for my MacBooks and NixOS machines
 
-### Setup a new machine
-TODO
+## Setup new machines
+
+MacOS: 
+```bash
+sudo nix run github:nix-darwin/nix-darwin -- switch --flake .#wrk
+```
 
