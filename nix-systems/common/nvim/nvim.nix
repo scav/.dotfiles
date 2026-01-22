@@ -44,6 +44,9 @@ in
         vimPlugins.gitsigns-nvim
         vimPlugins.conform-nvim
         vimPlugins.kulala-nvim
+        vimPlugins.vim-dadbod
+        vimPlugins.vim-dadbod-completion
+        vimPlugins.vim-dadbod-ui
 
         vimPlugins.nvim-treesitter
         vimPlugins.nvim-treesitter-textobjects
@@ -69,9 +72,6 @@ in
         vimPlugins.nvim-autopairs
         vimPlugins.crates-nvim
         vimPlugins.trouble-nvim
-        vimPlugins.vim-dadbod
-        vimPlugins.vim-dadbod-complection
-        vimPlugins.vim-dadbod-ui
       ];
     };
   };

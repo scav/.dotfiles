@@ -23,7 +23,8 @@ in
     sessionVariables = {
       GPG_TTY = "$(tty)";
       MANPAGER = "nvim +Man!";
-      MANWIDTH = "999";
+      MANWIDTH = "997";
+      EDITOR = "nvim";
     };
     initContent = builtins.concatStringsSep "\n" (
       map builtins.readFile [
