@@ -7,6 +7,7 @@ in
   home.packages = with pkgs; [
     lua-language-server
     nil
+    yaml-language-server
   ];
 
   programs.zsh = {
@@ -55,6 +56,7 @@ in
           p.toml
           p.dockerfile
           p.json
+          p.sql
         ]))
       ];
       # Lazy plugins
