@@ -69,6 +69,9 @@ in
         vimPlugins.nvim-autopairs
         vimPlugins.crates-nvim
         vimPlugins.trouble-nvim
+        vimPlugins.vim-dadbod
+        vimPlugins.vim-dadbod-complection
+        vimPlugins.vim-dadbod-ui
       ];
     };
   };
