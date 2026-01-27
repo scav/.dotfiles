@@ -8,8 +8,9 @@
     azure-cli
     bat
     buf
-    cilium-cli
-    colima
+    # cilium-cli
+    # colima
+    # lima
     coreutils
     crossplane
     # deno
@@ -17,7 +18,7 @@
     docker
     # docker-slim
     dyff
-    entr
+    # entr
     eza
     # firefox
     fzf
@@ -41,15 +42,13 @@
     k6
     ko
     kind
-    kubebuilder
+    # kubebuilder
     kubectl
-    kubelogin
     kubelogin
     kustomize
     # kyverno
     lazygit
     # libpq
-    lima
     lua
     lua-language-server
     # luarocks
@@ -73,7 +72,7 @@
     # templ
     tree
     tree-sitter
-    unbound
+    # unbound
     utm
     watch
     wget

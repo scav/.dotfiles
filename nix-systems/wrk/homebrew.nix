@@ -15,8 +15,8 @@
 
     brews = [
       "aws-sam-cli"
-      "kiota"
-      "whalebrew"
+      # "kiota"
+      # "whalebrew"
     ];
 
     casks = [
