@@ -29,7 +29,6 @@ in
       };
       # Eager plugins
       start = [
-        # vimPlugins.lazy-nvim
         vimPlugins.lz-n
         vimPlugins.plenary-nvim
         vimPlugins.tokyonight-nvim
