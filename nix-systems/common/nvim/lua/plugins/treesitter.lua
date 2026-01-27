@@ -3,15 +3,12 @@ return {
     dependencies = {
         {
             'nvim-treesitter-textobjects',
-            branch = "main",
         },
         'nvim-treesitter-context',
     },
-    event = 'VeryLazy',
-    branch = "main",
-    lazy = false,
     opts = {
         auto_install = false,
+    lazy = false,
         highlight = {
             enable = true,
             disable = {},

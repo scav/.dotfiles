@@ -75,6 +75,11 @@ in
     ];
   };
 
+  programs.firefox = {
+    enable = true;
+    package = pkgs.firefox-bin;
+  };
+
   programs.home-manager.enable = true;
   home.stateVersion = "26.05";
 

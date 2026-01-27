@@ -1,5 +1,5 @@
 return {
-    "neovim/nvim-lspconfig",
+    "nvim-lspconfig",
     cmd = { "LspInfo" },
     event = { "BufRead", "BufNewFile" },
     keys = {

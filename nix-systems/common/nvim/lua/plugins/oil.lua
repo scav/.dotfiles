@@ -1,9 +1,7 @@
 return {
-    'stevearc/oil.nvim',
-    -- dependencies = { { "nvim-mini/mini.icons", opts = {} } },
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    lazy = false,
-    config = function()
+    'oil.nvim',
+    dependencies = { "nvim-web-devicons" },
+    after = function()
         require("oil").setup({
             default_file_explorer = true,
             delete_to_trash = false, -- yolo
@@ -23,6 +21,7 @@ return {
             },
             watch_for_changes = true,
         })
+
 
         vim.keymap.set("n", "<leader>pv", vim.cmd.Oil, { desc = "Open dir" })
     end

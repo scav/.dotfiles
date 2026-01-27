@@ -1,10 +1,10 @@
 return {
-    "nvim-telescope/telescope.nvim",
+    "telescope.nvim",
     dependencies = {
-        "nvim-telescope/telescope-fzf-native.nvim",
-        "nvim-telescope/telescope-ui-select.nvim",
-        "debugloop/telescope-undo.nvim",
-        "nvim-lua/plenary.nvim",
+        "telescope-fzf-native.nvim",
+        "telescope-ui-select.nvim",
+        "telescope-undo.nvim",
+        "plenary.nvim",
     },
     cmd = "Telescope",
     keys = {

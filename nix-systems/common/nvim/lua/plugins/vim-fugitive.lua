@@ -1,5 +1,5 @@
 return {
-    "tpope/vim-fugitive",
+    "vim-fugitive",
     lazy = false,
     keys = {
         { "<leader>gs", ":G<CR>",       desc = "Open Fugutive" },

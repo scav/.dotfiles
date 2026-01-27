@@ -1,5 +1,5 @@
 return {
-    "stevearc/conform.nvim",
+    "conform.nvim",
     opts = {
         formatters_by_ft = {
             templ = { "templ" },

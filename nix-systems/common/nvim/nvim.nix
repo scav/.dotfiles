@@ -29,7 +29,8 @@ in
       };
       # Eager plugins
       start = [
-        vimPlugins.lazy-nvim
+        # vimPlugins.lazy-nvim
+        vimPlugins.lz-n
         vimPlugins.plenary-nvim
         vimPlugins.tokyonight-nvim
         vimPlugins.telescope-nvim
@@ -47,6 +48,14 @@ in
         vimPlugins.vim-dadbod
         vimPlugins.vim-dadbod-completion
         vimPlugins.vim-dadbod-ui
+        vimPlugins.nvim-web-devicons
+        vimPlugins.nvim-lspconfig
+        vimPlugins.lualine-nvim
+        vimPlugins.which-key-nvim
+        vimPlugins.indent-blankline-nvim
+        vimPlugins.nvim-autopairs
+        vimPlugins.crates-nvim
+        vimPlugins.trouble-nvim
 
         vimPlugins.nvim-treesitter
         vimPlugins.nvim-treesitter-textobjects
@@ -61,17 +70,10 @@ in
           p.json
           p.sql
         ]))
+        vimPlugins.rainbow-delimiters-nvim
       ];
       # Lazy plugins
       opt = [
-        vimPlugins.nvim-web-devicons
-        vimPlugins.nvim-lspconfig
-        vimPlugins.lualine-nvim
-        vimPlugins.which-key-nvim
-        vimPlugins.indent-blankline-nvim
-        vimPlugins.nvim-autopairs
-        vimPlugins.crates-nvim
-        vimPlugins.trouble-nvim
       ];
     };
   };

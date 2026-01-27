@@ -12,28 +12,28 @@
     colima
     coreutils
     crossplane
-    deno
+    # deno
     desktoppr
     docker
-    docker-slim
+    # docker-slim
     dyff
     entr
     eza
-    firefox
+    # firefox
     fzf
     gh
     git
     gnumake
     gnupg
     gnutls
-    go
-    go-mockery
-    go-task
-    go-tools
-    golangci-lint
+    # go
+    # go-mockery
+    # go-task
+    # go-tools
+    # golangci-lint
     # gopls
-    goreleaser
-    gotestsum
+    # goreleaser
+    # gotestsum
     grpcurl
     kubernetes-helm
     jj
@@ -46,17 +46,17 @@
     kubelogin
     kubelogin
     kustomize
-    kyverno
+    # kyverno
     lazygit
-    libpq
+    # libpq
     lima
     lua
     lua-language-server
-    luarocks
+    # luarocks
     mkcert
     nixfmt
-    nmap
-    nushell
+    # nmap
+    # nushell
     openssh
     # packer
     pinentry_mac
@@ -65,12 +65,12 @@
     ripgrep
     ripsecrets
     sesh
-    sniffnet
+    # sniffnet
     sops
     step-cli
-    tailwindcss
+    # tailwindcss
     talosctl
-    templ
+    # templ
     tree
     tree-sitter
     unbound

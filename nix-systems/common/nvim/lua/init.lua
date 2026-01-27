@@ -1,14 +1,13 @@
 -- set leader before loading lazy
 -- vim.keymap.set("n", " ", "<Nop>", { silent = true, remap = false })
 vim.g.mapleader = " "
-require('lz.n').load('plugins')
 
 require("config.editor")
+require("config.lazy")
 require("config.undo")
 require("user.terminal")
 require("user.treesitter")
 
--- Load theme
 vim.cmd [[colorscheme tokyonight-storm]]
 
 -- temperarily override for line numbers
@@ -25,3 +24,10 @@ vim.lsp.enable({
     'docker_language_server',
     'yamlls',
 })
+
+-- vim.api.nvim_create_autocmd("FileType", {
+--     pattern = { "c", "lua", "vim", "go", "rust", "nix", "markdown", "yaml" },
+--     callback = function()
+--         vim.treesitter.start()
+--     end,
+-- })

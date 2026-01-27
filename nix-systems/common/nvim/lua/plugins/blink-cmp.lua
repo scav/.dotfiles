@@ -1,5 +1,5 @@
 return {
-	"saghen/blink.cmp",
+	"blink.cmp",
 	dependencies = {
 		"rafamadriz/friendly-snippets",
 		"kristijanhusak/vim-dadbod-completion",
