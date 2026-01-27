@@ -6,6 +6,7 @@ in
   # All other LPS are added with nix on a project to project basis
   home.packages = with pkgs; [
     lua-language-server
+
     nil
     yaml-language-server
   ];

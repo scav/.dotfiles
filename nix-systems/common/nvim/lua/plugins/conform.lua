@@ -1,6 +1,6 @@
 return {
     "conform.nvim",
-    opts = {
+    after = {
         formatters_by_ft = {
             templ = { "templ" },
             lua = { "stylua" },

@@ -25,7 +25,7 @@ return {
             "<cmd>Telescope undo<cr>",
         },
     },
-    config = function()
+    after = function()
         local telescope = require("telescope")
         local telescopeConfig = require("telescope.config")
         telescope.load_extension("fzf")

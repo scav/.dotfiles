@@ -1,7 +1,8 @@
 return {
     "nvim-lspconfig",
-    cmd = { "LspInfo" },
-    event = { "BufRead", "BufNewFile" },
+    -- cmd = { "LspInfo" },
+    -- event = { "BufRead", "BufNewFile" },
+    event = "DeferredUIEnter",
     keys = {
         {
             "<leader>vh",
@@ -33,25 +34,11 @@ return {
         },
 
     },
-    config = function()
-        vim.keymap.set("n", "gd", function()
-            vim.lsp.buf.definition()
-        end, { desc = "Go to definition" })
-
-        vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Diagnostic Float" })
+    after = function()
         vim.api.nvim_create_autocmd("BufWritePre", {
             callback = function()
                 vim.lsp.buf.format({ async = false })
             end,
         })
-        vim.keymap.set("n", "<leader>vca", function()
-            vim.lsp.buf.code_action()
-        end)
-        vim.keymap.set("n", "<leader>vrr", function()
-            vim.lsp.buf.references()
-        end)
-        vim.keymap.set("n", "<leader>vrn", function()
-            vim.lsp.buf.rename()
-        end)
     end,
 }
