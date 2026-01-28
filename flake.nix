@@ -3,7 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    nixpkgs-pinned.url = "github:NixOS/nixpkgs/70801e06d9730c4f1704fbd3bbf5b8e11c03a2a7";
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -19,7 +18,7 @@
       self,
       nix-darwin,
       nixpkgs,
-      nixpkgs-pinned,
+      # nixpkgs-pinned,
       home-manager,
       ...
     }@inputs:
@@ -34,29 +33,8 @@
 
     in
     {
-      overlays.swift-from-pinned =
-        final: prev:
-        let
-          pinnedPkgs = import nixpkgs-pinned {
-            inherit (prev) system;
-            config = prev.config;
-          };
-        in
-        {
-          swift = pinnedPkgs.swift;
-          swiftPackages = pinnedPkgs.swiftPackages;
-        };
-
       darwinConfigurations."wrk" = nix-darwin.lib.darwinSystem {
         modules = [
-          (
-            { ... }:
-            {
-              nixpkgs.overlays = [
-                self.overlays.swift-from-pinned
-              ];
-            }
-          )
           configuration
           ./nix-systems/wrk/configuration.nix
           home-manager.darwinModules.home-manager

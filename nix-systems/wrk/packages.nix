@@ -14,7 +14,7 @@
     coreutils
     crossplane
     # deno
-    desktoppr
+    # desktoppr
     docker
     # docker-slim
     dyff
