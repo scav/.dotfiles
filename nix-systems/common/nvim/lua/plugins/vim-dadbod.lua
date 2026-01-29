@@ -1,17 +1,16 @@
 return {
-    'vim-dadbod-ui',
-    dependencies = {
-        { 'vim-dadbod',                     lazy = true },
-        { 'vim-dadbod-completion', ft = { 'sql', 'mysql', 'plsql' }, lazy = true },
+    "vim-dadbod-ui",
+    before = function()
+        LZN.trigger_load("vim-dadbod-completion")
+        LZN.trigger_load("vim-dadbod")
+    end,
+    cmd = {
+        "DBUI",
+        "DBUIToggle",
+        "DBUIAddConnection",
+        "DBUIFindBuffer",
     },
-    cmd =
-    {
-        'DBUI',
-        'DBUIToggle',
-        'DBUIAddConnection',
-        'DBUIFindBuffer',
-    },
-    configure = function()
+    after = function()
         vim.g.db_ui_use_nerd_fonts = 1
-    end
+    end,
 }

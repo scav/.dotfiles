@@ -5,10 +5,11 @@ in
 {
   # All other LPS are added with nix on a project to project basis
   home.packages = with pkgs; [
+      deadnix
     lua-language-server
-        yaml-language-server
-deadnix
+    yaml-language-server
     nil
+    stylua
   ];
 
   programs.zsh = {
@@ -64,7 +65,7 @@ deadnix
         vimPlugins.nvim-treesitter-textobjects
         vimPlugins.nvim-treesitter-context
         (vimPlugins.nvim-treesitter.withPlugins (p: [
-        p.gitignore
+          p.gitignore
           p.nix
           p.rust
           p.go

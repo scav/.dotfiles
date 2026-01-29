@@ -1,6 +1,5 @@
 return {
     "folke/which-key.nvim",
-    opts = {},
     keys = {
         {
             "<leader>?",

@@ -1,28 +1,26 @@
 return {
     'nvim-treesitter',
-    dependencies = {
-        {
-            'nvim-treesitter-textobjects',
-        },
-        'nvim-treesitter-context',
-    },
-    opts = {
-        auto_install = false,
     lazy = false,
-        highlight = {
-            enable = true,
-            disable = {},
-            textobjects = { enable = true },
-            additional_vim_regex_highlighting = false,
-        },
-        ident = { enable = true },
-        rainbow = {
-            enable = true,
-            extended_mode = true,
-            max_file_lines = nil,
-        }
-    },
-    config = function()
+    before = function()
+        LZN.trigger_load("nvim-treesitter-textobjects")
+        LZN.trigger_load("nvim-treesitter-context")
+    end,
+    after = function()
+        require('nvim-treesitter').setup({
+            auto_install = false,
+            highlight = {
+                enable = true,
+                disable = {},
+                textobjects = { enable = true },
+                additional_vim_regex_highlighting = false,
+            },
+            ident = { enable = true },
+            rainbow = {
+                enable = true,
+                extended_mode = true,
+                max_file_lines = nil,
+            },
+        })
         require('treesitter-context').setup {
             enable = true,            -- Enable this plugin (Can be enabled/disabled later via commands)
             max_lines = 0,            -- How many lines the window should span. Values <= 0 mean no limit.

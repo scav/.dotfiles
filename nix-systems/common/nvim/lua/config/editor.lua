@@ -31,8 +31,8 @@ opt.history = 200
 opt.conceallevel = 2
 
 -- Spell
-vim.opt.spell = true
-vim.opt.spelllang = { "en_gb" }
+opt.spell = true
+opt.spelllang = { "en_gb" }
 
 -- UI
 opt.winborder = "rounded"
@@ -51,10 +51,10 @@ vim.keymap.set("n", "n", "Nzzzv")
 vim.keymap.set("n", "n", "nzzzv")
 
 -- Cycle through open buffers with Space + Tab
-vim.keymap.set('n', '<leader><Tab>', ':bnext<CR>', { noremap = true })
+vim.keymap.set("n", "<leader><Tab>", ":bnext<CR>", { noremap = true })
 
 -- Save shortcut
-vim.keymap.set({ 'n', 'i' }, '<C-S>', ':update<CR>')
+vim.keymap.set({ "n", "i" }, "<C-S>", ":update<CR>")
 
 -- Disable annoying things I don't want or need
 vim.g.loaded_ruby_provider = 0
