@@ -1,6 +1,7 @@
 return {
     'crates.nvim',
-    opts = {
         event = { "BufRead Cargo.toml" },
-    }
+    after = function()
+        require('crates').setup()
+    end
 }

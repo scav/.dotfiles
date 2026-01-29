@@ -1,5 +1,9 @@
+-- hide startup screen
+vim.opt.shortmess:append("I")
 vim.g.mapleader = " "
-require('lz.n').load('plugins')
+
+LZN = require("lz.n")
+LZN.load('plugins')
 
 require("config.editor")
 require("config.undo")
@@ -21,3 +25,12 @@ vim.lsp.enable({
     'docker_language_server',
     'yamlls',
 })
+
+-- AddKeyOpts = function(keys, opts)
+-- return vim.tbl_map(function(key)
+--   if type(key[#key]) == "table" then
+--     key[#key] = vim.tbl_deep_extend("keep", key[#key], opts)
+--   end
+--   return key
+-- end, keys)
+-- end

@@ -1,42 +1,136 @@
 return {
-	"blink.cmp",
-	dependencies = {
-		"rafamadriz/friendly-snippets",
-		"kristijanhusak/vim-dadbod-completion",
-		"MahanRahmati/blink-nerdfont.nvim",
-	},
-	version = "1.*",
-	opts = {
-		keymap = {
-			preset = "default",
-			["<Tab>"] = { "show_and_insert_or_accept_single", "select_next" },
-			["<S-Tab>"] = { "show_and_insert_or_accept_single", "select_prev" },
+    { "lspkind.nvim" },
+    {
+        "blink.cmp",
+        event = "DeferredUIEnter",
+        before = function()
+            LZN.trigger_load("lazydev.nvim")
+            LZN.trigger_load("lspkind.nvim")
+        end,
+        after = function()
+            require("blink.cmp").setup({
+                signature = { enabled = true },
+                completion = {
+                    menu = {
+                        auto_show = function(ctx)
+                            return ctx.mode ~= "cmdline"
+                        end,
+                        draw = {
+                            components = {
+                                kind_icon = {
+                                    text = function(ctx)
+                                        local icon = ctx.kind_icon
+                                        if vim.tbl_contains({ "Path" }, ctx.source_name) then
+                                            local dev_icon, _ = require("nvim-web-devicons").get_icon(ctx.label)
+                                            if dev_icon then
+                                                icon = dev_icon
+                                            end
+                                        else
+                                            icon = require("lspkind").symbol_map[ctx.kind] or ""
+                                        end
+                                        return icon .. ctx.icon_gap
+                                    end,
 
-			["<C-n>"] = { "select_next", "fallback" },
-			["<C-p>"] = { "select_prev", "fallback" },
-			["<C-y>"] = { "select_and_accept", "fallback" },
-			["<CR>"] = { "select_and_accept", "fallback" },
-			["<C-e>"] = { "cancel", "fallback" },
-		},
+                                    -- Optionally, use the highlight groups from nvim-web-devicons
+                                    -- You can also add the same function for `kind.highlight` if you want to
+                                    -- keep the highlight groups in sync with the icons.
+                                    highlight = function(ctx)
+                                        local hl = ctx.kind_hl
+                                        if vim.tbl_contains({ "Path" }, ctx.source_name) then
+                                            local dev_icon, dev_hl = require("nvim-web-devicons").get_icon(ctx.label)
+                                            if dev_icon then
+                                                hl = dev_hl
+                                            end
+                                        end
+                                        return hl
+                                    end,
+                                },
+                            },
+                            treesitter = { "lsp" },
+                        },
+                    },
+                    ghost_text = { enabled = true },
+                    list = {
+                        selection = {
+                            preselect = false,
+                            auto_insert = false,
+                        },
+                    },
+                    documentation = {
+                        auto_show = true,
+                        auto_show_delay_ms = 500,
+                    },
+                },
+                keymap = {
+                    preset = "none",
+                    ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
+                    ["<C-e>"] = { "hide", "fallback" },
+                    ["<CR>"] = { "accept", "fallback" },
 
-		appearance = {
-			nerd_font_variant = "mono",
-		},
+                    ["<Tab>"] = { "select_next", "fallback" },
+                    ["<S-Tab>"] = { "select_prev", "fallback" },
 
-		-- (Default) Only show the documentation popup when manually triggered
-		completion = { documentation = { auto_show = false } },
+                    ["<Up>"] = { "snippet_forward", "fallback" },
+                    ["<Down>"] = { "snippet_backward", "fallback" },
+                    ["<C-p>"] = { "select_prev", "fallback" },
+                    ["<C-n>"] = { "select_next", "fallback" },
 
-		sources = {
-			default = { "lsp", "path", "snippets", "buffer" },
-			per_filtype = {
-				sql = { "snippets", "dadbod", "buffer" },
-			},
-		},
-		providers = {
-			dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
-		},
-		fuzzy = { implementation = "prefer_rust_with_warning" },
-	},
-	opts_extend = { "sources.default" },
+                    ["<C-b>"] = { "scroll_documentation_up", "fallback" },
+                    ["<C-f>"] = { "scroll_documentation_down", "fallback" },
+                },
+                sources = {
+                    default = { "lazydev", "lsp", "buffer", "snippets", "path", "omni" },
+                    providers = {
+                        lazydev = {
+                            name = "LazyDev",
+                            module = "lazydev.integrations.blink",
+                            score_offset = 100,
+                        },
+                    },
+                },
+                fuzzy = { implementation = "rust" },
+            })
+        end,
+    },
 }
-
+-- return {
+--     "blink.cmp",
+--     before = function()
+--         LZN.trigger_load("friendly-snippets")
+--         LZN.trigger_load("vim-dadbod-completion")
+--         LZN.trigger_load("blink-nerdfont.nvim")
+--     end,
+--     after = {
+--         blink = require("blink.cmp").config({
+--         keymap = {
+--             preset = "default",
+--             ["<Tab>"] = { "show_and_insert_or_accept_single", "select_next" },
+--             ["<S-Tab>"] = { "show_and_insert_or_accept_single", "select_prev" },
+--
+--             ["<C-n>"] = { "select_next", "fallback" },
+--             ["<C-p>"] = { "select_prev", "fallback" },
+--             ["<C-y>"] = { "select_and_accept", "fallback" },
+--             ["<CR>"] = { "select_and_accept", "fallback" },
+--             ["<C-e>"] = { "cancel", "fallback" },
+--         },
+--
+--         appearance = {
+--             nerd_font_variant = "mono",
+--         },
+--
+--         -- (Default) Only show the documentation popup when manually triggered
+--         completion = { documentation = { auto_show = false } },
+--
+--         sources = {
+--             default = { "lsp", "path", "snippets", "buffer" },
+--             per_filtype = {
+--                 sql = { "snippets", "dadbod", "buffer" },
+--             },
+--         },
+--         providers = {
+--             dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
+--         },
+--         fuzzy = { implementation = "prefer_rust_with_warning" },
+--     },
+--     opts_extend = { "sources.default" },
+-- }

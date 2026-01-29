@@ -6,9 +6,9 @@ in
   # All other LPS are added with nix on a project to project basis
   home.packages = with pkgs; [
     lua-language-server
-
+        yaml-language-server
+deadnix
     nil
-    yaml-language-server
   ];
 
   programs.zsh = {
@@ -41,6 +41,9 @@ in
         vimPlugins.blink-cmp
         vimPlugins.blink-nerdfont-nvim
         vimPlugins.friendly-snippets
+        vimPlugins.lspkind-nvim
+        vimPlugins.lazydev-nvim
+        vimPlugins.none-ls-nvim
         vimPlugins.vim-fugitive
         vimPlugins.gitsigns-nvim
         vimPlugins.conform-nvim
@@ -61,6 +64,7 @@ in
         vimPlugins.nvim-treesitter-textobjects
         vimPlugins.nvim-treesitter-context
         (vimPlugins.nvim-treesitter.withPlugins (p: [
+        p.gitignore
           p.nix
           p.rust
           p.go
