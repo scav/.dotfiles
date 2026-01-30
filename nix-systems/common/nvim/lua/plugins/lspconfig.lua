@@ -78,7 +78,7 @@ return {
 				},
 			})
 
-			vim.lsp.enable({ "nil_ls", "lua_ls", "rust-analyzer", "gopls" })
+			-- vim.lsp.enable({ "nil_ls", "lua_ls", "rust-analyzer", "gopls" })
 		end,
 		wk = {
 			{ "<leader>l", desc = "LSP" },
