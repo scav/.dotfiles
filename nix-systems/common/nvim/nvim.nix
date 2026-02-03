@@ -5,11 +5,12 @@ in
 {
   # All other LPS are added with nix on a project to project basis
   home.packages = with pkgs; [
-      deadnix
+    deadnix
     lua-language-server
     yaml-language-server
     nil
     stylua
+    statix
   ];
 
   programs.zsh = {

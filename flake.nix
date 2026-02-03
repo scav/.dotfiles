@@ -12,14 +12,18 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     mnw.url = "github:Gerg-L/mnw";
+    glide-browser = {
+      url = "github:glide-browser/glide.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs =
     {
       self,
       nix-darwin,
       nixpkgs,
-      # nixpkgs-pinned,
       home-manager,
+      glide-browser,
       ...
     }@inputs:
     let

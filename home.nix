@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   inputs,
   ...
@@ -14,6 +13,7 @@ in
     ./nix-systems/common/nvim/nvim.nix
     inputs.mnw.homeManagerModules.mnw
     ./nix-systems/common/k9s.nix
+    ./nix-systems/common/glide
   ];
 
   xdg.enable = true;
