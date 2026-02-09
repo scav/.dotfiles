@@ -3,6 +3,10 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v0.4.3";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -20,6 +24,7 @@
   outputs =
     {
       self,
+      lanzaboote,
       nix-darwin,
       nixpkgs,
       home-manager,
@@ -53,6 +58,51 @@
           }
         ];
       };
-      # TODO: add onyx here
+
+      nixosConfigurations."onyx" = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+
+        modules = [
+          lanzaboote.nixosModules.lanzaboote
+
+          (
+            { pkgs, lib, ... }:
+            {
+              environment.systemPackages = [
+                pkgs.sbctl
+              ];
+
+              # Lanzaboote currently replaces the systemd-boot module.
+              # This setting is usually set to true in configuration.nix
+              # generated at installation time. So we force it to false
+              # for now.
+              boot.loader.systemd-boot.enable = lib.mkForce false;
+              boot.lanzaboote = {
+                enable = true;
+                pkiBundle = "/var/lib/sbctl";
+              };
+            }
+          )
+
+          ./nix-systems/onyx/configuration.nix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.scav = {
+                imports = [
+                  ./home.nix
+                  ./nix-systems/onyx/home.nix
+                ];
+              };
+              extraSpecialArgs = {
+                inherit inputs;
+              };
+              backupFileExtension = "backup";
+            };
+          }
+        ];
+      };
     };
 }

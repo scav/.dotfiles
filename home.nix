@@ -4,9 +4,6 @@
   ...
 }:
 
-let
-  isDarwin = pkgs.stdenv.isDarwin;
-in
 {
   imports = [
     ./nix-systems/common/tmux.nix
@@ -14,6 +11,7 @@ in
     inputs.mnw.homeManagerModules.mnw
     ./nix-systems/common/k9s.nix
     ./nix-systems/common/glide
+    ./nix-systems/common/git
   ];
 
   xdg.enable = true;
@@ -57,7 +55,7 @@ in
 
   programs.ghostty = {
     enable = true; # if isDarwin then false else true;
-    package = if isDarwin then null else pkgs.ghostty; # for nix-darwin we fetch it using homebrew
+    # package = if isDarwin then null else pkgs.ghostty; # for nix-darwin we fetch it using homebrew
     enableZshIntegration = true;
     settings = builtins.fromTOML (builtins.readFile ./.config/ghostty/config);
   };
@@ -81,13 +79,14 @@ in
   };
 
   programs.home-manager.enable = true;
-  home.stateVersion = "26.05";
+  # home.stateVersion = "26.05";
 
   home.packages = with pkgs; [
     gnumake
-    act
     fzf
     nil
+    zoxide
+    yubikey-manager
     (pkgs.nix-search-tv.overrideAttrs (old: {
       env = (old.env or { }) // {
         GOEXPERIMENT = "jsonv2";
