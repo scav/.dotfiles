@@ -3,8 +3,6 @@
  * User: w8ste
  */
 
-
-// define colors etc.
 * {
     bg: #24283b;
     hv: #9274ca; 
@@ -23,11 +21,6 @@
 // defines different aspects of the window
 window {
     width: 700;
-    /*since line wont work with height, i comment it out 
-    if you rather control the size via height
-    just comment it out */
-    //height: 500;
-
     orientation: horizontal;
     location: center;
     anchor: center;
