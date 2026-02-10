@@ -4,9 +4,7 @@ let
   create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
 
   configs = {
-    wofi = "wofi";
     rofi = "rofi";
-    foot = "foot";
     waybar = "waybar";
   };
 in

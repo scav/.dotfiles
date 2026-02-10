@@ -1,10 +1,10 @@
 title = ""
 window-decoration = false
-background-opacity = 1.0
+background-opacity = 0.7
 
-theme = "Tokyonight Storm"
-font-family = "JetBrainsMono NFM ExtraBold"
-font-size = 14
+theme = "TokyoNight Storm"
+font-family = "JetBrainsMono NF"
+font-size = 16
 
 shell-integration = "zsh"
 shell-integration-features = ["sudo","ssh-terminfo"]

@@ -12,6 +12,7 @@
     ./nix-systems/common/k9s.nix
     ./nix-systems/common/glide
     ./nix-systems/common/git
+    ./nix-systems/common/ghostty
   ];
 
   xdg.enable = true;
@@ -51,13 +52,6 @@
     enable = true;
     enableZshIntegration = true;
     settings = builtins.fromTOML (builtins.readFile ./.config/starship.toml);
-  };
-
-  programs.ghostty = {
-    enable = true; # if isDarwin then false else true;
-    # package = if isDarwin then null else pkgs.ghostty; # for nix-darwin we fetch it using homebrew
-    enableZshIntegration = true;
-    settings = builtins.fromTOML (builtins.readFile ./.config/ghostty/config);
   };
 
   programs.fd = {
