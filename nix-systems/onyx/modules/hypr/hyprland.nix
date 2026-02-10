@@ -1,14 +1,18 @@
-{ ... }:
+{ config, ... }:
 
 {
+  # uswm
+  xdg.configFile."uwsm/env" = {
+    source = "${config.home.sessionVariablesPackage}/etc/profile.d/hm-session-vars.sh";
+  };
+
   wayland.windowManager.hyprland = {
     enable = true;
-    # package = null;
     settings = {
 
       monitor = ",5120x1440@240,auto,1.0";
 
-      "$terminal" = "foot";
+      "$terminal" = "ghostty";
       "$fileManager" = "dolphin";
       "$menu" = "rofi -show drun";
       "$reload_waybar" = "pkill waybar; waybar &";
