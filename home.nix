@@ -76,11 +76,18 @@
   # home.stateVersion = "26.05";
 
   home.packages = with pkgs; [
-    gnumake
+    discord
     fzf
+    gh
+    gnumake
+    keymapp
     nil
+    ripgrep
+    ripsecrets
+    slack
     zoxide
     yubikey-manager
+    yazi
     (pkgs.nix-search-tv.overrideAttrs (old: {
       env = (old.env or { }) // {
         GOEXPERIMENT = "jsonv2";

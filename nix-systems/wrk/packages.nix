@@ -1,84 +1,48 @@
 { pkgs, ... }:
 
 {
-
+  # todo: clean up
   environment.systemPackages = with pkgs; [
-    # act
+    #mac
+    gnumake
+    coreutils
+    gnutls
+    gnupg
+    openssh
+    docker
+
+    # generic
     awscli2
     azure-cli
     bat
     buf
-    # cilium-cli
-    # colima
-    # lima
-    coreutils
     crossplane
-    # deno
-    # desktoppr
-    docker
-    # docker-slim
     dyff
-    # entr
     eza
-    # firefox
     fzf
     gh
     git
-    gnumake
-    gnupg
-    gnutls
-    # go
-    # go-mockery
-    # go-task
-    # go-tools
-    # golangci-lint
-    # gopls
-    # goreleaser
-    # gotestsum
     grpcurl
     kubernetes-helm
-    jj
     jq
     k6
     ko
     kind
-    # kubebuilder
     kubectl
     kubelogin
     kustomize
-    # kyverno
-    lazygit
-    # libpq
-    lua
-    lua-language-server
-    # luarocks
     mkcert
-    nixfmt
-    # nmap
-    # nushell
-    openssh
-    # packer
     pinentry_mac
     protobuf
     qemu
-    ripgrep
-    ripsecrets
-    sesh
-    # sniffnet
     sops
     step-cli
-    # tailwindcss
     talosctl
-    # templ
     tree
-    tree-sitter
-    # unbound
     utm
     watch
     wget
     yq
-    yubikey-manager
-    zoxide
     zstd
   ];
 }

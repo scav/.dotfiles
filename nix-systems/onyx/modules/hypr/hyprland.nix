@@ -74,7 +74,9 @@
       };
 
       input = {
-        kb_layout = "us";
+        kb_layout = "us,no";
+        kb_variant = ",";
+        kb_options = "grp:alt_space_toggle";
         follow_mouse = 1;
         sensitivity = 2;
         repeat_rate = 35;
@@ -103,6 +105,8 @@
       ];
 
       bind = [
+        "$mainMod, Control_L, exec, hyprctl switchxkblayout current next"
+
         "$mainMod, mouse_down, workspace, e+1"
         "$mainMod, mouse_up, workspace, e-1"
         ", XF86AudioNext, exec, playerctl next"
@@ -114,7 +118,7 @@
         "$mainMod, M, exit,"
         "$mainMod, E, exec, $fileManager"
         "$mainMod, V, togglefloating,"
-        "$mainMod, D, exec, $menu"
+        "$mainMod, SPACE, exec, $menu"
         "$mainMod, R, exec, $reload_waybar"
 
         # Move focus with mainMod + arrow keys

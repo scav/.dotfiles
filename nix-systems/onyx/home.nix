@@ -5,13 +5,13 @@ let
 
   configs = {
     rofi = "rofi";
-    waybar = "waybar";
   };
 in
 {
   imports = [
     ./modules/theme.nix
     ./modules/hypr
+    ./modules/waybar
   ];
 
   # Initialize all config files imported at the top
@@ -42,14 +42,8 @@ in
   home.packages = with pkgs; [
     file
     gcc
-    gh
-    ripgrep
-    nil
     rofi
-    slack
-    discord
     playerctl
-    tree
     pcmanfm
     wl-clipboard
   ];

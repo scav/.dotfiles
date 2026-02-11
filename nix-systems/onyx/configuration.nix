@@ -12,7 +12,7 @@
     "/dev/disk/by-uuid/8f8f3b09-4bb4-41cd-a925-ecd254314a28";
 
   # Networking stuff
-  networking.hostName = "onyx"; # Define your hostname.
+  networking.hostName = "onyx";
   networking.networkmanager.enable = true;
   networking.firewall.enable = false;
 
@@ -30,7 +30,6 @@
       "networkmanager"
       "wheel"
     ];
-    packages = with pkgs; [ ];
   };
 
   # Allow unfree packages
@@ -40,13 +39,7 @@
     git
     sbctl
     wget
-    foot
-    waybar
-    hyprpaper
     ghostty
-    tmux
-    neovim
-    keymapp
   ];
 
   fonts.packages = with pkgs; [
@@ -82,7 +75,6 @@
     powerManagement.enable = true;
   };
   services.xserver.videoDrivers = [ "nvidia" ];
-  services.xserver.xkb.options = "compose:ralt";
 
   # Audio
   security.rtkit.enable = true;
@@ -94,6 +86,10 @@
   };
   hardware.wooting.enable = true;
   hardware.keyboard.zsa.enable = true;
+  # RGB sucks
+  services.hardware.openrgb = {
+    enable = true;
+  };
 
   # Flake and version
   nix.settings.experimental-features = [
