@@ -15,7 +15,7 @@
       monitor = ",5120x1440@240,auto,1.0";
 
       "$terminal" = "ghostty";
-      "$fileManager" = "dolphin";
+      "$fileManager" = "yazi";
       "$menu" = "rofi -show drun";
       "$reload_waybar" = "pkill waybar; waybar &";
       "$snip" = "snip";
@@ -105,6 +105,9 @@
       ];
 
       bind = [
+
+        "$mainMod, F, exec, ghostty -e yazi"
+
         "$mainMod, Control_L, exec, hyprctl switchxkblayout current next"
 
         "$mainMod, mouse_down, workspace, e+1"

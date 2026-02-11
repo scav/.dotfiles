@@ -13,6 +13,7 @@
     ./nix-systems/common/glide
     ./nix-systems/common/git
     ./nix-systems/common/ghostty
+    ./nix-systems/common/yazi.nix
   ];
 
   xdg.enable = true;
@@ -72,6 +73,12 @@
     package = pkgs.firefox-bin;
   };
 
+  programs.yazi = {
+    enable = true;
+    enableZshIntegration = true;
+
+  };
+
   programs.home-manager.enable = true;
   # home.stateVersion = "26.05";
 
@@ -87,7 +94,6 @@
     slack
     zoxide
     yubikey-manager
-    yazi
     (pkgs.nix-search-tv.overrideAttrs (old: {
       env = (old.env or { }) // {
         GOEXPERIMENT = "jsonv2";
