@@ -12,6 +12,7 @@ in
     nil
     stylua
     statix
+    oxfmt
   ];
 
   programs.zsh = {

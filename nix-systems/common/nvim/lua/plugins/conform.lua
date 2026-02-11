@@ -1,20 +1,22 @@
+vim.api.nvim_create_autocmd("BufWritePre", {
+	pattern = "*",
+	callback = function(args)
+		require("conform").format({ bufnr = args.buf })
+	end,
+})
+
 return {
-    "conform.nvim",
-    after = {
-        formatters_by_ft = {
-            templ = { "templ" },
-            lua = { "stylua" },
-            nix = { "nixfmt" },
-            -- go = { "gofumpt", lsp_format = "fallback" },
-        },
-        format_on_save = function()
-            local c = require('conform')
-            vim.api.nvim_create_autocmd("BufWritePre", {
-                pattern = "*",
-                callback = function(args)
-                    c.format({ bufnr = args.buf })
-                end,
-            })
-        end,
-    }
+	"conform.nvim",
+	after = function()
+		require("conform").setup({
+			formatters_by_ft = {
+				templ = { "templ" },
+				lua = { "stylua" },
+				nix = { "nixfmt" },
+				json = { "oxfmt" },
+				jsonc = { "oxfmt" },
+				-- go = { "gofumpt", lsp_format = "fallback" },
+			},
+		})
+	end,
 }
