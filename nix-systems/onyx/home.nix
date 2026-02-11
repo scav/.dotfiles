@@ -28,6 +28,9 @@ in
     shellAliases = {
       nru = "nix flake update; sudo nixos-rebuild switch --flake ${config.home.homeDirectory}/.dotfiles#onyx";
       nrs = "sudo nixos-rebuild switch --flake ${config.home.homeDirectory}/.dotfiles#onyx";
+      # Yep...
+      pbcopy = "wl-copy ";
+      pbpaste = "wl-paste ";
     };
     profileExtra = ''
       if uwsm check may-start; then
@@ -48,6 +51,7 @@ in
     playerctl
     tree
     pcmanfm
+    wl-clipboard
   ];
 
 }
