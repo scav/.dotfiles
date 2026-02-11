@@ -108,7 +108,7 @@
 
         "$mainMod, F, exec, ghostty -e yazi"
 
-        "$mainMod, Control_L, exec, hyprctl switchxkblayout current next"
+        "$mainMod, Control_L, exec, hyprctl switchxkblayout current next && pkill -RTMIN+8 waybar"
 
         "$mainMod, mouse_down, workspace, e+1"
         "$mainMod, mouse_up, workspace, e-1"
