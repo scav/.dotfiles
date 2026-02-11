@@ -11,8 +11,7 @@ in
 {
   imports = [
     ./modules/theme.nix
-    ./modules/hypr/hyprland.nix
-    ./modules/hypr/hyprextras.nix
+    ./modules/hypr
   ];
 
   # Initialize all config files imported at the top
@@ -37,37 +36,15 @@ in
     '';
   };
 
-  # conflicts with uwsm
-  wayland.windowManager.hyprland.systemd.enable = false;
-
-  services.hyprpaper = {
-    enable = true;
-    settings = {
-      splash = false;
-      wallpaper = [
-        {
-          monitor = "";
-          # todo: fetch this automatically
-          path = "/home/scav/.dotfiles/nix-systems/onyx/config/wallpapers/wide_tokyonight_skyline.jpg";
-
-          fit_mode = "fill";
-        }
-      ];
-    };
-  };
-
   home.packages = with pkgs; [
-    tree-sitter
     file
     gcc
     gh
     ripgrep
     nil
-    wofi
     rofi
     slack
     discord
-    yazi
     playerctl
     tree
     pcmanfm

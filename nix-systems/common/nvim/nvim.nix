@@ -5,6 +5,7 @@ in
 {
   # All other LPS are added with nix on a project to project basis
   home.packages = with pkgs; [
+    tree-sitter
     deadnix
     lua-language-server
     yaml-language-server

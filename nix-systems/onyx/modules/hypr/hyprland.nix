@@ -8,6 +8,8 @@
 
   wayland.windowManager.hyprland = {
     enable = true;
+    # conflicts with uwsm
+    systemd.enable = true;
     settings = {
 
       monitor = ",5120x1440@240,auto,1.0";
