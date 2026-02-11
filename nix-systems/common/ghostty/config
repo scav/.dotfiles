@@ -11,6 +11,9 @@ shell-integration-features = ["sudo","ssh-terminfo"]
 
 mouse-hide-while-typing = true
 
+confirm-close-surface = false
+right-click-action = "ignore"
+
 # macOS specific
 macos-option-as-alt = true
 macos-titlebar-style = "hidden"

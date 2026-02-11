@@ -1,5 +1,5 @@
 # While ghostty is not available for darwin it has to be switched
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 let
   isDarwin = pkgs.stdenv.hostPlatform.isDarwin;
