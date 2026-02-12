@@ -36,31 +36,45 @@
         "XDG_SESSION_TYPE,wayland"
       ];
 
-      general = {
-        gaps_in = 1;
-        gaps_out = 1;
-        border_size = 1;
-        "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
-        "col.inactive_border" = "rgba(595959aa)";
-        resize_on_border = false;
-        allow_tearing = false;
-        layout = "dwindle";
-      };
-
       master = {
         new_status = "master";
       };
 
+      # Set GTK stuff
+      exec = [
+        "gsettings set org.gnome.desktop.interface icon-theme 'Adwaita'"
+        "gsettings set org.gnome.desktop.interface gtk-theme 'Tokyo-Night-Dark'"
+        "gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'"
+      ];
+
+      general = {
+        gaps_in = 1;
+        gaps_out = 1;
+        border_size = 1;
+        "col.active_border" = "rgba(bb9af7ff)";
+        "col.inactive_border" = "rgba(565f89ff)";
+        resize_on_border = false;
+        allow_tearing = false;
+        layout = "dwindle";
+      };
+      group = {
+        "col.border_active" = "rgba(bb9af7ff) rgba(b4f9f8ff) 45deg";
+        "col.border_inactive" = "rgba(565f89cc) rgba(9aa5cecc) 45deg";
+        "col.border_locked_active" = "rgba(bb9af7ff) rgba(b4f9f8ff) 45deg";
+        "col.border_locked_inactive" = "rgba(565f89cc) rgba(9aa5cecc) 45deg";
+      };
+
       decoration = {
-        rounding = 0;
-        rounding_power = 0;
+        rounding = 2;
         active_opacity = 1.0;
         inactive_opacity = 1.0;
+        shadow = {
+          enabled = true;
+        };
         blur = {
           enabled = true;
-          size = 3;
-          passes = 1;
-          vibrancy = 0.1696;
+          size = 6;
+          passes = 3;
         };
       };
 
