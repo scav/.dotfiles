@@ -23,8 +23,21 @@
 
     plugins = with pkgs.tmuxPlugins; [
       tmux-fzf
-      tokyo-night-tmux
-      # onedark-theme
+      {
+        plugin = tokyo-night-tmux;
+        extraConfig = ''
+          set -g @tokyo-night-tmux_theme storm
+          set -g @tokyo-night-tmux_transparent 1
+          set -g @tokyo-night-tmux_show_wbg 0
+          set -g @tokyo-night-tmux_show_netspeed 0
+          set -g @tokyo-night-tmux_netspeed_showip 0
+          set -g @tokyo-night-tmux_netspeed_show 0
+          set -g @tokyo-night-tmux_show_git 0
+          set -g @tokyo-night-tmux_show_datetime 0
+          set -g @tokyo-night-tmux_date_format MYD
+          set -g @tokyo-night-tmux_time_format 12H
+        '';
+      }
     ];
 
     extraConfig = ''
@@ -33,11 +46,12 @@
       bind r source-file ~/.config/tmux/tmux.conf
 
       set -g focus-events on
-      set -g status-position top
+      setw -g monitor-activity on
 
       # status bar
       set -g status on
-      setw -g monitor-activity on
+      set -g status-position top
+      # set-option -g status-right ""
 
       bind t new-window
 
@@ -82,18 +96,6 @@
           --preview-window 'right:55%' \
           --preview 'sesh preview {}'
       )\""
-
-      # tokyo-night-tmux setings
-      set -g @tokyo-night-tmux_theme storm 
-      set -g @tokyo-night-tmux_show_netspeed 1
-      set -g @tokyo-night-tmux_netspeed_showip 1 
-      set -g @tokyo-night-tmux_netspeed_show 0
-      set -g @tokyo-night-tmux_show_git 0
-      set -g @tokyo-night-tmux_date_format "DMY"
-      set -g @tokyo-night-tmux_time_format "24H"
-      set -g @tokyo-night-tmux_show_datetime 1
-
-
     '';
   };
 
