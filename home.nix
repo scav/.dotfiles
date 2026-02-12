@@ -20,6 +20,7 @@
 
   programs.zsh = {
     enable = true;
+    enableCompletion = true;
     sessionVariables = {
       GPG_TTY = "$(tty)";
       MANPAGER = "nvim +Man!";

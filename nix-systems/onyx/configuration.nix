@@ -25,6 +25,9 @@
     "nb_NO.UTF-8/UTF-8"
   ];
 
+  programs.zsh.enable = true;
+  users.defaultUserShell = pkgs.zsh;
+
   # User
   users.users.scav = {
     isNormalUser = true;
