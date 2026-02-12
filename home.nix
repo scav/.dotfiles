@@ -95,6 +95,8 @@
     slack
     zoxide
     yubikey-manager
+    wget
+    curl
     (pkgs.nix-search-tv.overrideAttrs (old: {
       env = (old.env or { }) // {
         GOEXPERIMENT = "jsonv2";

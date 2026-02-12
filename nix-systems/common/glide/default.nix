@@ -1,4 +1,8 @@
-{ pkgs, inputs, ... }:
+{
+  pkgs,
+  inputs,
+  ...
+}:
 {
   xdg = {
     configFile."glide" = {
@@ -9,6 +13,6 @@
   };
 
   home.packages = [
-    inputs.glide-browser.packages.${pkgs.system}.default
+    inputs.glide-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 }

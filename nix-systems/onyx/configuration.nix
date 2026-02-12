@@ -44,8 +44,6 @@
   environment.systemPackages = with pkgs; [
     git
     sbctl
-    wget
-    ghostty
   ];
 
   fonts.packages = with pkgs; [
@@ -59,11 +57,12 @@
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd Hyprland --remember";
+        command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd Hyprland --remember";
         user = "greeter";
       };
     };
   };
+
   programs.hyprland = {
     enable = true;
     withUWSM = true;
@@ -99,6 +98,7 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
+
   hardware.wooting.enable = true;
   hardware.keyboard.zsa.enable = true;
   # RGB sucks
