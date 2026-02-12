@@ -6,7 +6,10 @@
   ];
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot = {
+    enable = true;
+    configurationLimit = 10;
+  };
   boot.loader.efi.canTouchEfiVariables = true;
   boot.initrd.luks.devices."luks-8f8f3b09-4bb4-41cd-a925-ecd254314a28".device =
     "/dev/disk/by-uuid/8f8f3b09-4bb4-41cd-a925-ecd254314a28";
@@ -48,7 +51,16 @@
 
   programs.firefox.enable = true;
 
-  services.displayManager.enable = true;
+  # Use greetd with tuigreet
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd Hyprland --remember";
+        user = "greeter";
+      };
+    };
+  };
   programs.hyprland = {
     enable = true;
     withUWSM = true;
