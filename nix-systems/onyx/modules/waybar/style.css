@@ -11,7 +11,7 @@
 @define-color white #ffffff;
 
 * {
-  font-family: "JetBrainsMono NF", monospace;
+  font-family: "JetBrainsMono NF";
   font-size: 16px;
   font-weight: bold;
 }
@@ -63,20 +63,21 @@ button:hover {
 }
 
 #clock {
-  color: @cyan;
+  color: @green;
 }
 
 #cpu,
-#temperature,
+#temperature {
+  color: @orange;
+}
+
 #memory,
 #disk,
 #custom-nvidia {
   color: @orange;
-  /* border-style:dotted; */
-  /* border: 1px solid @magenta; */
-  /* border-radius: 10px; */
+  padding-left: 10px;
+  padding-right: 10px;
 }
-
 
 #network {
   color: @blue;
@@ -85,7 +86,6 @@ button:hover {
 #network.disconnected {
   background-color: @red;
 }
-
 
 #custom-keymap {
   color: @orange;
