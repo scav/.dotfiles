@@ -11,6 +11,8 @@
     };
   };
 
+  services.hyprpolkitagent.enable = true;
+
   programs.hyprlock = {
     enable = true;
     extraConfig = builtins.readFile ./hyprlock.conf;
