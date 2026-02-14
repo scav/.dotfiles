@@ -52,7 +52,10 @@
               backupFileExtension = "backup";
               useGlobalPkgs = true;
               useUserPackages = true;
-              users.dag = import ./home.nix;
+              users.dag.imports = [
+                ./home.nix
+                ./nix-systems/wrk/home.nix
+              ];
               extraSpecialArgs = { inherit inputs; };
             };
           }
