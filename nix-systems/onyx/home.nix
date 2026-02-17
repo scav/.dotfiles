@@ -46,6 +46,7 @@ in
     playerctl
     pcmanfm
     wl-clipboard
+    wxctl
   ];
 
 }

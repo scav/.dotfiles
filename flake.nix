@@ -20,6 +20,10 @@
       url = "github:glide-browser/glide.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    scavpkgs = {
+      url = "github:scav/scavpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs =
     {
@@ -27,6 +31,7 @@
       lanzaboote,
       nix-darwin,
       nixpkgs,
+      scavpkgs,
       home-manager,
       glide-browser,
       ...
@@ -68,6 +73,11 @@
         modules = [
           lanzaboote.nixosModules.lanzaboote
 
+          {
+            nixpkgs.overlays = [
+              scavpkgs.overlays.default
+            ];
+          }
           (
             { pkgs, lib, ... }:
             {

@@ -79,6 +79,7 @@ button:hover {
   padding-right: 10px;
 }
 
+#custom-wxctl,
 #network {
   color: @blue;
 }
