@@ -8,6 +8,8 @@
       key = "${config.home.homeDirectory}/.ssh/id_ed25519.pub";
     };
     settings = {
+      tag.gpgSign = false;
+      commit.gpgsign = true;
       init = {
         defaultBranch = "main";
       };
