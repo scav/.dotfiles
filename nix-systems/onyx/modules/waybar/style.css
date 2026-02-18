@@ -67,6 +67,7 @@ button:hover {
 }
 
 #cpu,
+#load,
 #temperature {
   color: @orange;
 }

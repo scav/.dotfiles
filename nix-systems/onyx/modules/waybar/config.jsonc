@@ -10,6 +10,7 @@
   "modules-right": [
     "custom/sep",
     "cpu",
+    "load",
     "temperature",
     "memory",
     "custom/nvidia",
@@ -48,10 +49,15 @@
     "spacing": 10,
   },
   "clock": {
+    "format": "{:%H:%M}  ",
     "format-alt": "{:%Y-%m-%d}",
   },
   "cpu": {
     "format": "\uf4bc: {usage}%",
+    "tooltip": false,
+  },
+  "load": {
+    "format": "({})",
     "tooltip": false,
   },
   "memory": {
