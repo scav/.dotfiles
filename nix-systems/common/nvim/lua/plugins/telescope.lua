@@ -1,11 +1,12 @@
 return {
     "telescope.nvim",
-    dependencies = {
-        "telescope-fzf-native.nvim",
-        "telescope-ui-select.nvim",
-        "telescope-undo.nvim",
-        "plenary.nvim",
-    },
+    before = function()
+        LZN.trigger_load("telescope-fzf-native.nvim")
+        LZN.trigger_load("telescope-ui-select.nvim")
+        LZN.trigger_load("telescope-undo.nvim")
+        LZN.trigger_load("plenary.nvim")
+    end,
+    dependencies = {},
     cmd = "Telescope",
     keys = {
         {

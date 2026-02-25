@@ -3,7 +3,7 @@ window-decoration = false
 background-opacity = 1
 
 theme = "TokyoNight Storm"
-font-family = "JetBrainsMono NF"
+font-family = "JetBrainsMono NF Bold"
 font-size = 16
 
 shell-integration = "zsh"

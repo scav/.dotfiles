@@ -1,6 +1,8 @@
 return {
     "trouble.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
+    before = function()
+        LZN.trigger_load("nvim-tree/nvim-web-devicons")
+    end,
     cmd = "Trouble",
     keys = {
         {

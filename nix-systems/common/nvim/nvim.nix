@@ -64,6 +64,12 @@ in
         vimPlugins.crates-nvim
         vimPlugins.trouble-nvim
 
+        vimPlugins.neotest
+        vimPlugins.nvim-nio
+        vimPlugins.FixCursorHold-nvim
+        vimPlugins.neotest-golang
+        vimPlugins.neotest-rust
+
         vimPlugins.nvim-treesitter
         vimPlugins.nvim-treesitter-textobjects
         vimPlugins.nvim-treesitter-context

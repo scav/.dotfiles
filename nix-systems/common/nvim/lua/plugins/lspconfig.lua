@@ -137,6 +137,13 @@ return {
 				desc = "Code Action",
 			},
 			{
+				"<leader>cu",
+				function()
+					vim.lsp.buf.references()
+				end,
+				desc = "Code Action",
+			},
+			{
 				"<Leader>vh",
 				function()
 					vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled(), { desc = "Toggle Inlay Hints" })
@@ -145,87 +152,3 @@ return {
 		},
 	},
 }
--- LSP_CAPABILITIES = require("blink.cmp").get_lsp_capabilities()
---
--- return {
---     "nvim-lspconfig",
---     -- cmd = { "LspInfo" },
---     event = { "BufRead", "BufNewFile" },
---     event = "DeferredUIEnter",
---     keys = {
---         {
---             "<leader>vh",
---             function()
---                 vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
---             end,
---             desc = "Toggle Inlay Hints",
---         },
---         {
---             "<leader>f",
---             function()
---                 vim.lsp.buf.format({ async = false })
---             end,
---             desc = "Format",
---         },
---         {
---             "<leader>e",
---             function()
---                 vim.diagnostic.open_float()
---             end,
---             desc = "Diagnostic Float",
---         },
---         {
---             "<leader>K",
---             function()
---                 vim.lsp.buf.hover()
---             end,
---             desc = "Hover",
---         },
---         {
---             "<leader>cd",
---             function()
---                 vim.lsp.buf.definition()
---             end,
---             desc = "Go to definition",
---         },
---         {
---             "<leader>cr",
---             function()
---                 vim.lsp.buf.rename()
---             end,
---             desc = "Rename",
---         },
---         {
---             "<leader>ca",
---             function()
---                 vim.lsp.buf.code_action()
---             end,
---             desc = "Code Action",
---         },
---         {
---             "<Leader>vh",
---             function()
---                 vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled(), { desc = "Toggle Inlay Hints" })
---             end
---         },
---     },
---     before = function()
---         vim.diagnostic.config({
---             virtual_text = {
---                 current_line = true,
---             },
---             severity_sort = true,
---             float = {
---                 border = "rounded",
---                 source = "if_many",
---             },
---         })
---     end,
---     after = function()
---         vim.api.nvim_create_autocmd("BufWritePre", {
---             callback = function()
---                 vim.lsp.buf.format({ async = false })
---             end,
---         })
---     end,
--- }
