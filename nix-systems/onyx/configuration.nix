@@ -38,6 +38,14 @@
     ];
   };
 
+  # Set dark-mode for apps that supports this
+  programs.dconf.profiles.user.databases = [
+    {
+      lockAll = false;
+      settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
+    }
+  ];
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -89,6 +97,13 @@
     powerManagement.enable = true;
   };
   services.xserver.videoDrivers = [ "nvidia" ];
+
+  # replace sudo
+  security.sudo-rs = {
+    enable = true;
+    wheelNeedsPassword = true;
+    execWheelOnly = true;
+  };
 
   # Audio
   security.rtkit.enable = true;
