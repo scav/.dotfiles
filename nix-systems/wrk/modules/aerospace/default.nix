@@ -14,9 +14,7 @@
         outer.top = 1;
         outer.right = 1;
       };
-      # key-mapping = {
-      #   present = "qwerty";
-      # };
+
       mode.main.binding = {
         alt-h = "focus left";
         alt-j = "focus down";
@@ -32,6 +30,10 @@
         alt-shift-1 = "move-node-to-workspace 1";
         alt-shift-2 = "move-node-to-workspace 2";
         alt-shift-3 = "move-node-to-workspace 3";
+
+        # change layout
+        alt-slash = "layout tiles horizontal vertical";
+        alt-comma = "layout accordion horizontal vertical";
       };
     };
   };
