@@ -83,6 +83,9 @@ in
           p.dockerfile
           p.json
           p.sql
+          p.templ
+          p.html
+          p.css
         ]))
         vimPlugins.rainbow-delimiters-nvim
       ];
