@@ -75,8 +75,9 @@
     "tooltip": true,
   },
   "network": {
-    "format-ethernet": "󰛶 {bandwidthUpBytes} 󰛴 {bandwidthDownBytes} 󰩠 {ipaddr}",
+    "format-ethernet": "󰛶 {bandwidthUpBits} 󰛴 {bandwidthDownBits} 󰩠 {ipaddr}",
     "format-disconnected": "Disconnected ⚠",
+    "interval": 1,
   },
   "custom/sep": {
     "format": "|",
