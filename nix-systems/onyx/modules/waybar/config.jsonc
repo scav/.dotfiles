@@ -5,7 +5,8 @@
   "height": 30,
   "spacing": 4,
 
-  "modules-left": ["hyprland/workspaces", "custom/sep"],
+  "modules-left": ["hyprland/workspaces", "custom/sep", "custom/playerctl"],
+
   "modules-center": ["hyprland/window"],
   "modules-right": [
     "custom/sep",
@@ -19,13 +20,12 @@
 
     "network",
     "custom/sep",
-    "custom/playerctl",
-    "pulseaudio",
+    "custom/wxctl",
     "custom/sep",
     "custom/keymap",
     "hyprland/submap",
     "custom/sep",
-    "custom/wxctl",
+    "pulseaudio",
     "custom/sep",
     "clock",
     "custom/sep",
