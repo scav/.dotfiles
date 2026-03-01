@@ -119,8 +119,7 @@
       ];
 
       bind = [
-
-        "$mainMod, F, exec, ghostty -e yazi"
+        "$mainMod, Y, exec, ghostty -e yazi"
 
         "$mainMod, Control_L, exec, hyprctl switchxkblayout current next && pkill -RTMIN+8 waybar"
 

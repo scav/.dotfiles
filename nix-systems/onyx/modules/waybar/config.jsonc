@@ -23,6 +23,7 @@
     "pulseaudio",
     "custom/sep",
     "custom/keymap",
+    "hyprland/submap",
     "custom/sep",
     "custom/wxctl",
     "custom/sep",
@@ -43,6 +44,12 @@
   "hyprland/window": {
     "max-length": 40,
     "seperate-outputs": false,
+  },
+  "hyprland/submap": {
+    "format": "({})",
+    "always-on": true,
+    "max-length": 15,
+    "tooltip": false,
   },
   "tray": {
     "icon-size": 20,
@@ -77,7 +84,7 @@
   "network": {
     "format-ethernet": "󰛶 {bandwidthUpBits} 󰛴 {bandwidthDownBits} 󰩠 {ipaddr}",
     "format-disconnected": "Disconnected ⚠",
-    "interval": 1,
+    "interval": 2,
   },
   "custom/sep": {
     "format": "|",

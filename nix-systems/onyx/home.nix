@@ -12,6 +12,7 @@ in
     ./modules/theme.nix
     ./modules/hypr
     ./modules/waybar
+    ./modules/gaming
   ];
 
   # Initialize all config files imported at the top

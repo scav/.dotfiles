@@ -80,13 +80,26 @@ button:hover {
   padding-right: 10px;
 }
 
-#custom-wxctl,
 #network {
+  color: @blue;
+  min-width: 400px;
+}
+
+#custom-wxctl {
   color: @blue;
 }
 
 #network.disconnected {
   background-color: @red;
+}
+
+#submap {
+  min-width: 80px;
+  color: @cyan;
+}
+
+#submap.Gaming {
+  color: @red;
 }
 
 #custom-keymap {
