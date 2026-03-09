@@ -31,7 +31,6 @@
     kubectl
     kubelogin
     kustomize
-    mkcert
     pinentry_mac
     protobuf
     qemu
