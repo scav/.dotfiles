@@ -33,7 +33,6 @@
       nixpkgs,
       scavpkgs,
       home-manager,
-      glide-browser,
       ...
     }@inputs:
     let
