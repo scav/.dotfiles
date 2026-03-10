@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 {
   imports = [
     ./modules/aerospace
@@ -7,6 +7,7 @@
 
   home.packages = with pkgs; [
     (google-cloud-sdk.withExtraComponents [ google-cloud-sdk.components.gke-gcloud-auth-plugin ])
+    dash0
   ];
 
   home.stateVersion = "26.05";

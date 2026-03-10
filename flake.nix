@@ -43,8 +43,11 @@
           fonts.packages = with pkgs; [
             nerd-fonts.jetbrains-mono
           ];
+          nixpkgs.overlays = [
+            scavpkgs.overlays.default
+            (import ./nix-systems/common/overlays)
+          ];
         };
-
     in
     {
       darwinConfigurations."wrk" = nix-darwin.lib.darwinSystem {
@@ -72,12 +75,6 @@
 
         modules = [
           lanzaboote.nixosModules.lanzaboote
-
-          {
-            nixpkgs.overlays = [
-              scavpkgs.overlays.default
-            ];
-          }
           (
             { pkgs, lib, ... }:
             {
