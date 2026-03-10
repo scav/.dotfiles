@@ -93,7 +93,7 @@
               };
             }
           )
-
+          configuration
           ./nix-systems/onyx/configuration.nix
           home-manager.nixosModules.home-manager
           {
