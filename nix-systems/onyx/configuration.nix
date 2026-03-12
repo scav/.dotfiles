@@ -35,6 +35,13 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "podman"
+    ];
+    packages = with pkgs; [
+      dive
+      podman-tui
+      docker-compose
+      podman-compose
     ];
   };
 
@@ -46,7 +53,7 @@
     }
   ];
 
-  # Allow unfree packages
+  # Allow unfree jackages
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
@@ -120,6 +127,15 @@
   # RGB sucks
   services.hardware.openrgb = {
     enable = true;
+  };
+
+  virtualisation = {
+    containers.enable = true;
+    podman = {
+      enable = true;
+      dockerCompat = true;
+      defaultNetwork.settings.dns_enabled = true;
+    };
   };
 
   # Flake and version
