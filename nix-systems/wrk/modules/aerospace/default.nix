@@ -16,6 +16,8 @@
       };
 
       mode.main.binding = {
+        alt-r = "mode resize";
+
         alt-h = "focus left";
         alt-j = "focus down";
         alt-k = "focus up";
@@ -30,10 +32,12 @@
         alt-shift-1 = "move-node-to-workspace 1";
         alt-shift-2 = "move-node-to-workspace 2";
         alt-shift-3 = "move-node-to-workspace 3";
+      };
 
-        # change layout
-        alt-slash = "layout tiles horizontal vertical";
-        alt-comma = "layout accordion horizontal vertical";
+      mode.resize.binding = {
+        alt-m = "mode main";
+        minus = "resize smart -50";
+        equal = "resize smart +50";
       };
     };
   };
