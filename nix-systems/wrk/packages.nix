@@ -13,6 +13,7 @@
 
     # generic
     awscli2
+    amazon-ecr-credential-helper
     azure-cli
     bat
     buf

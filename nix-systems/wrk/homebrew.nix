@@ -22,7 +22,6 @@
     casks = [
       "balenaetcher"
       "gimp"
-      "ghostty"
       "raspberry-pi-imager"
       "wootility"
     ];
