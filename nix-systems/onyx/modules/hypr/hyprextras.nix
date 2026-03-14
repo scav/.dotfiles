@@ -13,10 +13,10 @@
 
   services.hyprpolkitagent.enable = true;
 
-  programs.hyprlock = {
-    enable = true;
-    extraConfig = builtins.readFile ./hyprlock.conf;
-  };
+  # programs.hyprlock = {
+  #   enable = true;
+  #   extraConfig = builtins.readFile ./hyprlock.conf;
+  # };
 
   services.hypridle = {
     enable = true;

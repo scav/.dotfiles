@@ -1,4 +1,13 @@
-{ ... }:
+{ pkgs, ... }:
+
+let
+  wallpapers = pkgs.fetchFromGitHub {
+    owner = "mylinuxforwork";
+    repo = "wallpaper";
+    rev = "main";
+    sha256 = "sha256-a3GwidRDy8Ke2V5EHwHEZr1smSgNG3N70faZ2lCrmnw=";
+  };
+in
 {
   services.hyprpaper = {
     enable = true;
@@ -7,9 +16,7 @@
       wallpaper = [
         {
           monitor = "";
-          # todo: fetch this automatically
-          path = "/home/scav/.dotfiles/nix-systems/onyx/config/wallpapers/wide_tokyonight_skyline.jpg";
-
+          path = "${wallpapers}/astronaut_jellyfish.jpg";
           fit_mode = "fill";
         }
       ];
