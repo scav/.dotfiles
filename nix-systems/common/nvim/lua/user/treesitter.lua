@@ -7,8 +7,14 @@
 --     end,
 -- })
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = { "rust", "nix", "go", "gomod", "git", "sql", "dockerfile", "http", "templ", "html", "css" },
-    callback = function()
-        vim.treesitter.start()
-    end,
+	pattern = { "rust", "nix", "go", "gomod", "git", "sql", "dockerfile", "http", "templ", "html", "css" },
+	callback = function()
+		vim.treesitter.start()
+	end,
+})
+
+vim.filetype.add({
+	extension = {
+		["http"] = "http",
+	},
 })

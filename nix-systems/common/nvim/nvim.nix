@@ -86,6 +86,7 @@ in
           p.templ
           p.html
           p.css
+          p.http
         ]))
         vimPlugins.rainbow-delimiters-nvim
       ];
