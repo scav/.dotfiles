@@ -63,6 +63,7 @@ in
         vimPlugins.nvim-autopairs
         vimPlugins.crates-nvim
         vimPlugins.trouble-nvim
+        vimPlugins.markview-nvim
 
         vimPlugins.neotest
         vimPlugins.nvim-nio
@@ -87,6 +88,7 @@ in
           p.html
           p.css
           p.http
+          p.javascript
         ]))
         vimPlugins.rainbow-delimiters-nvim
       ];
