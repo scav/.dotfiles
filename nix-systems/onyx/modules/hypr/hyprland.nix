@@ -166,8 +166,30 @@
         "$mainMod SHIFT, 8, movetoworkspace, 8"
         "$mainMod SHIFT, 9, movetoworkspace, 9"
         "$mainMod SHIFT, 0, movetoworkspace, 10"
+
+        "$mainMod, B, submap, resize"
       ];
 
+    };
+
+    submaps = {
+      resize = {
+        settings = {
+          bind = [
+            "$mainMod, B, submap, reset"
+          ];
+          binde = [
+            " , l, resizeactive, 10 0"
+            " , h, resizeactive, -10 0"
+            " , j, resizeactive, 0 -10"
+            " , k, resizeactive, 0 10"
+            " SHIFT_L, l, resizeactive, 50 0"
+            " SHIFT_L, h, resizeactive, -50 0"
+            " SHIFT_L, j, resizeactive, 0 -50"
+            " SHIFT_L, k, resizeactive, 0 50"
+          ];
+        };
+      };
     };
   };
 }
