@@ -26,7 +26,19 @@ return {
 		{
 			"<leader>pv",
 			"<CMD>Oil<CR>",
-			desc = "Send request",
+			desc = "Oil: Open",
+		},
+		{
+			"<leader>pd",
+			function()
+				detail = not detail
+				if detail then
+					require("oil").set_columns({ "icon", "permissions", "size", "mtime" })
+				else
+					require("oil").set_columns({ "icon" })
+				end
+			end,
+			desc = "Oil: Toogle details",
 		},
 	},
 }
