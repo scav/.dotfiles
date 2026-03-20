@@ -38,9 +38,6 @@ return {
 
 			local ls_sources = {
 				formatting.stylua,
-				-- formatting.nixfmt,
-				-- code_actions.gitsigns,
-				-- diagnostics.statix,
 				code_actions.statix,
 				diagnostics.deadnix,
 			}
@@ -58,9 +55,9 @@ return {
 			})
 
 			vim.diagnostic.config({
-				update_in_insert = true,
+				update_in_insert = false,
 				virtual_text = false,
-				virtual_lines = { enable = true, current_line = true },
+				virtual_lines = false,
 				underline = true,
 				signs = {
 					text = {
@@ -69,16 +66,8 @@ return {
 						[vim.diagnostic.severity.INFO] = "",
 						[vim.diagnostic.severity.HINT] = "",
 					},
-					linehl = {
-						[vim.diagnostic.severity.ERROR] = "ErrorMsg",
-					},
-					numhl = {
-						[vim.diagnostic.severity.WARN] = "WarningMsg",
-					},
 				},
 			})
-
-			-- vim.lsp.enable({ "nil_ls", "lua_ls", "rust-analyzer", "gopls" })
 		end,
 		wk = {
 			{ "<leader>l", desc = "LSP" },
