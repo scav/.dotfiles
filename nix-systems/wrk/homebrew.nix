@@ -10,16 +10,7 @@
       upgrade = true;
     };
 
-    taps = [
-    ];
-
-    brews = [
-    ];
-
     casks = [
-      "balenaetcher"
-      "gimp"
-      "raspberry-pi-imager"
       "wootility"
     ];
   };
