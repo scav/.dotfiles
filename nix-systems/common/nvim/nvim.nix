@@ -1,6 +1,6 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 let
-
+  isDarwin = pkgs.stdenv.hostPlatform.isDarwin;
 in
 {
   # All other LPS are added with nix on a project to project basis
@@ -17,7 +17,12 @@ in
 
   programs.zsh = {
     shellAliases = {
-      nvimDev = "(cd ~/.dotfiles; nix run .#darwinConfigurations.wrk.config.home-manager.users.dag.programs.mnw.finalPackage.devMode)";
+      nvimDev = (
+        if isDarwin then
+          "(cd ${config.home.homeDirectory}/.dotfiles; nix run .#darwinConfigurations.wrk.config.home-manager.users.${config.home.username}.programs.mnw.finalPackage.devMode)"
+        else
+          "(cd ${config.home.homeDirectory}/.dotfiles; nix run .#nixosConfigurations.onyx.config.home-manager.users.${config.home.username}.programs.mnw.finalPackage.devMode)"
+      );
     };
   };
 
@@ -30,7 +35,7 @@ in
     plugins = with pkgs; {
       dev.config = {
         pure = ./.;
-        impure = "/Users/dag/.dotfiles/nix-systems/common/nvim";
+        impure = "${config.home.homeDirectory}/.dotfiles/nix-systems/common/nvim";
       };
       # Eager plugins
       start = [
