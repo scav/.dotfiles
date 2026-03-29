@@ -1,16 +1,23 @@
 return {
-    "vim-dadbod-ui",
-    before = function()
-        LZN.trigger_load("vim-dadbod-completion")
-        LZN.trigger_load("vim-dadbod")
-    end,
-    cmd = {
-        "DBUI",
-        "DBUIToggle",
-        "DBUIAddConnection",
-        "DBUIFindBuffer",
+    {
+        "vim-dadbod-ui",
+        cmd = {
+            "DBUI",
+            "DBUIToggle",
+            "DBUIAddConnection",
+            "DBUIFindBuffer",
+        },
+        beforeAll = function()
+            vim.g.db_ui_use_nerd_fonts = 1
+        end,
     },
-    after = function()
-        vim.g.db_ui_use_nerd_fonts = 1
-    end,
+    {
+        "vim-dadbod-completion",
+        lazy = true,
+        ft = { "sql", "plsql" },
+    },
+    {
+        "vim-dadbod",
+        lazy = true,
+    },
 }

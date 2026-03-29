@@ -57,9 +57,6 @@ in
         vimPlugins.gitsigns-nvim
         vimPlugins.conform-nvim
         vimPlugins.kulala-nvim
-        vimPlugins.vim-dadbod
-        vimPlugins.vim-dadbod-completion
-        vimPlugins.vim-dadbod-ui
         vimPlugins.nvim-web-devicons
         vimPlugins.nvim-lspconfig
         vimPlugins.lualine-nvim
@@ -70,12 +67,19 @@ in
         vimPlugins.trouble-nvim
         vimPlugins.markview-nvim
 
+        # Database
+        vimPlugins.vim-dadbod
+        vimPlugins.vim-dadbod-completion
+        vimPlugins.vim-dadbod-ui
+
+        # Testing
         vimPlugins.neotest
         vimPlugins.nvim-nio
         vimPlugins.FixCursorHold-nvim
         vimPlugins.neotest-golang
         vimPlugins.neotest-rust
 
+        # tree-sitter / highlight
         vimPlugins.nvim-treesitter
         vimPlugins.nvim-treesitter-textobjects
         vimPlugins.nvim-treesitter-context

@@ -80,12 +80,16 @@ return {
                 },
                 sources = {
                     default = { "lazydev", "lsp", "buffer", "snippets", "path", "omni" },
+                    per_filetype = {
+                        sql = { "snippets", "dadbod", "buffer" },
+                    },
                     providers = {
                         lazydev = {
                             name = "LazyDev",
                             module = "lazydev.integrations.blink",
                             score_offset = 100,
                         },
+                        dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
                     },
                 },
                 fuzzy = { implementation = "rust" },
@@ -93,44 +97,3 @@ return {
         end,
     },
 }
--- return {
---     "blink.cmp",
---     before = function()
---         LZN.trigger_load("friendly-snippets")
---         LZN.trigger_load("vim-dadbod-completion")
---         LZN.trigger_load("blink-nerdfont.nvim")
---     end,
---     after = {
---         blink = require("blink.cmp").config({
---         keymap = {
---             preset = "default",
---             ["<Tab>"] = { "show_and_insert_or_accept_single", "select_next" },
---             ["<S-Tab>"] = { "show_and_insert_or_accept_single", "select_prev" },
---
---             ["<C-n>"] = { "select_next", "fallback" },
---             ["<C-p>"] = { "select_prev", "fallback" },
---             ["<C-y>"] = { "select_and_accept", "fallback" },
---             ["<CR>"] = { "select_and_accept", "fallback" },
---             ["<C-e>"] = { "cancel", "fallback" },
---         },
---
---         appearance = {
---             nerd_font_variant = "mono",
---         },
---
---         -- (Default) Only show the documentation popup when manually triggered
---         completion = { documentation = { auto_show = false } },
---
---         sources = {
---             default = { "lsp", "path", "snippets", "buffer" },
---             per_filtype = {
---                 sql = { "snippets", "dadbod", "buffer" },
---             },
---         },
---         providers = {
---             dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
---         },
---         fuzzy = { implementation = "prefer_rust_with_warning" },
---     },
---     opts_extend = { "sources.default" },
--- }
