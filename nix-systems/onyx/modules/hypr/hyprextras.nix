@@ -31,31 +31,31 @@
 
         # Turn down monitor
         {
-          timeout = 150;
+          timeout = 60;
           on-timeout = "brightnessctl -s set 10";
           on-resume = "brightnessctl -r";
         }
         # Turn off keyboard backlight
         {
-          timeout = 150;
+          timeout = 120;
           on-timeout = "brightnessctl -sd rgb:kbd_backlight set 0";
           on-resume = "brightnessctl -rd rgb:kbd_backlight";
         }
         # Lock screen
         {
-          timeout = 150;
+          timeout = 120;
           on-timeout = "loginctl lock-session";
         }
 
         # Turn screen off
         {
-          timeout = 300;
+          timeout = 120;
           on-timeout = "hyprctl dispatch dpms off";
           on-resume = "hyprctl dispatch dpms on && brightnessctl -r";
         }
         # Susped system
         {
-          timeout = 600;
+          timeout = 300;
           on-timeout = "systemctl suspend";
         }
       ];
