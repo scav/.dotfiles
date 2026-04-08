@@ -43,9 +43,18 @@
             nerd-fonts.jetbrains-mono
           ];
           nixpkgs.overlays = [
+            (final: prev: {
+              inherit (prev.lixPackageSets.stable)
+                nixpkgs-review
+                nix-eval-jobs
+                nix-fast-build
+                colmena
+                ;
+            })
             scavpkgs.overlays.default
             (import ./nix-systems/common/overlays)
           ];
+          nix.package = pkgs.lixPackageSets.stable.lix;
         };
     in
     {
