@@ -12,6 +12,8 @@
         "$mainMod, G, submap, Gaming"
         "$mainMod, Q, killactive, match:class ^((?!steam_app_).)*\$"
         "$mainMod, F,exec, hyprctl dispatch windowfullscreen toggle"
+        ", mouse:275, pass, class:^(discord)$"
+        ", mouse:274, pass, class:^(discord)$"
       ];
 
     };
