@@ -22,6 +22,8 @@
       Gaming = {
         settings = {
           bind = [
+            ", mouse:275, pass, class:^(discord)$"
+            ", mouse:274, pass, class:^(discord)$"
             "$mainMod, G, submap, reset"
           ];
         };
