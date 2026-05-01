@@ -6,7 +6,7 @@
 
 {
   imports = [
-    ./nix-systems/common/tmux.nix
+    ./nix-systems/common/tmux
     ./nix-systems/common/nvim/nvim.nix
     inputs.mnw.homeManagerModules.mnw
     ./nix-systems/common/k9s.nix
