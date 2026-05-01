@@ -36,6 +36,7 @@
       "networkmanager"
       "wheel"
       "podman"
+      "libvirtd"
     ];
     packages = with pkgs; [
       dive
@@ -129,7 +130,10 @@
     enable = true;
   };
 
+  programs.virt-manager.enable = true;
+
   virtualisation = {
+    libvirtd.enable = true;
     containers.enable = true;
     podman = {
       enable = true;
