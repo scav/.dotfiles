@@ -3,6 +3,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./modules/gaming/gamma/default.nix
   ];
 
   # Bootloader.
