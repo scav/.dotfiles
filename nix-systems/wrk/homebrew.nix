@@ -3,7 +3,7 @@
 {
 
   homebrew = {
-    enable = true;
+    enable = false;
     onActivation = {
       cleanup = "zap"; # remove unlisted brews/casks
       autoUpdate = true;
@@ -11,7 +11,6 @@
     };
 
     casks = [
-      "wootility"
     ];
   };
 
