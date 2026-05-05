@@ -32,6 +32,9 @@
         alt-shift-1 = "move-node-to-workspace 1";
         alt-shift-2 = "move-node-to-workspace 2";
         alt-shift-3 = "move-node-to-workspace 3";
+
+        # Float window
+        alt-shift-f = "layout floating tiling";
       };
 
       mode.resize.binding = {
