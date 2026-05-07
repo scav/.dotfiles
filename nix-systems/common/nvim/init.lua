@@ -27,4 +27,5 @@ vim.lsp.enable({
 	"templ",
 	"tailwindcss",
 	"ts_ls",
+	"zls",
 })
