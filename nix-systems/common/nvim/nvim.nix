@@ -38,52 +38,58 @@ in
         impure = "${config.home.homeDirectory}/.dotfiles/nix-systems/common/nvim";
       };
       # Eager plugins
-      start = [
-        vimPlugins.lz-n
-        vimPlugins.plenary-nvim
-        vimPlugins.tokyonight-nvim
-        vimPlugins.telescope-nvim
-        vimPlugins.telescope-fzf-native-nvim
-        vimPlugins.telescope-ui-select-nvim
-        vimPlugins.telescope-undo-nvim
-        vimPlugins.oil-nvim
-        vimPlugins.blink-cmp
-        vimPlugins.blink-nerdfont-nvim
-        vimPlugins.friendly-snippets
-        vimPlugins.lspkind-nvim
-        vimPlugins.lazydev-nvim
-        vimPlugins.none-ls-nvim
-        vimPlugins.vim-fugitive
-        vimPlugins.gitsigns-nvim
-        vimPlugins.conform-nvim
-        vimPlugins.kulala-nvim
-        vimPlugins.nvim-web-devicons
-        vimPlugins.nvim-lspconfig
-        vimPlugins.lualine-nvim
-        vimPlugins.which-key-nvim
-        vimPlugins.indent-blankline-nvim
-        vimPlugins.nvim-autopairs
-        vimPlugins.crates-nvim
-        vimPlugins.trouble-nvim
-        vimPlugins.markview-nvim
+      start = with vimPlugins; [
+        lz-n
+        plenary-nvim
+        tokyonight-nvim
+        telescope-nvim
+        telescope-fzf-native-nvim
+        telescope-ui-select-nvim
+        telescope-undo-nvim
+        oil-nvim
+        blink-cmp
+        blink-nerdfont-nvim
+        friendly-snippets
+        lspkind-nvim
+        lazydev-nvim
+        none-ls-nvim
+        vim-fugitive
+        gitsigns-nvim
+        conform-nvim
+        kulala-nvim
+        nvim-web-devicons
+        nvim-lspconfig
+        lualine-nvim
+        which-key-nvim
+        indent-blankline-nvim
+        nvim-autopairs
+        crates-nvim
+        trouble-nvim
+        markview-nvim
 
         # Database
-        vimPlugins.vim-dadbod
-        vimPlugins.vim-dadbod-completion
-        vimPlugins.vim-dadbod-ui
+        vim-dadbod
+        vim-dadbod-completion
+        vim-dadbod-ui
+
+        # Debug
+        nvim-dap
+        nvim-dap-view
+        nvim-dap-go
+        nvim-dap-lldb
 
         # Testing
-        vimPlugins.neotest
-        vimPlugins.nvim-nio
-        vimPlugins.FixCursorHold-nvim
-        vimPlugins.neotest-golang
-        vimPlugins.neotest-rust
+        neotest
+        nvim-nio
+        FixCursorHold-nvim
+        neotest-golang
+        neotest-rust
 
         # tree-sitter / highlight
-        vimPlugins.nvim-treesitter
-        vimPlugins.nvim-treesitter-textobjects
-        vimPlugins.nvim-treesitter-context
-        (vimPlugins.nvim-treesitter.withPlugins (p: [
+        nvim-treesitter
+        nvim-treesitter-textobjects
+        nvim-treesitter-context
+        (nvim-treesitter.withPlugins (p: [
           p.gitignore
           p.nix
           p.rust
@@ -98,8 +104,9 @@ in
           p.css
           p.http
           p.javascript
+          p.zig
         ]))
-        vimPlugins.rainbow-delimiters-nvim
+        rainbow-delimiters-nvim
       ];
       # Lazy plugins
       opt = [
