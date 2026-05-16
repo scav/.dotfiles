@@ -67,8 +67,6 @@
     nerd-fonts.jetbrains-mono
   ];
 
-  programs.firefox.enable = true;
-
   # Use greetd with tuigreet
   services.greetd = {
     enable = true;
