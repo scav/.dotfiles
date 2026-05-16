@@ -49,6 +49,7 @@ in
     pcmanfm
     wl-clipboard
     wxctl
+    opencode
   ];
 
 }
