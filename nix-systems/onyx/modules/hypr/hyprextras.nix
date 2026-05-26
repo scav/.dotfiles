@@ -1,7 +1,27 @@
 { pkgs, ... }:
-
+let
+  checkSSH = pkgs.writeShellApplication {
+    name = "check-ssh";
+    runtimeInputs = with pkgs; [
+      coreutils
+      gnugrep
+      iproute2
+    ];
+    text = ''
+      if who | grep -q 'pts/'; then
+          if ss -t -a | grep -q ':ssh.*ESTABLISHED'; then
+              exit 1 
+          fi
+      fi
+      exit 0 
+    '';
+  };
+in
 {
-  home.packages = with pkgs; [ brightnessctl ];
+  home.packages = with pkgs; [
+    brightnessctl
+    checkSSH
+  ];
   # Add binding to hyprland.conf
   wayland.windowManager.hyprland = {
     settings = {
@@ -12,11 +32,6 @@
   };
 
   services.hyprpolkitagent.enable = true;
-
-  # programs.hyprlock = {
-  #   enable = true;
-  #   extraConfig = builtins.readFile ./hyprlock.conf;
-  # };
 
   services.hypridle = {
     enable = true;
@@ -56,7 +71,7 @@
         # Susped system
         {
           timeout = 300;
-          on-timeout = "systemctl suspend";
+          on-timeout = "${checkSSH}/bin/check-ssh && systemctl suspend";
         }
       ];
     };

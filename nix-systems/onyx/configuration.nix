@@ -97,6 +97,9 @@
   programs.ssh = {
     startAgent = true;
   };
+  services.openssh = {
+    enable = true;
+  };
 
   # nvidia settings
   hardware.graphics.enable = true;
