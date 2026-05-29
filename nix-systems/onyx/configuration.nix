@@ -67,17 +67,6 @@
     nerd-fonts.jetbrains-mono
   ];
 
-  # Use greetd with tuigreet
-  services.greetd = {
-    enable = true;
-    settings = {
-      default_session = {
-        command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd Hyprland --remember";
-        user = "greeter";
-      };
-    };
-  };
-
   programs.hyprland = {
     enable = true;
     withUWSM = true;
@@ -94,11 +83,47 @@
     localNetworkGameTransfers.openFirewall = true;
   };
 
+  services = {
+    flatpak.enable = true;
+
+    # Use greetd with tuigreet
+    greetd = {
+      enable = true;
+      settings = {
+        default_session = {
+          command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd Hyprland --remember";
+          user = "greeter";
+        };
+      };
+    };
+
+    # RGB sucks
+    hardware.openrgb = {
+      enable = true;
+    };
+
+    #Slog generator
+    ollama = {
+      enable = true;
+      package = pkgs.ollama-cuda;
+    };
+
+    openssh = {
+      enable = true;
+    };
+
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+    };
+
+    xserver.videoDrivers = [ "nvidia" ];
+  };
+
   programs.ssh = {
     startAgent = true;
-  };
-  services.openssh = {
-    enable = true;
   };
 
   # nvidia settings
@@ -107,7 +132,6 @@
     open = true;
     powerManagement.enable = true;
   };
-  services.xserver.videoDrivers = [ "nvidia" ];
 
   # replace sudo
   security.sudo-rs = {
@@ -118,19 +142,9 @@
 
   # Audio
   security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
 
   hardware.wooting.enable = true;
   hardware.keyboard.zsa.enable = true;
-  # RGB sucks
-  services.hardware.openrgb = {
-    enable = true;
-  };
 
   programs.virt-manager.enable = true;
 
@@ -142,12 +156,6 @@
       dockerCompat = true;
       defaultNetwork.settings.dns_enabled = true;
     };
-  };
-
-  #Slog generator
-  services.ollama = {
-    enable = true;
-    package = pkgs.ollama-cuda;
   };
 
   nix.settings = {
