@@ -14,6 +14,8 @@
         outer.top = 1;
         outer.right = 1;
       };
+      default-root-container-layout = "tiles";
+      default-root-container-orientation = "auto";
 
       mode.main.binding = {
         alt-r = "mode resize";
@@ -35,6 +37,8 @@
 
         # Float window
         alt-shift-f = "layout floating tiling";
+        # Just ignore accordion mode
+        alt-shift-comma = "layout tiles horizontal vertical";
       };
 
       mode.resize.binding = {
