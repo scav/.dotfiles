@@ -4,8 +4,8 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     lanzaboote = {
-      url = "github:nix-community/lanzaboote/v0.4.3";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:nix-community/lanzaboote/v1.1.0";
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin/master";
