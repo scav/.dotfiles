@@ -18,6 +18,7 @@
   nix.settings.trusted-users = [
     "root"
     "dag"
+    "@admin" # For the linux builder
   ];
 
   # Linux builder setup
@@ -25,16 +26,15 @@
     "dag"
   ];
   nix.linux-builder = {
-    enable = true;
-    ephemeral = true;
-    maxJobs = 4;
+    enable = false;
+    maxJobs = 1;
     config = {
       virtualisation = {
-        darwin-builder = {
-          diskSize = 40 * 1024;
-          memorySize = 16 * 1024;
-        };
-        cores = 6;
+        # diskSize = 20 * 1024;
+        # memorySize = 16 * 1024;
+        darwin-builder.memorySize = 16 * 1024;
+        darwin-builder.diskSize = 40 * 1024;
+        cores = 4;
       };
     };
   };
