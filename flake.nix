@@ -24,6 +24,10 @@
       url = "github:scav/scavpkgs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    dokken-aws-helper = {
+      url = "git+ssh://git@github.com/tv2norge/dokken-aws-helper";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs =
     {
@@ -33,6 +37,7 @@
       nixpkgs,
       scavpkgs,
       home-manager,
+      dokken-aws-helper,
       ...
     }@inputs:
     let

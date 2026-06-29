@@ -15,6 +15,26 @@
         "type": "github"
       }
     },
+    "dokken-aws-helper": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1782729768,
+        "narHash": "sha256-OCdSHEcQBeV8O4TWN9CawLwLydIztzxq1dWufrmsXVg=",
+        "ref": "refs/heads/main",
+        "rev": "476d0ad774257ca88fbe13a5e0a945e97c7aab43",
+        "revCount": 16,
+        "type": "git",
+        "url": "ssh://git@github.com/tv2norge/dokken-aws-helper"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@github.com/tv2norge/dokken-aws-helper"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -230,6 +250,7 @@
     },
     "root": {
       "inputs": {
+        "dokken-aws-helper": "dokken-aws-helper",
         "glide-browser": "glide-browser",
         "home-manager": "home-manager_2",
         "lanzaboote": "lanzaboote",
