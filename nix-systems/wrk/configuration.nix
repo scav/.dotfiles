@@ -7,8 +7,8 @@
 
   # sudo NIX_CONFIG="access-tokens = github.com=$(gh auth token)" darwin-rebuild switch --flake ~/.dotfiles#wrk
   environment.shellAliases = {
-    nru = "sudo NIX_CONFIG=\"access-tokens = github.com=$(gh auth token)\" darwin-rebuild switch --flake ~/.dotfiles#wrk";
-    nrs = "nix flake update;sudo NIX_CONFIG=\"access-tokens = github.com=$(gh auth token)\" darwin-rebuild switch --flake ~/.dotfiles#wrk";
+    nrs = "sudo NIX_CONFIG=\"access-tokens = github.com=$(gh auth token)\" darwin-rebuild switch --flake ~/.dotfiles#wrk";
+    nru = "nix flake update;sudo NIX_CONFIG=\"access-tokens = github.com=$(gh auth token)\" darwin-rebuild switch --flake ~/.dotfiles#wrk";
   };
 
   nix.enable = true;

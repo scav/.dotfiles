@@ -5,6 +5,7 @@ vim.g.mapleader = " "
 LZN = require("lz.n")
 LZN.load("plugins")
 
+require("config.filetypes")
 require("config.editor")
 require("config.undo")
 require("user.terminal")
@@ -18,14 +19,17 @@ vim.api.nvim_set_hl(0, "LineNrBelow", { fg = "#51B3EC", bold = true })
 
 -- attach all enabled LSP-servers here (nvim-lspconfig will add defaults and merge them with after/lsp/*.lua
 vim.lsp.enable({
-	"lua_ls",
-	"nil_ls",
-	"rust_analyzer",
-	"gopls",
-	"docker_language_server",
-	"yamlls",
-	"templ",
-	"tailwindcss",
-	"ts_ls",
-	"zls",
+    "lua_ls",
+    "nil_ls",
+    "rust_analyzer",
+    "gopls",
+    "docker_language_server",
+    "jinja_lsp",
+    "yamlls",
+    "templ",
+    "html",
+    "htmx",
+    "tailwindcss",
+    "ts_ls",
+    "zls",
 })

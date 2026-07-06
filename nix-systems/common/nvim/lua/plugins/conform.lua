@@ -16,6 +16,7 @@ return {
                 json = { "oxfmt" },
                 jsonc = { "oxfmt" },
                 css = { "oxfmt" },
+                html = { "oxfmt" },
                 -- go = { "gofumpt", lsp_format = "fallback" },
             },
         })
