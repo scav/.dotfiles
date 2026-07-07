@@ -17,7 +17,7 @@ return {
                 jsonc = { "oxfmt" },
                 css = { "oxfmt" },
                 html = { "oxfmt" },
-                -- go = { "gofumpt", lsp_format = "fallback" },
+                htmldjango = { "djlint" },
             },
         })
     end,

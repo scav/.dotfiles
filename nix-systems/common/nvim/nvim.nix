@@ -101,6 +101,7 @@ in
           p.sql
           p.templ
           p.html
+          p.jinja
           p.css
           p.http
           p.javascript

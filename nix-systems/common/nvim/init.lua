@@ -5,7 +5,6 @@ vim.g.mapleader = " "
 LZN = require("lz.n")
 LZN.load("plugins")
 
-require("config.filetypes")
 require("config.editor")
 require("config.undo")
 require("user.terminal")
