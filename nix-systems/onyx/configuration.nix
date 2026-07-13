@@ -84,8 +84,6 @@
   };
 
   services = {
-    flatpak.enable = true;
-
     # Use greetd with tuigreet
     greetd = {
       enable = true;
