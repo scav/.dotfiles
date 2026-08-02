@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  lib,
   ...
 }:
 
@@ -14,6 +15,7 @@
     ./nix-systems/common/git
     ./nix-systems/common/ghostty
     ./nix-systems/common/yazi.nix
+    ./nix-systems/common/starship.nix
   ];
 
   xdg.enable = true;
@@ -50,12 +52,6 @@
     nix-direnv.enable = true; # faster direnv use_nix and use_flake
   };
 
-  programs.starship = {
-    enable = true;
-    enableZshIntegration = true;
-    settings = builtins.fromTOML (builtins.readFile ./.config/starship.toml);
-  };
-
   programs.fd = {
     enable = true;
     ignores = [
@@ -77,8 +73,9 @@
 
   programs.home-manager.enable = true;
 
+  programs.fzf.enable = true;
+
   home.packages = with pkgs; [
-    fzf
     gh
     gnumake
     keymapp
