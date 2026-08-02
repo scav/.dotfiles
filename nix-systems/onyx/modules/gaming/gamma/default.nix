@@ -4,10 +4,21 @@ let
   location = "games";
 in
 {
+  nixpkgs.overlays = [
+    (final: prev: {
+      python3Packages = prev.python3Packages.override {
+        overrides = pSelf: pSuper: {
+          python-unrar = pSuper.python-unrar.overrideAttrs (_: {
+            dontCheckPythonMetadata = true;
+          });
+        };
+      };
+    })
+  ];
 
-  users.users.scav.packages = with pkgs; [
-    protontricks
-    gamma-launcher
+  users.users.scav.packages = [
+    pkgs.protontricks
+    pkgs.gamma-launcher
   ];
 
   environment.systemPackages = [
