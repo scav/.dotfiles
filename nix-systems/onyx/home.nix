@@ -1,25 +1,14 @@
 { config, pkgs, ... }:
 let
-  dotfiles = "${config.home.homeDirectory}/.dotfiles/nix-systems/onyx/config";
-  create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
-
-  configs = {
-    rofi = "rofi";
-  };
 in
 {
   imports = [
+    ./modules/rofi.nix
     ./modules/theme.nix
     ./modules/hypr
     ./modules/waybar
     ./modules/gaming
   ];
-
-  # Initialize all config files imported at the top
-  xdg.configFile = builtins.mapAttrs (name: subpath: {
-    source = create_symlink "${dotfiles}/${subpath}";
-    recursive = true;
-  }) configs;
 
   home.username = "scav";
   home.homeDirectory = "/home/scav";
@@ -44,7 +33,6 @@ in
   home.packages = with pkgs; [
     file
     gcc
-    rofi
     playerctl
     pcmanfm
     wl-clipboard

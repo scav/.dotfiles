@@ -1,12 +1,15 @@
 { pkgs, ... }:
 {
-
   home.packages = with pkgs; [
-    tmux
     fzf
     sesh
     fd
   ];
+
+  stylix.targets.tmux = {
+    enable = true;
+    inputs.enable = true;
+  };
 
   programs.tmux = {
     enable = true;
@@ -23,13 +26,8 @@
 
     plugins = with pkgs.tmuxPlugins; [
       tmux-fzf
-      {
-        plugin = tokyo-night-tmux;
-        extraConfig = builtins.toString (builtins.readFile ./tmux-tokyonight.conf); # a // b to combine files
-      }
     ];
 
     extraConfig = builtins.toString (builtins.readFile ./tmux.conf);
   };
-
 }

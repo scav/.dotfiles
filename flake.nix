@@ -20,6 +20,10 @@
       url = "github:glide-browser/glide.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    stylix = {
+      url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     scavpkgs = {
       url = "github:scav/scavpkgs";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -35,6 +39,7 @@
       lanzaboote,
       nix-darwin,
       nixpkgs,
+      stylix,
       scavpkgs,
       home-manager,
       dokken-aws-helper,
@@ -75,6 +80,7 @@
               useGlobalPkgs = true;
               useUserPackages = true;
               users.dag.imports = [
+                stylix.homeModules.stylix
                 ./home.nix
                 ./nix-systems/wrk/home.nix
               ];
@@ -116,6 +122,7 @@
               useUserPackages = true;
               users.scav = {
                 imports = [
+                  stylix.homeModules.stylix
                   ./home.nix
                   ./nix-systems/onyx/home.nix
                 ];

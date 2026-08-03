@@ -4,21 +4,37 @@
   lib,
   ...
 }:
-
 {
   imports = [
     ./nix-systems/common/tmux
     ./nix-systems/common/nvim/nvim.nix
     inputs.mnw.homeManagerModules.mnw
-    ./nix-systems/common/k9s.nix
     ./nix-systems/common/glide
     ./nix-systems/common/git
-    ./nix-systems/common/ghostty
+    ./nix-systems/common/ghostty.nix
+    ./nix-systems/common/k9s.nix
     ./nix-systems/common/yazi.nix
     ./nix-systems/common/starship.nix
+    ./nix-systems/common/firefox.nix
   ];
 
   xdg.enable = true;
+
+  fonts.fontconfig.enable = true;
+
+  stylix = {
+    enable = true;
+    fonts = {
+      monospace = {
+        package = pkgs.nerd-fonts.jetbrains-mono;
+        name = "JetBrainsMono Nerd Font";
+      };
+      sizes = {
+        terminal = 14;
+        applications = 12;
+      };
+    };
+  };
 
   programs.zsh = {
     enable = true;
@@ -79,7 +95,6 @@
     gh
     gnumake
     keymapp
-    nil
     ripgrep
     ripsecrets
     slack
@@ -97,5 +112,4 @@
       '';
     }))
   ];
-
 }

@@ -1,6 +1,10 @@
 { pkgs, ... }:
 
 {
+  stylix.targets.starship = {
+    enable = true;
+  };
+
   programs.starship = {
     enable = true;
     enableZshIntegration = true;
@@ -25,7 +29,7 @@
 
       kubernetes = {
         disabled = false;
-        format = " [󱃾 $context](dimmed blue) "; # Kept: custom symbol not in default preset
+        format = " [󱃾 $context](dimmed blue) ";
       };
 
       rust.format = "[$symbol$version](red bold) ";
