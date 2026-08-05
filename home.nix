@@ -57,7 +57,6 @@
     );
     shellAliases = {
       dotfiles = "cd $HOME/.dotfiles/";
-      books = "cd $HOME/Library/Mobile\ Documents/com~apple~CloudDocs/calibre";
       gpull = "git pull --rebase origin";
       gpush = "git push origin";
       gl = "git log --oneline --decorate --color";
