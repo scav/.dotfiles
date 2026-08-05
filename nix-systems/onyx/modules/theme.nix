@@ -2,8 +2,6 @@
 
 {
   stylix = {
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-storm.yaml";
-    polarity = "dark";
     cursor = {
       name = "XCursor-Pro-Dark";
       package = pkgs.xcursor-pro;
