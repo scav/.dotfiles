@@ -7,21 +7,12 @@
       package = pkgs.xcursor-pro;
       size = 1;
     };
-  };
 
-  stylix.targets.hyprland = {
-    enable = true;
-  };
-
-  stylix.targets.fzf = {
-    enable = true;
-  };
-
-  stylix.targets.hyprlock = {
-    enable = false;
-  };
-
-  stylix.targets.waybar = {
-    enable = false;
+    targets = {
+      hyprland.enable = true;
+      fzf.enable = true;
+      hyprlock.enable = false;
+      waybar.enable = false;
+    };
   };
 }
