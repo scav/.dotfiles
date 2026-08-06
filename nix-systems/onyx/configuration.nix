@@ -47,14 +47,6 @@
     ];
   };
 
-  # Set dark-mode for apps that supports this
-  programs.dconf.profiles.user.databases = [
-    {
-      lockAll = false;
-      settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
-    }
-  ];
-
   # Allow unfree jackages
   nixpkgs.config.allowUnfree = true;
 
