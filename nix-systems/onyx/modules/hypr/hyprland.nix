@@ -17,7 +17,7 @@
       monitor = ",5120x1440@240,auto,1.0";
 
       "$terminal" = "ghostty";
-      "$fileManager" = "yazi";
+      "$fileManager" = "ghostty -e yazi";
       "$menu" = "rofi -show drun";
       "$reload_waybar" = "pkill waybar; waybar &";
       "$snip" = "snip";
@@ -42,29 +42,14 @@
         new_status = "master";
       };
 
-      # Set GTK stuff
-      exec = [
-        "gsettings set org.gnome.desktop.interface icon-theme 'Adwaita'"
-        "gsettings set org.gnome.desktop.interface gtk-theme 'Tokyo-Night-Dark'"
-        "gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'"
-      ];
-
       general = {
         gaps_in = 1;
         gaps_out = 1;
         border_size = 1;
-        # "col.active_border" = "rgba(bb9af7ff)";
-        # "col.inactive_border" = "rgba(565f89ff)";
         resize_on_border = false;
         allow_tearing = false;
         layout = "dwindle";
       };
-      # group = {
-      #   "col.border_active" = "rgba(bb9af7ff) rgba(b4f9f8ff) 45deg";
-      #   "col.border_inactive" = "rgba(565f89cc) rgba(9aa5cecc) 45deg";
-      #   "col.border_locked_active" = "rgba(bb9af7ff) rgba(b4f9f8ff) 45deg";
-      #   "col.border_locked_inactive" = "rgba(565f89cc) rgba(9aa5cecc) 45deg";
-      # };
 
       decoration = {
         rounding = 2;
@@ -108,8 +93,8 @@
 
       "$mainMod" = "SUPER";
       bindel = [
-        ", XF86AudioRaiseVolume, exec, wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+"
-        ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+        ", XF86AudioRaiseVolume, exec, wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+ && wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print int($2 * 100)}' > $XDG_RUNTIME_DIR/wob.sock"
+        ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- && wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print int($2 * 100)}' > $XDG_RUNTIME_DIR/wob.sock"
       ];
       bindl = [
         ", XF86AudioPlay, exec, playerctl play-pause"
@@ -120,8 +105,6 @@
       ];
 
       bind = [
-        "$mainMod, Y, exec, ghostty -e yazi"
-
         "$mainMod, Control_L, exec, hyprctl switchxkblayout current next && pkill -RTMIN+8 waybar"
 
         "$mainMod, mouse_down, workspace, e+1"
