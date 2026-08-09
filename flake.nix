@@ -5,7 +5,6 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v1.1.0";
-      # inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin/master";
@@ -35,7 +34,6 @@
   };
   outputs =
     {
-      self,
       lanzaboote,
       nix-darwin,
       nixpkgs,
@@ -53,7 +51,7 @@
             nerd-fonts.jetbrains-mono
           ];
           nixpkgs.overlays = [
-            (final: prev: {
+            (_: prev: {
               inherit (prev.lixPackageSets.stable)
                 nixpkgs-review
                 nix-eval-jobs
