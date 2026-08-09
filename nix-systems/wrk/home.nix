@@ -5,8 +5,10 @@
     ./desktoppr.nix
   ];
 
-  shellAliases = {
-    books = "cd $HOME/Library/Mobile Documents/com~apple~CloudDocs/calibre";
+  programs.zsh = {
+    shellAliases = {
+      books = "cd $HOME/Library/Mobile Documents/com~apple~CloudDocs/calibre";
+    };
   };
 
   home.packages = with pkgs; [
