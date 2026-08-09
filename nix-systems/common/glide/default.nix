@@ -1,18 +1,10 @@
 {
   pkgs,
-  inputs,
   ...
 }:
 {
-  xdg = {
-    configFile."glide" = {
-      enable = true;
-      recursive = true;
-      source = ./config;
-    };
+  programs.glide-browser = {
+    enable = true;
+    nativeMessagingHosts = [ pkgs.keepassxc ];
   };
-
-  home.packages = [
-    inputs.glide-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
-  ];
 }
