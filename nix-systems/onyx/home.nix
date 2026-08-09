@@ -30,6 +30,16 @@ in
     '';
   };
 
+  xdg = {
+    mime.enable = true;
+    mimeApps = {
+      enable = true;
+      defaultApplicationPackages = [
+        config.programs.glide-browser.package
+      ];
+    };
+  };
+
   services.wob = {
     enable = true;
     systemd = true;
