@@ -9,6 +9,7 @@
     ./nix-systems/common/tmux
     ./nix-systems/common/nvim/nvim.nix
     inputs.mnw.homeManagerModules.mnw
+    inputs.glide-browser.homeModules.default
     ./nix-systems/common/glide
     ./nix-systems/common/git
     ./nix-systems/common/ghostty.nix
@@ -92,6 +93,10 @@
   programs.home-manager.enable = true;
 
   programs.fzf.enable = true;
+
+  programs.keepassxc = {
+    enable = true;
+  };
 
   home.packages = with pkgs; [
     gh

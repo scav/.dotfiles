@@ -102,6 +102,8 @@
       enable = true;
     };
 
+    pcscd.enable = true;
+
     pipewire = {
       enable = true;
       alsa.enable = true;
