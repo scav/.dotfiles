@@ -16,7 +16,6 @@
     ./nix-systems/common/k9s.nix
     ./nix-systems/common/yazi.nix
     ./nix-systems/common/starship.nix
-    ./nix-systems/common/firefox.nix
   ];
 
   xdg.enable = true;
