@@ -23,11 +23,6 @@ in
       pbcopy = "wl-copy ";
       pbpaste = "wl-paste ";
     };
-    profileExtra = ''
-      if uwsm check may-start; then
-          exec uwsm start hyprland.desktop
-      fi
-    '';
   };
 
   xdg = {
