@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   home.packages = with pkgs; [
     fzf
@@ -28,6 +28,17 @@
       tmux-fzf
     ];
 
-    extraConfig = builtins.toString (builtins.readFile ./tmux.conf);
+    extraConfig = builtins.readFile ./tmux.conf + ''
+      # Use Stylix Base16 colors for the status bar
+      set -g status-style "bg=#${config.lib.stylix.colors.base00},fg=#${config.lib.stylix.colors.base05}"
+
+      # Highlight active window using accent colors
+      setw -g window-status-current-style "bg=#${config.lib.stylix.colors.base0D},fg=#${config.lib.stylix.colors.base01}"
+      setw -g window-status-style "bg=#${config.lib.stylix.colors.base01},fg=#${config.lib.stylix.colors.base04}"
+
+      # Style pane borders
+      set -g pane-border-style "fg=#${config.lib.stylix.colors.base02}"
+      set -g pane-active-border-style "fg=#${config.lib.stylix.colors.base0D}"
+    '';
   };
 }
