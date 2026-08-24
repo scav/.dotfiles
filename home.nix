@@ -97,6 +97,30 @@
     enable = true;
   };
 
+  programs.nix-search-tv = {
+    enable = true;
+    enableTelevisionIntegration = true;
+    package = (
+      pkgs.writeShellApplication {
+        name = "ns";
+        runtimeInputs = with pkgs; [
+          fzf
+          nix-search-tv
+        ];
+        text = builtins.readFile "${pkgs.nix-search-tv.src}/nixpkgs.sh";
+      }
+    );
+    settings = {
+      indexes = [
+        "nixpkgs"
+        "nixos"
+        "home-manager"
+      ];
+      update_interval = "24h";
+      enable_waiting_message = true;
+    };
+  };
+
   home.packages = with pkgs; [
     gh
     gnumake
@@ -108,14 +132,5 @@
     yubikey-manager
     wget
     curl
-    (pkgs.nix-search-tv.overrideAttrs (old: {
-      env = (old.env or { }) // {
-        GOEXPERIMENT = "jsonv2";
-      };
-
-      installPhase = (old.installPhase or "") + ''
-        install -Dm755 nixpkgs.sh $out/bin/ns
-      '';
-    }))
   ];
 }
