@@ -26,7 +26,7 @@
     "dag"
   ];
   nix.linux-builder = {
-    enable = false;
+    enable = true;
     maxJobs = 1;
     config = {
       virtualisation = {
