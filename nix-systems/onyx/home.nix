@@ -48,6 +48,7 @@ in
   stylix.targets.wob.enable = true;
 
   home.packages = with pkgs; [
+    sops
     file
     gcc
     playerctl
