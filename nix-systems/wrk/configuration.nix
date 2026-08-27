@@ -21,6 +21,8 @@
     "@admin" # For the linux builder
   ];
 
+  nix.settings.sandbox = true;
+
   # Linux builder setup
   nix.settings.extra-trusted-users = [
     "dag"
