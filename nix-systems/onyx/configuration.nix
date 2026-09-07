@@ -51,6 +51,9 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
+    rage
+    ragenix
+    age-plugin-yubikey
     git
     sbctl
   ];
@@ -119,7 +122,10 @@
   };
 
   # nvidia settings
-  hardware.graphics.enable = true;
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
   hardware.nvidia = {
     open = true;
     powerManagement.enable = true;
