@@ -4,6 +4,7 @@
   imports = [
     ./hardware-configuration.nix
     ./modules/gaming/gamma/default.nix
+    ./modules/usenet.nix
   ];
 
   # Bootloader.
@@ -79,7 +80,6 @@
   };
 
   services = {
-    # Use greetd with tuigreet
     greetd = {
       enable = true;
       settings = {
@@ -94,6 +94,8 @@
     hardware.openrgb = {
       enable = true;
     };
+
+    jotta-cli.enable = true;
 
     #Slog generator
     ollama = {
