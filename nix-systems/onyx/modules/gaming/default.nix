@@ -1,6 +1,9 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 
 {
+  home.packages = [
+    pkgs.starsector
+  ];
 
   wayland.windowManager.hyprland = {
     settings = {
