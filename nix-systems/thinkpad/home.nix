@@ -1,9 +1,11 @@
 { config, pkgs, ... }:
 {
   imports = [
-    ../common-linux
+    ../common-linux/rofi.nix
+    ../common-linux/theme.nix
+    ../common-linux/waybar
+    ../common-linux/hypr
     ./modules/hypr
-    ./modules/gaming
   ];
 
   home.username = "scav";
@@ -12,9 +14,9 @@
   programs.zsh = {
     enable = true;
     shellAliases = {
-      nrt = "nix flake update; sudo nixos-rebuild test --flake ${config.home.homeDirectory}/.dotfiles#onyx";
-      nru = "nix flake update; sudo nixos-rebuild switch --flake ${config.home.homeDirectory}/.dotfiles#onyx";
-      nrs = "sudo nixos-rebuild switch --flake ${config.home.homeDirectory}/.dotfiles#onyx";
+      nrt = "nix flake update; sudo nixos-rebuild test --flake ${config.home.homeDirectory}/.dotfiles#thinkpad";
+      nru = "nix flake update; sudo nixos-rebuild switch --flake ${config.home.homeDirectory}/.dotfiles#thinkpad";
+      nrs = "sudo nixos-rebuild switch --flake ${config.home.homeDirectory}/.dotfiles#thinkpad";
       # Yep...
       pbcopy = "wl-copy ";
       pbpaste = "wl-paste ";
@@ -44,14 +46,10 @@
   stylix.targets.wob.enable = true;
 
   home.packages = with pkgs; [
-    sops
     file
-    gcc
     playerctl
-    pcmanfm
     wl-clipboard
     wxctl
-    opencode
   ];
 
 }

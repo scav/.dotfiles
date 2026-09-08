@@ -23,13 +23,13 @@ in
     checkSSH
   ];
   # Add binding to hyprland.conf
-  wayland.windowManager.hyprland = {
-    settings = {
-      bind = [
-        "$mainMod, X, exec, hyprlock"
-      ];
-    };
-  };
+  # wayland.windowManager.hyprland = {
+  #   settings = {
+  #     bind = [
+  #       "$mainMod, X, exec, hyprlock"
+  #     ];
+  #   };
+  # };
 
   services.hyprpolkitagent.enable = true;
 

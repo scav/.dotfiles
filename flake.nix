@@ -133,5 +133,31 @@
           }
         ];
       };
+      nixosConfigurations."thinkpad" = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+
+        modules = [
+          configuration
+          ./nix-systems/thinkpad/configuration.nix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.scav = {
+                imports = [
+                  stylix.homeModules.stylix
+                  ./home.nix
+                  ./nix-systems/thinkpad/home.nix
+                ];
+              };
+              extraSpecialArgs = {
+                inherit inputs;
+              };
+              backupFileExtension = "backup";
+            };
+          }
+        ];
+      };
     };
 }

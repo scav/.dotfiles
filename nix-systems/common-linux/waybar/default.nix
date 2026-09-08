@@ -1,9 +1,5 @@
 # waybar is loaded as with mkOutOfStoreSymlink while I configure it
 { pkgs, config, ... }:
-let
-  dotfiles = "${config.home.homeDirectory}/.dotfiles/nix-systems/onyx/modules/waybar";
-in
-
 {
   programs.waybar.enable = true;
 
@@ -12,7 +8,7 @@ in
   ];
 
   xdg.configFile."waybar" = {
-    source = config.lib.file.mkOutOfStoreSymlink dotfiles;
+    source = ./config;
     recursive = true;
   };
 }
