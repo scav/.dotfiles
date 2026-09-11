@@ -166,8 +166,14 @@
   };
 
   nix.settings = {
-    substituters = [ "https://cache.nixos-cuda.org" ];
-    trusted-public-keys = [ "cache.nixos-cuda.org:74DUi4Ye579gUqzH4ziL9IyiJBlDpMRn9MBN8oNan9M=" ];
+    substituters = [
+      "https://cache.nixos-cuda.org"
+      "https://scavpkgs.cachix.org"
+    ];
+    trusted-public-keys = [
+      "cache.nixos-cuda.org:74DUi4Ye579gUqzH4ziL9IyiJBlDpMRn9MBN8oNan9M="
+      "scavpkgs.cachix.org-1:ZmnpP6suoyBvDXQN5DDjCV+azHNsXOugzVz90y9Bt8M="
+    ];
     experimental-features = [
       "nix-command"
       "flakes"
