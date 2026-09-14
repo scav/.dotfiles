@@ -57,3 +57,6 @@ hl.bind(
 	hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"),
 	{ locked = true, repeating = true }
 )
+
+-- Hyprlock
+hl.bind(main_mod .. " + X", hl.dsp.exec_cmd("hyprlock"))
