@@ -31,24 +31,10 @@
     };
   };
 
-  services.wob = {
-    enable = true;
-    systemd = true;
-    settings = {
-      "" = {
-        border_size = 10;
-        height = 50;
-      };
-    };
-  };
-  stylix.targets.wob.enable = true;
-
   home.packages = with pkgs; [
     sops
     file
-    gcc
     playerctl
-    pcmanfm
     wl-clipboard
     scavpkgs.wxctl
     opencode
