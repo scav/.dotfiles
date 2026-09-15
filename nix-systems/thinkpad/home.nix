@@ -46,10 +46,8 @@
   stylix.targets.wob.enable = true;
 
   home.packages = with pkgs; [
-    file
     playerctl
     wl-clipboard
-    wxctl
   ];
 
 }
