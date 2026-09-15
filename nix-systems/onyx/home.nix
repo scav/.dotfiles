@@ -50,7 +50,7 @@
     playerctl
     pcmanfm
     wl-clipboard
-    wxctl
+    scavpkgs.wxctl
     opencode
   ];
 
