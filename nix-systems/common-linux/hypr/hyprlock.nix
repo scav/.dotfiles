@@ -5,7 +5,7 @@ let
     owner = "mylinuxforwork";
     repo = "wallpaper";
     rev = "main";
-    sha256 = "sha256-a3GwidRDy8Ke2V5EHwHEZr1smSgNG3N70faZ2lCrmnw=";
+    sha256 = "sha256-g4f8B5cCI9+3HSpjs+YWARNHHJpbufoz/ocYqptnPzg=";
   };
 
   # tokyonight-ish colours
