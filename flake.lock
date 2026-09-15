@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "actions-lab-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1789073797,
+        "narHash": "sha256-BFUx25G0J8UjxFvHTOZHNDA8+YXEn4WG7g0bArosJC4=",
+        "owner": "scav",
+        "repo": "actions-lab",
+        "rev": "f56dc1977db3663051c0050d39e5a6d66552e3eb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "scav",
+        "repo": "actions-lab",
+        "type": "github"
+      }
+    },
     "base16": {
       "inputs": {
         "fromYaml": "fromYaml"
@@ -202,11 +218,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1788676465,
-        "narHash": "sha256-Wx+LGg3ABsyqdkZiy+X+B7Oo9Y0qLKtBY0CaP9aFwko=",
+        "lastModified": 1788886164,
+        "narHash": "sha256-F1wxjMtHxA8YL3TiaVb5wujuCiog/tGYguxTGOf7oLQ=",
         "owner": "glide-browser",
         "repo": "glide.nix",
-        "rev": "1a23691614d3335c57577a75f67a67915072e1ae",
+        "rev": "90b69855767dfa25c81dcd437eac7206a8d13284",
         "type": "github"
       },
       "original": {
@@ -242,11 +258,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1770818644,
-        "narHash": "sha256-DYS4jIRpRoKOzJjnR/QqEd/MlT4OZZpt8CrBLv+cjsE=",
+        "lastModified": 1788651960,
+        "narHash": "sha256-v9wJd32eZ2bvhBzVOd7TIjLQd011P7nwOhjKtWlci5I=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "0acbd1180697de56724821184ad2c3e6e7202cd7",
+        "rev": "2c0350c759688177331b8f5242311fae8877bdb3",
         "type": "github"
       },
       "original": {
@@ -262,11 +278,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1788651960,
-        "narHash": "sha256-v9wJd32eZ2bvhBzVOd7TIjLQd011P7nwOhjKtWlci5I=",
+        "lastModified": 1789430117,
+        "narHash": "sha256-t+U1mijItLJ64xZOifpfQ17kpAL73nU7pDI48ScacVc=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "2c0350c759688177331b8f5242311fae8877bdb3",
+        "rev": "cda90fd8838825c689fde9d3f3b4e937937790df",
         "type": "github"
       },
       "original": {
@@ -351,11 +367,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1788752844,
-        "narHash": "sha256-VaWGJ6+cIYN2erfSecbRV+4ljI185Ty2wUrXyvQbgOw=",
+        "lastModified": 1789286504,
+        "narHash": "sha256-eiEK7cKZORNEvX0GeF3RtNEF/JXhgf2RqSp3230q13E=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "dc5d91f840324650bac8c379428c7037a416959a",
+        "rev": "ef34387ddd751e1ab8857adf4676492d32eb24ec",
         "type": "github"
       },
       "original": {
@@ -423,7 +439,8 @@
         "nix-darwin": "nix-darwin",
         "nixpkgs": "nixpkgs_2",
         "scavpkgs": "scavpkgs",
-        "stylix": "stylix"
+        "stylix": "stylix",
+        "tv2pkgs": "tv2pkgs"
       }
     },
     "rust-overlay": {
@@ -449,22 +466,23 @@
     },
     "scavpkgs": {
       "inputs": {
+        "actions-lab-src": "actions-lab-src",
         "nixpkgs": [
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1788379512,
-        "narHash": "sha256-MShbOWzD3nGkxWgepLrqfs6Vm9+21Nb3nkcpW3hIVqQ=",
-        "owner": "scav",
-        "repo": "scavpkgs",
-        "rev": "3acd8e82799833d912ef3edbc7b02bd801140e49",
-        "type": "github"
+        "lastModified": 1789468821,
+        "narHash": "sha256-zLM5yzFxqvCkQSsb03G9a9dudSM1fDnOJ4WrTMbvGKc=",
+        "ref": "refs/heads/main",
+        "rev": "337ac0a6e0ba40c54a1d5889b17da9cc127d20d7",
+        "revCount": 15,
+        "type": "git",
+        "url": "ssh://git@github.com/scav/scavpkgs"
       },
       "original": {
-        "owner": "scav",
-        "repo": "scavpkgs",
-        "type": "github"
+        "type": "git",
+        "url": "ssh://git@github.com/scav/scavpkgs"
       }
     },
     "stylix": {
@@ -578,6 +596,26 @@
         "owner": "tinted-theming",
         "repo": "base16-zed",
         "type": "github"
+      }
+    },
+    "tv2pkgs": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1789034800,
+        "narHash": "sha256-xgg6LpZTDIi5YdNnHtd7Jexug4kYTb5g+OBisAoOwvw=",
+        "ref": "refs/heads/main",
+        "rev": "c2d566f05732cc8d53ebf23dc5d89cfbce7b854d",
+        "revCount": 5,
+        "type": "git",
+        "url": "ssh://git@github.com/tv2norge/tv2pkgs"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@github.com/tv2norge/tv2pkgs"
       }
     }
   },

@@ -24,7 +24,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     scavpkgs = {
-      url = "github:scav/scavpkgs";
+      url = "git+ssh://git@github.com/scav/scavpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    tv2pkgs = {
+      url = "git+ssh://git@github.com/tv2norge/tv2pkgs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     dokken-aws-helper = {
@@ -40,6 +44,7 @@
       stylix,
       scavpkgs,
       home-manager,
+      tv2pkgs,
       dokken-aws-helper,
       ...
     }@inputs:
