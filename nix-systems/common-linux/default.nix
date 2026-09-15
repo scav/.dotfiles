@@ -25,4 +25,12 @@
     opacity.enable = true;
   };
 
+  programs.bat = {
+    enable = true;
+  };
+  stylix.targets.bat = {
+    enable = true;
+    colors.enable = true;
+  };
+
 }
