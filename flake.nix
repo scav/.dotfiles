@@ -57,7 +57,7 @@
                 nix-fast-build
                 colmena
                 ;
-              dokken-aws-helper = dokken-aws-helper.packages.${prev.system}.default;
+              dokken-aws-helper = dokken-aws-helper.packages.${pkgs.stdenv.hostPlatform.system}.default;
             })
             scavpkgs.overlays.default
             (import ./nix-systems/common/overlays)
