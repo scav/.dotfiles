@@ -84,7 +84,10 @@
       pulse.enable = true;
     };
 
-    # xserver.videoDrivers = [ "nvidia" ];
+    xserver.videoDrivers = [
+      "nvidia"
+      "modsettings"
+    ];
   };
 
   programs.ssh = {
@@ -96,17 +99,27 @@
     enable = true;
     # enable32Bit = true;
   };
-  # hardware.nvidia = {
-  #   open = true;
-  #   powerManagement.enable = true;
-  # };
-  virtualisation.vmVariant = {
-    virtualisation.qemu.options = [
-      "-device virtio-vga-gl"
-      "-display gtk,gl=on"
-    ];
+  hardware.nvidia = {
+    open = true;
+    powerManagement.enable = true;
+    modesetting.enable = true;
   };
-  services.xserver.videoDrivers = [ "modesetting" ];
+  hardware.nvidia.prime = {
+    intelBusId = "PCI:0@0:2:0";
+    nvidiaBusId = "PCI:1@0:0:0";
+    offload.enable = true;
+  };
+  services.auto-cpufreq.enable = true;
+  services.auto-cpufreq.settings = {
+    battery = {
+      governor = "powersave";
+      turbo = "never";
+    };
+    charger = {
+      governor = "performance";
+      turbo = "auto";
+    };
+  };
 
   # replace sudo
   security.sudo-rs = {
