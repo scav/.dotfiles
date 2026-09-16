@@ -10,8 +10,16 @@
 
   # Networking stuff
   networking.hostName = "thinkpad";
-  networking.networkmanager.enable = true;
   networking.firewall.enable = false;
+  networking.networkmanager = {
+    enable = true;
+    wifi.powersave = true;
+  };
+
+  programs.nm-applet = {
+    enable = true;
+    indicator = true;
+  };
 
   time.timeZone = "Europe/Oslo";
   i18n.defaultLocale = "en_GB.UTF-8";
