@@ -6,6 +6,7 @@
     ../common-linux/waybar
     ../common-linux/hypr
     ./modules/hypr
+    ./modules/waybar.nix
   ];
 
   home.username = "scav";
