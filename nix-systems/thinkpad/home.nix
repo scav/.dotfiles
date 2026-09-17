@@ -37,6 +37,7 @@
   home.packages = with pkgs; [
     playerctl
     wl-clipboard
+    scavpkgs.wxctl
   ];
 
 }
