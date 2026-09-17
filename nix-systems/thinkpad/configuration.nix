@@ -67,6 +67,18 @@
   programs.neovim.defaultEditor = true;
 
   services = {
+    auto-cpufreq.enable = true;
+    auto-cpufreq.settings = {
+      battery = {
+        governor = "powersave";
+        turbo = "never";
+      };
+      charger = {
+        governor = "performance";
+        turbo = "auto";
+      };
+    };
+
     greetd = {
       enable = true;
       settings = {
@@ -95,6 +107,7 @@
       "nvidia"
       "modsettings"
     ];
+
   };
 
   programs.ssh = {
@@ -116,18 +129,6 @@
     nvidiaBusId = "PCI:1@0:0:0";
     offload.enable = true;
   };
-  services.auto-cpufreq.enable = true;
-  services.auto-cpufreq.settings = {
-    battery = {
-      governor = "powersave";
-      turbo = "never";
-    };
-    charger = {
-      governor = "performance";
-      turbo = "auto";
-    };
-  };
-
   # replace sudo
   security.sudo-rs = {
     enable = true;
