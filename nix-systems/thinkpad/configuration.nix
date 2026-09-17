@@ -79,6 +79,8 @@
       };
     };
 
+    fprintd.enable = true;
+
     greetd = {
       enable = true;
       settings = {
