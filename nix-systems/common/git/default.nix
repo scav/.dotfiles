@@ -3,12 +3,12 @@
   programs.git = {
     enable = true;
     signing = {
-      signByDefault = false;
+      signByDefault = true;
       format = "ssh";
-      key = "${config.home.homeDirectory}/.ssh/id_ed25519.pub";
+      key = "${config.home.homeDirectory}/.ssh/id_ed25519_sk_rk";
     };
     settings = {
-      tag.gpgSign = false;
+      tag.gpgSign = true;
       commit.gpgsign = true;
       init = {
         defaultBranch = "main";
