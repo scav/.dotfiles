@@ -1,13 +1,5 @@
 { pkgs, ... }:
 {
-  # (define snx-rs.conf
-  #   (plain-file "snx-rs-conf"
-  #               "server-name=bridge2.tv2.no
-  # login-type=vpn_cp-cert
-  # default-route=true
-  # tunnel-type=ipsec
-  # ike-persist=true
-  # "))
   environment.systemPackages = with pkgs; [
     snx-rs
   ];
