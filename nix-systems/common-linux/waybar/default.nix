@@ -26,7 +26,7 @@
           "custom/sep"
           "custom/playerctl"
         ];
-        modules-center = [ "hyprland/window" ];
+        # modules-center = [ "hyprland/window" ];
         modules-right = [
           "custom/sep"
           "cpu"
@@ -83,7 +83,7 @@
         };
 
         cpu = {
-          format = "uf4bc: {usage}%";
+          format = " {usage}%";
           tooltip = false;
         };
 
@@ -154,7 +154,7 @@
         };
 
         "custom/playerctl" = {
-          exec = "playerctl metadata --format '{{ artist }} - {{ title }}'";
+          exec = "echo $(playerctl metadata --format '{{ artist }} - {{ title }}' | cut -c1-42)...";
           interval = 10;
           format = " {}";
         };
