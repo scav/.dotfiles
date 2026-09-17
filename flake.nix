@@ -136,6 +136,20 @@
         system = "x86_64-linux";
 
         modules = [
+          lanzaboote.nixosModules.lanzaboote
+          (
+            { pkgs, lib, ... }:
+            {
+              environment.systemPackages = [
+                pkgs.sbctl
+              ];
+              boot.loader.systemd-boot.enable = lib.mkForce false;
+              boot.lanzaboote = {
+                enable = true;
+                pkiBundle = "/var/lib/sbctl";
+              };
+            }
+          )
           configuration
           ./nix-systems/thinkpad/configuration.nix
           home-manager.nixosModules.home-manager
