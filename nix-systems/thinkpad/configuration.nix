@@ -3,6 +3,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./modules/snx-rs.nix
   ];
 
   boot.loader.systemd-boot.enable = true;
@@ -10,7 +11,7 @@
 
   # Networking stuff
   networking.hostName = "thinkpad";
-  networking.firewall.enable = false;
+  networking.firewall.enable = true;
   networking.networkmanager = {
     enable = true;
     wifi.powersave = true;
@@ -42,6 +43,12 @@
       "wheel"
       "podman"
       "libvirtd"
+    ];
+    packages = with pkgs; [
+      dive
+      podman-tui
+      docker-compose
+      podman-compose
     ];
   };
 
@@ -97,7 +104,7 @@
   # nvidia settings
   hardware.graphics = {
     enable = true;
-    # enable32Bit = true;
+    enable32Bit = true;
   };
   hardware.nvidia = {
     open = true;
@@ -131,26 +138,26 @@
   # Audio
   security.rtkit.enable = true;
 
-  # hardware.wooting.enable = true;
+  hardware.wooting.enable = true;
   # hardware.keyboard.zsa.enable = true;
 
-  # programs.virt-manager.enable = true;
-  # virtualisation = {
-  #   libvirtd = {
-  #     enable = true;
-  #     qemu = {
-  #       package = pkgs.qemu_kvm;
-  #       runAsRoot = true;
-  #       swtpm.enable = true;
-  #     };
-  #   };
-  #   containers.enable = true;
-  #   podman = {
-  #     enable = true;
-  #     dockerCompat = true;
-  #     defaultNetwork.settings.dns_enabled = true;
-  #   };
-  # };
+  programs.virt-manager.enable = true;
+  virtualisation = {
+    libvirtd = {
+      enable = true;
+      qemu = {
+        package = pkgs.qemu_kvm;
+        runAsRoot = true;
+        swtpm.enable = true;
+      };
+    };
+    containers.enable = true;
+    podman = {
+      enable = true;
+      dockerCompat = true;
+      defaultNetwork.settings.dns_enabled = true;
+    };
+  };
 
   nix.settings = {
     substituters = [
