@@ -107,6 +107,7 @@
     };
 
     pcscd.enable = true;
+    udev.packages = [ pkgs.yubikey-personalization ];
 
     pipewire = {
       enable = true;
@@ -120,6 +121,7 @@
 
   programs.ssh = {
     startAgent = true;
+    enableAskPassword = true;
   };
 
   # nvidia settings
