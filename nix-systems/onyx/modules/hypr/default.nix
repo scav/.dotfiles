@@ -1,4 +1,4 @@
-{ config, ... }:
+{ ... }:
 {
   imports = [
     ./hyprextras.nix
@@ -8,7 +8,7 @@
 
   wayland.windowManager.hyprland = {
     extraLuaFiles = {
-      "monitors.lua" = ./monitors.lua;
+      "hyprland-onyx.lua" = ./hyprland.lua;
     };
   };
 }
