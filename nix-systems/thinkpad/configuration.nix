@@ -9,7 +9,6 @@
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Networking stuff
   networking.hostName = "thinkpad";
@@ -83,6 +82,7 @@
         turbo = "auto";
       };
     };
+    thermald.enable = true;
 
     fprintd.enable = true;
 
