@@ -66,10 +66,10 @@
         };
 
         "hyprland/submap" = {
-          format = "({})";
+          format = "{}";
           always-on = true;
           max-length = 15;
-          tooltip = false;
+          tooltip = true;
         };
 
         tray = {
@@ -85,11 +85,13 @@
         cpu = {
           format = " {usage}%";
           tooltip = false;
+          interval = 30;
         };
 
         load = {
           format = "({})";
           tooltip = false;
+          interval = 30;
         };
 
         memory = {
@@ -107,12 +109,14 @@
         temperature = {
           format = "{temperatureC}°C {icon}";
           tooltip = true;
+          interval = 5;
         };
 
         network = {
           format-ethernet = "󰛶 {bandwidthUpBits} 󰛴 {bandwidthDownBits} 󰩠 {ipaddr}";
+          format-wifi = "󰛶 {bandwidthUpBits} 󰛴 {bandwidthDownBits} 󰩠 {ipaddr}";
           format-disconnected = "Disconnected ⚠";
-          interval = 2;
+          interval = 5;
         };
 
         "custom/sep" = {
@@ -172,7 +176,7 @@
         "custom/nvidia" = {
           exec = "nvidia-smi --query-gpu=utilization.gpu,temperature.gpu --format=csv,nounits,noheader | sed 's/\\([0-9]\\+\\), \\([0-9]\\+\\)/\\1% \\2°C/g'";
           format = "󰍹 {}";
-          interval = 5;
+          interval = 30;
         };
       };
     };
