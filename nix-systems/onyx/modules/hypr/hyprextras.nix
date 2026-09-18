@@ -1,26 +1,7 @@
 { pkgs, ... }:
-let
-  checkSSH = pkgs.writeShellApplication {
-    name = "check-ssh";
-    runtimeInputs = with pkgs; [
-      coreutils
-      gnugrep
-      iproute2
-    ];
-    text = ''
-      if who | grep -q 'pts/'; then
-          if ss -t -a | grep -q ':ssh.*ESTABLISHED'; then
-              exit 1 
-          fi
-      fi
-      exit 0 
-    '';
-  };
-in
 {
   home.packages = with pkgs; [
     brightnessctl
-    checkSSH
   ];
 
   services.hyprpolkitagent.enable = true;
@@ -64,7 +45,6 @@ in
         # Susped system
         {
           timeout = 300;
-          on-timeout = "${checkSSH}/bin/check-ssh && systemctl suspend";
         }
       ];
     };

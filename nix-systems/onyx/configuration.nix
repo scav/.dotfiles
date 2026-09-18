@@ -106,10 +106,6 @@
       package = pkgs.ollama-cuda;
     };
 
-    openssh = {
-      enable = true;
-    };
-
     pcscd.enable = true;
 
     pipewire = {
