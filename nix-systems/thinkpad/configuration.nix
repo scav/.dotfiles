@@ -9,6 +9,7 @@
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Networking stuff
   networking.hostName = "thinkpad";
@@ -59,6 +60,9 @@
   environment.systemPackages = with pkgs; [
     git
   ];
+  hardware.firmware = with pkgs; [
+    sof-firmware
+  ];
 
   programs.hyprland = {
     enable = true;
@@ -98,12 +102,14 @@
     };
 
     pcscd.enable = true;
+    udev.packages = [ pkgs.yubikey-personalization ];
 
     pipewire = {
       enable = true;
       alsa.enable = true;
       alsa.support32Bit = true;
       pulse.enable = true;
+      wireplumber.enable = true;
     };
 
     xserver.videoDrivers = [
@@ -115,6 +121,7 @@
 
   programs.ssh = {
     startAgent = true;
+    enableAskPassword = true;
   };
 
   # nvidia settings
@@ -124,7 +131,10 @@
   };
   hardware.nvidia = {
     open = true;
-    powerManagement.enable = true;
+    powerManagement = {
+      enable = true;
+      finegrained = true;
+    };
     modesetting.enable = true;
   };
   hardware.nvidia.prime = {
