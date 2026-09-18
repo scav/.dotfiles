@@ -22,7 +22,7 @@
   # Networking stuff
   networking.hostName = "onyx";
   networking.networkmanager.enable = true;
-  networking.firewall.enable = false;
+  networking.firewall.enable = true;
 
   time.timeZone = "Europe/Oslo";
   i18n.defaultLocale = "en_GB.UTF-8";
