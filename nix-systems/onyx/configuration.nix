@@ -16,6 +16,9 @@
   boot.initrd.luks.devices."luks-8f8f3b09-4bb4-41cd-a925-ecd254314a28".device =
     "/dev/disk/by-uuid/8f8f3b09-4bb4-41cd-a925-ecd254314a28";
 
+  # Use zen-kernel
+  boot.kernelPackages = pkgs.linuxPackages_zen;
+
   # Networking stuff
   networking.hostName = "onyx";
   networking.networkmanager.enable = true;
