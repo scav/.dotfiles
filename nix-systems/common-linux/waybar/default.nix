@@ -158,7 +158,8 @@
         };
 
         "custom/playerctl" = {
-          exec = "echo $(playerctl metadata --format '{{ artist }} - {{ title }}' | cut -c1-42)...";
+          # exec = "echo $(playerctl metadata --format '{{ artist }} - {{ title }}' | cut -c1-42)...";
+          exec = "playerctl metadata --follow --format '{{ artist }}:{{ title }}' 4>/dev/null | cut -c1-42";
           interval = 10;
           format = " {}";
         };
