@@ -38,6 +38,26 @@
     playerctl
     wl-clipboard
     scavpkgs.wxctl
+
+    (google-cloud-sdk.withExtraComponents [ google-cloud-sdk.components.gke-gcloud-auth-plugin ])
+    kubectl
+    azure-cli
+    awscli2
+    amazon-ecr-credential-helper
+    kubectl
+    kubelogin
+
+    kustomize
+    crossplane
+    kubernetes-helm
+    k6
+
+    gh
+    dyff
+    grpcurl
+    step-cli
+    tree
+    yq
   ];
 
 }
