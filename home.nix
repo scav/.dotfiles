@@ -95,6 +95,24 @@
 
   programs.keepassxc = {
     enable = true;
+    settings = {
+      General = {
+        LastDatabases = "/home/scav/jotta/Passwords.kdbx";
+      };
+      Browser = {
+        Enabled = true;
+        UseCustomBrowser = true;
+        CustomBrowserType = "Firefox";
+        CustomBrowserLocation = "~/.config/glide/native-messaging-hosts";
+        UpdateBinaryPath = false;
+      };
+      GUI = {
+        MinimizeToTray = true;
+        MinimizeOnClose = true;
+        ShowTrayIcon = true;
+        TrayIconAppearance = "monochrome-light";
+      };
+    };
   };
 
   programs.nix-search-tv = {

@@ -19,6 +19,14 @@ in
     askPassword = "${rofi-askpass}/bin/rofi-askpass";
   };
 
+  services = {
+    jotta-cli.enable = true;
+  };
+
+  programs.nh = {
+    enable = true;
+  };
+
   users.users.scav = {
     packages = with pkgs; [
       grim

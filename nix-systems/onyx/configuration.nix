@@ -98,8 +98,6 @@
       enable = true;
     };
 
-    jotta-cli.enable = true;
-
     #Slog generator
     ollama = {
       enable = true;
