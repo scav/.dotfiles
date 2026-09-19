@@ -119,11 +119,6 @@
 
   };
 
-  programs.ssh = {
-    startAgent = true;
-    enableAskPassword = true;
-  };
-
   # nvidia settings
   hardware.graphics = {
     enable = true;

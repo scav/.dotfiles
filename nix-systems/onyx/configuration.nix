@@ -5,6 +5,7 @@
     ./hardware-configuration.nix
     ./modules/gaming/gamma/default.nix
     ./modules/usenet.nix
+    ../common-linux/configuration.nix
   ];
 
   # Bootloader.
@@ -117,11 +118,6 @@
     };
 
     xserver.videoDrivers = [ "nvidia" ];
-  };
-
-  programs.ssh = {
-    startAgent = true;
-    enableAskPassword = true;
   };
 
   # nvidia settings

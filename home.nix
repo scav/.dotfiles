@@ -24,6 +24,7 @@
   stylix = {
     enable = true;
     autoEnable = false;
+    # https://tinted-theming.github.io/tinted-gallery/#base16-tokyo-night-storm
     base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-storm.yaml";
     polarity = "dark";
     fonts = {

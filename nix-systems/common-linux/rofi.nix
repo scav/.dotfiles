@@ -49,6 +49,7 @@ in
           primary: ${c.base0D};
           hv: ${c.base0E};
           kl: ${c.base05};
+          wn: ${c.base0F};
           black: #000000;
           transparent: rgba(0, 0, 0, 0);
 
@@ -86,6 +87,10 @@ in
           padding: 0;
           border-color: @primary;
           border: 0px 1px 1px 1px;
+      }
+      textbox {
+          color: @wn;
+          padding: 0;
       }
 
       entry, prompt, case-indicator {
