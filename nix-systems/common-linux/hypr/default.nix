@@ -1,14 +1,9 @@
-{ config, ... }:
+{ ... }:
 {
   imports = [
     ./hyprlock.nix
     ./hyprpaper.nix
   ];
-
-  # todo: is this still needed?
-  xdg.configFile."uwsm/env" = {
-    source = "${config.home.sessionVariablesPackage}/etc/profile.d/hm-session-vars.sh";
-  };
 
   stylix.targets.hyprland = {
     enable = true;
