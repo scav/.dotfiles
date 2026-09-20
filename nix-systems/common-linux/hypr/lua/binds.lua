@@ -2,7 +2,7 @@
 local terminal = "ghostty"
 local fileManager = "yazi -e yazi"
 local menu = "rofi -show drun"
-local reload_waybar = "pkill waybar; waybar &"
+local reload_waybar = "pkill -USR2 waybar"
 
 local main_mod = "SUPER"
 
