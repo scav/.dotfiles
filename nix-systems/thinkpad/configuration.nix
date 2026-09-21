@@ -77,6 +77,7 @@
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
+    withUWSM = true;
   };
 
   programs.neovim.defaultEditor = true;
@@ -90,9 +91,8 @@
       enable = true;
       settings = {
         default_session = {
-          command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd start-hyprland --remember";
-          # command = "${config.programs.niri.package}/bin/niri-session";
-          user = "scav";
+          command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --asterisks --user-menu --sessions ${config.services.displayManager.sessionData.desktops}/share/wayland-sessions";
+          user = "greeter";
         };
       };
     };

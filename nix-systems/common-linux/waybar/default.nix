@@ -13,6 +13,7 @@
 
   programs.waybar = {
     enable = true;
+    systemd.targets = [ "graphical-session.target" ];
     style = builtins.readFile ./config/style.css;
     settings = {
       mainBar = {

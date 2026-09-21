@@ -8,7 +8,7 @@ in
 
   programs.rofi = {
     enable = true;
-    terminal = "${pkgs.ghostty}/bin/ghostty";
+    terminal = "uwsm app -- ${pkgs.ghostty}/bin/ghostty";
 
     extraConfig = {
       modi = [
@@ -26,6 +26,9 @@ in
       display-drun = " ";
       display-run = " ";
       display-window = " ";
+
+      drun-launch = "uwsm app -- {cmd}";
+      run-command = "uwsm app -- {cmd}";
 
       # Vim keybindings
       kb-row-up = "Up,Control+k";

@@ -5,7 +5,7 @@
     cursor = {
       name = "XCursor-Pro-Dark";
       package = pkgs.xcursor-pro;
-      size = 1;
+      size = 24;
     };
 
     targets = {

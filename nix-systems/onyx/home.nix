@@ -6,6 +6,9 @@
     ./modules/gaming
   ];
 
+  xdg.configFile."uwsm/env".source =
+    "${config.home.sessionVariablesPackage}/etc/profile.d/hm-session-vars.sh";
+
   home.username = "scav";
   home.homeDirectory = "/home/scav";
   home.stateVersion = "26.05";

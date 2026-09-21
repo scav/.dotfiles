@@ -11,6 +11,7 @@ in
 {
   services.hyprpaper = {
     enable = true;
+    systemdTarget = "graphical-session.target";
     settings = {
       splash = false;
       wallpaper = [

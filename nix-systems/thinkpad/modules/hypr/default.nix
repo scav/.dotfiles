@@ -7,7 +7,6 @@
   wayland.windowManager.hyprland = {
     extraLuaFiles = {
       "monitors.lua" = ./monitors.lua;
-      "startup-thinkpad.lua" = ./startup.lua;
       "hyprland-thinkpad.lua" = ./hyprland.lua;
     };
   };

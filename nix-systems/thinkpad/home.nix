@@ -5,6 +5,12 @@
     ./modules/hypr
     ./modules/waybar.nix
   ];
+  home.sessionVariables = {
+    AQ_DRM_DEVICES = "/dev/dri/card1:/dev/dri/card0";
+  };
+
+  xdg.configFile."uwsm/env".source =
+    "${config.home.sessionVariablesPackage}/etc/profile.d/hm-session-vars.sh";
 
   home.username = "scav";
   home.homeDirectory = "/home/scav";

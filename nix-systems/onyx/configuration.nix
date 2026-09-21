@@ -87,7 +87,7 @@
       enable = true;
       settings = {
         default_session = {
-          command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd start-hyprland --remember";
+          command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --asterisks --user-menu --sessions ${config.services.displayManager.sessionData.desktops}/share/wayland-sessions";
           user = "greeter";
         };
       };

@@ -4,6 +4,12 @@ local fileManager = "yazi -e yazi"
 local menu = "rofi -show drun"
 local reload_waybar = "pkill -USR2 waybar"
 
+-- Wrap apps with uwsm
+-- DO NOT use for terminal utls in this file
+local function uwsm_exec_cmd(command)
+    return hl.dsp.exec_cmd("uwsm app -- " .. command)
+end
+
 local main_mod = "SUPER"
 
 -- Toggle language
@@ -26,9 +32,9 @@ hl.bind(main_mod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
 hl.bind(main_mod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
 -- General
-hl.bind(main_mod .. " + Return", hl.dsp.exec_cmd(terminal))
+hl.bind(main_mod .. " + Return", uwsm_exec_cmd(terminal))
 hl.bind(main_mod .. " + Q", hl.dsp.window.close(hl.get_active_window()))
-hl.bind(main_mod .. " + E", hl.dsp.exec_cmd(fileManager))
+hl.bind(main_mod .. " + E", uwsm_exec_cmd(fileManager))
 hl.bind(main_mod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(main_mod .. " + SPACE", hl.dsp.exec_cmd(menu))
 hl.bind(main_mod .. " + R", hl.dsp.exec_cmd(reload_waybar))
