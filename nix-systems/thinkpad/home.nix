@@ -1,10 +1,7 @@
 { config, pkgs, ... }:
 {
   imports = [
-    ../common-linux/rofi.nix
-    ../common-linux/theme.nix
-    ../common-linux/waybar
-    ../common-linux/hypr
+    ../common-linux
     ./modules/hypr
     ./modules/waybar.nix
   ];
