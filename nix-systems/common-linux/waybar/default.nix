@@ -33,7 +33,7 @@
           "load"
           "temperature"
           "memory"
-          "custom/nvidia"
+          # "custom/nvidia"
           "disk"
           "custom/sep"
           "network"

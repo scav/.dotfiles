@@ -10,6 +10,17 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # Use lastest kernel
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelParams = [
+    "pcie_aspm=force"
+    "nvidia.NVreg_DynamicPowerManagement=0x02"
+  ];
+
+  powerManagement = {
+    enable = true;
+  };
+
   # Networking stuff
   networking.hostName = "thinkpad";
   networking.firewall.enable = true;
@@ -71,17 +82,6 @@
   programs.neovim.defaultEditor = true;
 
   services = {
-    auto-cpufreq.enable = true;
-    auto-cpufreq.settings = {
-      battery = {
-        governor = "powersave";
-        turbo = "never";
-      };
-      charger = {
-        governor = "performance";
-        turbo = "auto";
-      };
-    };
     thermald.enable = true;
 
     fprintd.enable = true;
@@ -95,10 +95,6 @@
           user = "scav";
         };
       };
-    };
-
-    openssh = {
-      enable = true;
     };
 
     pcscd.enable = true;
@@ -148,7 +144,9 @@
   security.rtkit.enable = true;
 
   hardware.wooting.enable = true;
-  # hardware.keyboard.zsa.enable = true;
+  hardware.keyboard.zsa.enable = true;
+  services.fwupd.enable = true;
+  services.hardware.bolt.enable = true;
 
   programs.virt-manager.enable = true;
   virtualisation = {
