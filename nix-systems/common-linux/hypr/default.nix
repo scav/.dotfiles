@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   imports = [
     ./hyprlock.nix
@@ -20,4 +20,8 @@
       "rules.lua" = ./lua/rules.lua;
     };
   };
+
+  home.packages = [
+    pkgs.hyprshutdown
+  ];
 }

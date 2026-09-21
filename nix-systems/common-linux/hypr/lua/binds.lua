@@ -28,7 +28,6 @@ hl.bind(main_mod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 -- General
 hl.bind(main_mod .. " + Return", hl.dsp.exec_cmd(terminal))
 hl.bind(main_mod .. " + Q", hl.dsp.window.close(hl.get_active_window()))
-hl.bind(main_mod .. " + M", hl.dsp.exit())
 hl.bind(main_mod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(main_mod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(main_mod .. " + SPACE", hl.dsp.exec_cmd(menu))
@@ -64,6 +63,7 @@ hl.bind(
 
 -- Hyprlock
 hl.bind(main_mod .. " + X", hl.dsp.exec_cmd("hyprlock"))
+hl.bind(main_mod .. " + M", hl.dsp.exec_cmd("hyprshutdown"))
 
 -- Screenshotting
 hl.bind(main_mod .. " + P", hl.dsp.exec_cmd('grim -g "$(slurp -d)" - | wl-copy'))
