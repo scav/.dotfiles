@@ -62,6 +62,12 @@
             scavpkgs.overlays.default
             (import ./nix-systems/common/overlays)
           ];
+
+          nix.registry = {
+            scavpkgs.flake = inputs.scavpkgs;
+            nixpkgs.flake = inputs.nixpkgs;
+          };
+
           nix.package = pkgs.lixPackageSets.stable.lix;
         };
     in
