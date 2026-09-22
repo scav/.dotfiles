@@ -130,28 +130,14 @@
           interval = 0;
         };
 
-        wireplumber = {
-          format = "{volume}% {icon} {format_source}";
-          format-muted = " {format_source}";
-          format-source = "{source_volume}% ";
-          format-source-muted = " ";
-          format-icons = {
-            default = [
-              ""
-              ""
-            ];
-          };
-          on-click = "helvum";
-        };
-
         pulseaudio = {
           format = "{volume}% {icon}";
-          format-muted = "󰝟";
+          format-muted = " ";
           format-icons = {
             muted = "";
             default = [
-              ""
-              ""
+              " "
+              " "
             ];
           };
           scroll-step = 1;
