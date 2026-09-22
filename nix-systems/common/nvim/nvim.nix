@@ -65,7 +65,6 @@ in
         nvim-autopairs
         crates-nvim
         trouble-nvim
-        markview-nvim
 
         # Database
         vim-dadbod
