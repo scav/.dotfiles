@@ -15,3 +15,14 @@ in this repos will do the rest.
 ```bash
 ssh-keygen -K
 ```
+
+## Clean up
+
+If messing up with substituters clean up likes so:
+```bash
+```bash
+sudo nixos-rebuild switch \
+  --flake /home/scav/.dotfiles#thinkpad \
+  --option substituters 'https://cache.nixos.org/ https://cache.nixos-cuda.org https://scavpkgs.cachix.org'
+```
+
