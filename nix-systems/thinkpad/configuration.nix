@@ -1,4 +1,8 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  ...
+}:
 
 {
   imports = [
@@ -27,6 +31,11 @@
   networking.networkmanager = {
     enable = true;
     wifi.powersave = true;
+  };
+  networking.hosts = {
+    "127.0.0.1" = [
+      "localserve"
+    ];
   };
 
   programs.nm-applet = {
