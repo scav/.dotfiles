@@ -8,9 +8,9 @@ in
 
   programs.rofi = {
     enable = true;
-    terminal = "uwsm app -- ${pkgs.ghostty}/bin/ghostty";
 
-    extraConfig = {
+    settings = {
+      terminal = "uwsm app -- ${pkgs.ghostty}/bin/ghostty";
       modi = [
         "drun"
         "window"
