@@ -1,4 +1,18 @@
 { pkgs, config, ... }:
+let
+  toggleKeyMap = pkgs.writeShellScriptBin "tkm" ''
+    #!/usr/bin/env bash
+    KEYMAP=$(hyprctl devices -j | ${pkgs.jq}/bin/jq -r '
+      .keyboards[]
+      | select(.main == true)
+      | if .active_layout_index == 0 then "  US 🇺🇸 "
+        elif .active_layout_index == 1 then "  NO 🇳🇴"
+        else " UNKNOWN"
+        end
+        ')
+    echo -n $KEYMAP
+  '';
+in
 {
 
   home.packages = with pkgs; [
@@ -141,15 +155,8 @@
           on-click = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
         };
 
-        "custom/playerctl" = {
-          # exec = "echo $(playerctl metadata --format '{{ artist }} - {{ title }}' | cut -c1-42)...";
-          exec = "playerctl metadata --follow --format '{{ artist }}:{{ title }}' 4>/dev/null | cut -c1-42";
-          interval = 10;
-          format = " {}";
-        };
-
         "custom/keymap" = {
-          exec = "~/.config/waybar/scripts/keymap.sh";
+          exec = "${toggleKeyMap}/bin/tkm";
           signal = 8;
         };
 

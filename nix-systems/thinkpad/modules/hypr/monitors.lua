@@ -29,7 +29,10 @@ hl.monitor({
 
 hl.bind("switch:on:Lid Switch", function()
     hl.monitor({ output = built_in.output, disabled = true })
+    os.execute("systemctl --user restart waybar")
 end, { locked = true })
+
 hl.bind("switch:off:Lid Switch", function()
     hl.monitor(built_in)
+    os.execute("systemctl --user restart waybar")
 end, { locked = true })
