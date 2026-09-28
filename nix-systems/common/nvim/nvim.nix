@@ -105,6 +105,7 @@ in
           p.http
           p.javascript
           p.zig
+          p.terraform
         ]))
         rainbow-delimiters-nvim
       ];
