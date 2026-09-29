@@ -19,12 +19,6 @@ in
     jq
   ];
 
-  # include scripts
-  xdg.configFile."waybar/scripts" = {
-    source = ./config/scripts;
-    recursive = true;
-  };
-
   programs.waybar = {
     enable = true;
     systemd.targets = [ "graphical-session.target" ];
