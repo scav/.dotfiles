@@ -8,6 +8,7 @@
     extraLuaFiles = {
       "monitors.lua" = ./monitors.lua;
       "hyprland-thinkpad.lua" = ./hyprland.lua;
+      "binds-thinkpad.lua" = ./binds.lua;
     };
   };
 

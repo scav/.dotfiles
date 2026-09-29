@@ -70,6 +70,7 @@
       podman-tui
       docker-compose
       podman-compose
+      brightnessctl
     ];
   };
 
