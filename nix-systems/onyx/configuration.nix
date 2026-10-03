@@ -4,6 +4,7 @@
   imports = [
     ./hardware-configuration.nix
     ./modules/gaming/gamma/default.nix
+    ./modules/gaming/steam.nix
     ./modules/usenet.nix
     ../common-linux/configuration.nix
   ];
@@ -74,14 +75,6 @@
   };
 
   programs.neovim.defaultEditor = true;
-
-  programs.steam = {
-    enable = true;
-    gamescopeSession.enable = true;
-    remotePlay.openFirewall = true;
-    dedicatedServer.openFirewall = true;
-    localNetworkGameTransfers.openFirewall = true;
-  };
 
   services = {
     greetd = {
