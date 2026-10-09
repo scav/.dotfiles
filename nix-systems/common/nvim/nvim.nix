@@ -108,6 +108,7 @@ in
           p.terraform
         ]))
         rainbow-delimiters-nvim
+        render-markdown-nvim
       ];
       # Lazy plugins
       opt = [
