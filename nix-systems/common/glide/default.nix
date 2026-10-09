@@ -1,9 +1,10 @@
 {
-  config,
   pkgs,
   ...
 }:
 {
+  imports = [ ./bookmarks.nix ];
+
   programs.glide-browser = {
     enable = true;
     nativeMessagingHosts = [ pkgs.keepassxc ];
@@ -12,26 +13,6 @@
         id = 0;
         name = "scav";
         isDefault = true;
-        bookmarks = [
-          {
-            name = "Nix sites";
-            toolbar = true;
-            bookmarks = [
-              {
-                name = "homepage";
-                url = "https://nixos.org/";
-              }
-              {
-                name = "wiki";
-                tags = [
-                  "wiki"
-                  "nix"
-                ];
-                url = "https://wiki.nixos.org/";
-              }
-            ];
-          }
-        ];
       };
     };
     policies = {
@@ -48,6 +29,12 @@
         "keepassxc-browser@keepassxc.org" = {
           default_area = "navbar";
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/keepassxc-browser/latest.xpi";
+          installation_mode = "force_installed";
+          private_browsing = true;
+        };
+        "@contain-facebook" = {
+          default_area = "navbar";
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/facebook-container/latest.xpi";
           installation_mode = "force_installed";
           private_browsing = true;
         };
