@@ -20,6 +20,10 @@
               url = "https://fw.devbugger.com";
             }
             {
+              name = "Ntopng";
+              url = "https://fw.devbugger.com:8443";
+            }
+            {
               name = "pv1";
               url = "https://pv1.devbugger.com:8006";
             }
