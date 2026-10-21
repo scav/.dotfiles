@@ -21,7 +21,12 @@ in
 
   programs.waybar = {
     enable = true;
-    systemd.targets = [ "graphical-session.target" ];
+    systemd = {
+      enable = true;
+      targets = [
+        "hyprland-session.target"
+      ];
+    };
     style = builtins.readFile ./config/style.css;
     settings = {
       mainBar = {

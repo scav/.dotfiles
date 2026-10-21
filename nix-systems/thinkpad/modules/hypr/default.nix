@@ -16,6 +16,7 @@
 
   services.hypridle = {
     enable = true;
+    systemdTarget = "graphical-session.target";
     settings = {
       general = {
         lock_cmd = "pidof hyprlock || hyprlock";

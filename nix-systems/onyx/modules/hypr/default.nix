@@ -2,7 +2,6 @@
 {
   imports = [
     ./hyprextras.nix
-    ./hyprpaper.nix
     ./hyprlock.nix
   ];
 
