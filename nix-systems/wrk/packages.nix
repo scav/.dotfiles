@@ -17,7 +17,6 @@
     azure-cli
     bat
     buf
-    crossplane
     dyff
     eza
     fzf

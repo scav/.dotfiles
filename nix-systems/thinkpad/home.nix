@@ -51,7 +51,6 @@
     kubelogin
 
     kustomize
-    crossplane
     kubernetes-helm
     k6
 
