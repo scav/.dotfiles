@@ -10,7 +10,7 @@ local function uwsm_exec_cmd(command)
     return hl.dsp.exec_cmd("uwsm app -- " .. command)
 end
 
-local main_mod = "SUPER"
+local main_mod = "ALT"
 
 -- Toggle language
 hl.bind(main_mod .. " + Control_L", hl.dsp.exec_cmd("hyprctl switchxkblayout current next && pkill -RTMIN+8 waybar"))
