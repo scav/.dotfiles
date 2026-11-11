@@ -40,7 +40,6 @@
     playerctl
     wl-clipboard
     scavpkgs.wxctl
-    opencode
   ];
 
 }
