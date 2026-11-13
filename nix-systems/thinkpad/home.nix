@@ -2,6 +2,7 @@
 {
   imports = [
     ../common-linux
+    ./modules/gaming
     ./modules/hypr
     ./modules/waybar.nix
   ];
