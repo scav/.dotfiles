@@ -7,6 +7,7 @@ LZN.load("plugins")
 
 require("config.editor")
 require("config.undo")
+require("config.tuning")
 require("user.terminal")
 require("user.treesitter")
 
